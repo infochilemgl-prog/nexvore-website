@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexvore AI — Devora la ineficiencia. Domina el mercado.</title>
+<meta name="description" content="Nexvore AI implementa recepcionistas inteligentes para negocios locales. Responden llamadas 24/7, agendan citas y capturan clientes — automáticamente.">
+<meta name="keywords" content="nexvore ai, recepcionista IA, automatización, inteligencia artificial, clínica dental, chile, agencia IA">
+<meta property="og:title" content="Nexvore AI — Devora la ineficiencia. Domina el mercado.">
+<meta property="og:description" content="Sistemas de IA que responden, capturan y convierten clientes 24/7. Chile · LATAM · España · USA">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nexvoreai.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0055FF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230055FF'/><text y='.9em' font-size='70' x='15' fill='white' font-family='Arial' font-weight='bold'>N</text></svg>">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Geist Sans + Geist Mono — fuente de Vercel/Linear, el estándar tech premium -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family:'Geist'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Geist'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Geist'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+@font-face { font-family:'Geist'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+@font-face { font-family:'Geist'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
+@font-face { font-family:'GeistMono'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'GeistMono'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+</style>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --void:    #06080D;
+  --deep:    #090C14;
+  --card:    #0D1120;
+  --border:  #141C30;
+  --blue:    #0055FF;
+  --elec:    #1A6AFF;
+  --pulse:   #4D8FFF;
+  --glow:    rgba(0,85,255,0.15);
+  --white:   #EEF2FF;
+  --gray:    #5A6A8A;
+  --lgray:   #A0AECB;
+  --silver:  #D0DCFF;
+}
+
+html { background: var(--void); color: var(--white); font-family: 'Geist', 'Manrope', system-ui, sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+
+/* ── CURSOR ── */
+@media (pointer: fine) { * { cursor: none; } }
+.cursor { position: fixed; width: 8px; height: 8px; background: var(--blue); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s, width 0.2s, height 0.2s, opacity 0.2s; }
+.cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(0,85,255,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform 0.15s ease-out, width 0.3s, height 0.3s; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid transparent; transition: all 0.4s; }
+nav.scrolled { background: rgba(6,8,13,0.92); backdrop-filter: blur(20px); border-bottom-color: var(--border); }
+.nav-logo { font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--white); text-decoration: none; }
+.nav-logo span { color: var(--blue); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--lgray); text-decoration: none; font-weight: 500; transition: color 0.2s; font-family: 'Geist', sans-serif; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { background: var(--blue); color: var(--white); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none; text-decoration: none; transition: background 0.2s, transform 0.2s; font-family: 'Geist', sans-serif; cursor: pointer; }
+.nav-cta:hover { background: var(--elec); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 40px 80px; position: relative; overflow: hidden; }
+
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,85,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,85,255,0.06) 1px, transparent 1px); background-size: 60px 60px; animation: gridPulse 4s ease-in-out infinite; }
+@keyframes gridPulse { 0%,100%{ opacity:0.5 } 50%{ opacity:1 } }
+
+.hero-orb { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%); width: 700px; height: 700px; background: radial-gradient(ellipse, rgba(0,85,255,0.18) 0%, transparent 65%); pointer-events: none; animation: orbFloat 6s ease-in-out infinite; }
+@keyframes orbFloat { 0%,100%{ transform:translate(-50%,-60%) scale(1) } 50%{ transform:translate(-50%,-58%) scale(1.05) } }
+
+.hero-tag { font-family: 'Geist', 'Manrope', sans-serif; font-size: 13px; letter-spacing: 0; color: var(--blue); text-transform: none; margin-bottom: 28px; font-weight: 500; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; display: flex; align-items: center; gap: 12px; }
+.hero-tag::before, .hero-tag::after { content: ''; width: 40px; height: 1px; background: var(--border); }
+
+.hero h1 { font-family: 'Geist', 'Manrope', sans-serif; font-size: clamp(52px, 8vw, 112px); font-weight: 900; letter-spacing: -0.04em; line-height: 0.95; color: var(--white); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+.hero h1 em { color: var(--blue); font-style: normal; display: block; }
+
+.hero-sub { font-size: clamp(16px, 2vw, 19px); font-weight: 400; color: var(--lgray); max-width: 540px; line-height: 1.7; margin-bottom: 48px; letter-spacing: -0.01em; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+.btn-primary { background: var(--blue); color: var(--white); padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; text-transform: none; text-decoration: none; transition: all 0.2s; position: relative; overflow: hidden; font-family: 'Geist', sans-serif; cursor: pointer; }
+.btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent); }
+.btn-primary:hover { background: var(--elec); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,85,255,0.35); }
+.btn-ghost { border: 1px solid var(--border); color: var(--lgray); padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 500; letter-spacing: -0.01em; text-transform: none; text-decoration: none; transition: all 0.2s; font-family: 'Geist', sans-serif; cursor: pointer; }
+.btn-ghost:hover { border-color: var(--blue); color: var(--white); }
+
+.hero-stats { display: flex; gap: 60px; justify-content: center; margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--border); opacity: 0; animation: fadeUp 0.8s 1s forwards; flex-wrap: wrap; }
+.stat-item { text-align: center; }
+.stat-num { font-family: 'Geist', 'Manrope', sans-serif; font-size: 44px; font-weight: 900; letter-spacing: -0.04em; color: var(--white); line-height: 1; }
+.stat-num span { color: var(--blue); }
+.stat-lbl { font-family: 'Geist', sans-serif; font-size: 12px; letter-spacing: 0; color: var(--gray); text-transform: none; margin-top: 6px; font-weight: 500; }
+
+@keyframes fadeUp { from{ opacity:0; transform:translateY(24px) } to{ opacity:1; transform:translateY(0) } }
+
+/* ── MARQUEE ── */
+.marquee-wrap { padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--deep); overflow: hidden; }
+.marquee-track { display: flex; gap: 0; animation: marquee 20s linear infinite; width: max-content; }
+.marquee-item { font-family: 'Geist', sans-serif; font-size: 13px; letter-spacing: 0; color: var(--gray); text-transform: none; padding: 0 40px; white-space: nowrap; font-weight: 500; }
+.marquee-item span { color: var(--blue); margin-right: 40px; }
+@keyframes marquee { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
+/* ── SECTIONS ── */
+section { padding: 120px 60px; max-width: 1200px; margin: 0 auto; }
+.section-full { max-width: 100%; padding: 120px 0; }
+
+.sec-label { font-family: 'Geist', 'Manrope', sans-serif; font-size: 13px; letter-spacing: 0; color: var(--blue); text-transform: none; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; font-weight: 600; }
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.sec-title { font-family: 'Geist', 'Manrope', sans-serif; font-size: clamp(34px, 5vw, 60px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 20px; }
+.sec-title em { color: var(--blue); font-style: normal; }
+.sec-sub { font-size: 16px; font-weight: 400; color: var(--lgray); line-height: 1.7; max-width: 520px; letter-spacing: -0.01em; }
+
+/* ── PROBLEMA ── */
+.problema { background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.problema-inner { max-width: 1200px; margin: 0 auto; padding: 120px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.problema-visual { position: relative; }
+.chat-mockup { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+.chat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.chat-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.chat-name { font-size: 13px; font-weight: 600; color: var(--white); font-family: 'Geist', sans-serif; letter-spacing: -0.01em; }
+.chat-status { font-size: 11px; color: var(--gray); }
+.msg { margin-bottom: 12px; }
+.msg-user { text-align: right; }
+.msg-bubble { display: inline-block; padding: 10px 14px; border-radius: 10px; font-size: 13px; line-height: 1.5; max-width: 80%; }
+.msg-user .msg-bubble { background: var(--blue); color: var(--white); border-radius: 10px 10px 2px 10px; }
+.msg-ai .msg-bubble { background: var(--border); color: var(--silver); border-radius: 10px 10px 10px 2px; }
+.msg-time { font-family: 'Geist', sans-serif; font-size: 10px; color: var(--gray); margin-top: 4px; }
+.typing { display: flex; gap: 4px; align-items: center; padding: 12px 14px; background: var(--border); border-radius: 10px 10px 10px 2px; width: fit-content; }
+.typing span { width: 6px; height: 6px; background: var(--gray); border-radius: 50%; animation: typingDot 1.2s infinite; }
+.typing span:nth-child(2){ animation-delay:0.2s }
+.typing span:nth-child(3){ animation-delay:0.4s }
+@keyframes typingDot { 0%,60%,100%{ transform:translateY(0) } 30%{ transform:translateY(-6px) } }
+.response-time { margin-top: 12px; text-align: center; }
+.response-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,85,255,0.1); border: 1px solid rgba(0,85,255,0.2); border-radius: 20px; padding: 6px 14px; font-family: 'Geist', sans-serif; font-size: 12px; color: var(--pulse); letter-spacing: 0; font-weight: 500; }
+.dot-live { width: 6px; height: 6px; background: #00FF87; border-radius: 50%; animation: livePulse 1.5s infinite; }
+@keyframes livePulse { 0%,100%{ opacity:1 } 50%{ opacity:0.3 } }
+
+.problema-points { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+.punto { display: flex; gap: 16px; align-items: flex-start; }
+.punto-icon { width: 40px; height: 40px; border-radius: 8px; background: rgba(0,85,255,0.1); border: 1px solid rgba(0,85,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.punto-body h4 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; letter-spacing: -0.02em; font-family: 'Geist', sans-serif; }
+.punto-body p { font-size: 13px; color: var(--lgray); line-height: 1.6; }
+
+/* ── FEATURES ── */
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+.feat-card { background: var(--card); border: 1px solid var(--border); padding: 36px 32px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+.feat-card:hover { border-color: rgba(0,85,255,0.4); }
+.feat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent); opacity: 0; transition: opacity 0.3s; }
+.feat-card:hover::before { opacity: 1; }
+.feat-num { font-family: 'Geist', sans-serif; font-size: 11px; color: var(--blue); letter-spacing: 0; margin-bottom: 20px; font-weight: 600; }
+.feat-icon { font-size: 28px; margin-bottom: 16px; }
+.feat-title { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 10px; letter-spacing: -0.02em; font-family: 'Geist', sans-serif; }
+.feat-desc { font-size: 13px; color: var(--lgray); line-height: 1.7; font-weight: 400; }
+
+/* ── COMPARACIÓN ── */
+.compare-section { background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.compare-inner { max-width: 1000px; margin: 0 auto; padding: 120px 60px; }
+.compare-table { margin-top: 60px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.compare-header { display: grid; grid-template-columns: 2fr 1fr 1fr; background: var(--card); padding: 16px 28px; border-bottom: 1px solid var(--border); }
+.col-label { font-family: 'Geist', sans-serif; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+.col-label.bad { color: var(--gray); }
+.col-label.good { color: var(--blue); }
+.compare-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 18px 28px; border-bottom: 1px solid var(--border); align-items: center; transition: background 0.2s; }
+.compare-row:hover { background: rgba(0,85,255,0.03); }
+.compare-row:last-child { border-bottom: none; }
+.row-feature { font-size: 14px; color: var(--lgray); }
+.row-bad { font-size: 13px; color: var(--gray); display: flex; align-items: center; gap: 8px; }
+.row-bad::before { content: '✕'; color: #FF4D6A; font-size: 11px; }
+.row-good { font-size: 13px; color: var(--silver); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.row-good::before { content: '✓'; color: #00FF87; font-size: 11px; }
+
+/* ── SECTORES ── */
+.sectores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 60px; }
+.sector-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 28px 24px; display: flex; align-items: center; gap: 16px; transition: all 0.3s; position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.sector-card::after { content: '→'; position: absolute; right: 20px; color: var(--blue); opacity: 0; transition: all 0.3s; font-size: 18px; }
+.sector-card:hover { border-color: rgba(0,85,255,0.3); transform: translateX(4px); }
+.sector-card:hover::after { opacity: 1; right: 16px; }
+.sector-emoji { font-size: 28px; }
+.sector-name { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 3px; letter-spacing: -0.02em; font-family: 'Geist', sans-serif; }
+.sector-desc { font-size: 12px; color: var(--gray); }
+
+/* ── PROCESO ── */
+.proceso-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; position: relative; }
+.paso { background: var(--card); border: 1px solid var(--border); padding: 36px 28px; position: relative; }
+
+.paso-badge { display: inline-block; font-size: 11px; font-weight: 600; color: var(--blue); background: rgba(0,85,255,0.1); border: 1px solid rgba(0,85,255,0.2); border-radius: 20px; padding: 3px 10px; margin-bottom: 12px; letter-spacing: 0; font-family: 'Geist', sans-serif; }
+.paso-title { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; letter-spacing: -0.02em; font-family: 'Geist', sans-serif; }
+.paso-desc { font-size: 13px; color: var(--lgray); line-height: 1.6; }
+.paso-arrow { position: absolute; top: 40px; right: -14px; width: 28px; height: 28px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; z-index: 2; }
+.paso:last-child .paso-arrow { display: none; }
+
+/* ── CTA FINAL ── */
+.cta-section { text-align: center; padding: 160px 40px; position: relative; overflow: hidden; background: var(--deep); border-top: 1px solid var(--border); }
+.cta-orb { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(0,85,255,0.2) 0%, transparent 65%); pointer-events: none; }
+.cta-section h2 { font-family: 'Geist', 'Manrope', sans-serif; font-size: clamp(38px, 7vw, 88px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 24px; position: relative; }
+.cta-section h2 em { color: var(--blue); font-style: normal; }
+.cta-section p { font-size: 18px; color: var(--lgray); margin-bottom: 48px; position: relative; }
+.cta-section .btn-primary { font-size: 14px; padding: 18px 48px; position: relative; }
+
+/* ── FOOTER ── */
+footer { background: var(--void); border-top: 1px solid var(--border); padding: 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.footer-logo { font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+.footer-logo span { color: var(--blue); }
+.footer-markets { font-family: 'Geist', sans-serif; font-size: 13px; letter-spacing: 0; color: var(--gray); text-transform: none; font-weight: 400; }
+.footer-note { font-family: 'Geist', sans-serif; font-size: 13px; color: var(--gray); letter-spacing: 0; font-weight: 400; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 15px; }
+  section { padding: 60px 20px; }
+  .problema-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .compare-inner { padding: 60px 20px; }
+  .compare-table { overflow-x: auto; }
+  .compare-header, .compare-row { grid-template-columns: 1.5fr 1fr 1fr; padding: 12px 16px; }
+  .sectores-grid { grid-template-columns: 1fr 1fr; }
+  .proceso-steps { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .paso-arrow { display: none; }
+  .paso { padding: 24px 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { gap: 32px; padding-top: 40px; margin-top: 48px; }
+  .stat-num { font-size: 32px; }
+  .cta-section { padding: 80px 20px; }
+  footer { padding: 40px 20px; flex-direction: column; text-align: center; }
+  .marquee-item { padding: 0 20px; font-size: 12px; }
+}
+@media (max-width: 480px) {
+  .sectores-grid { grid-template-columns: 1fr; }
+  .proceso-steps { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(40px, 12vw, 64px); }
+  .compare-header .col-label:last-child { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid, .hero-orb { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee-track { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">NEXV<span>O</span>RE</a>
+  <ul class="nav-links">
+    <li><a href="#solucion">Solución</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#sectores">Sectores</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta" style="-webkit-tap-highlight-color:transparent">Demo gratis</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-tag">Nexvore AI — Sistemas de automatización con IA</div>
+  <h1>Devora la<br>ineficiencia.<br><em>Domina.</em></h1>
+  <p class="hero-sub">Sistemas de IA que responden, capturan y convierten clientes 24/7 — mientras tú duermes, vendes, o escales a otro mercado.</p>
+  <div class="hero-actions">
+    <a href="#contacto" class="btn-primary">Ver demo en 5 min</a>
+    <a href="#solucion" class="btn-ghost">Cómo funciona →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">24<span>/7</span></div>
+      <div class="stat-lbl">Disponibilidad total</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span>&lt;</span>3s</div>
+      <div class="stat-lbl">Tiempo de respuesta</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-lbl">Clientes perdidos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-lbl">Llamadas simultáneas</div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>⚡</span>Respuesta instantánea</div>
+    <div class="marquee-item"><span>🦷</span>Clínicas dentales</div>
+    <div class="marquee-item"><span>📞</span>Atención 24/7</div>
+    <div class="marquee-item"><span>🌎</span>Chile · LATAM · España · USA</div>
+    <div class="marquee-item"><span>🤖</span>IA conversacional</div>
+    <div class="marquee-item"><span>💰</span>Ingresos recurrentes</div>
+    <div class="marquee-item"><span>⚡</span>Respuesta instantánea</div>
+    <div class="marquee-item"><span>🦷</span>Clínicas dentales</div>
+    <div class="marquee-item"><span>📞</span>Atención 24/7</div>
+    <div class="marquee-item"><span>🌎</span>Chile · LATAM · España · USA</div>
+    <div class="marquee-item"><span>🤖</span>IA conversacional</div>
+    <div class="marquee-item"><span>💰</span>Ingresos recurrentes</div>
+  </div>
+</div>
+
+<!-- EL PROBLEMA -->
+<div class="problema" id="solucion">
+  <div class="problema-inner">
+    <div class="reveal">
+      <div class="sec-label">El problema</div>
+      <div class="sec-title">Tu negocio pierde clientes <em>ahora mismo</em></div>
+      <p class="sec-sub">Cada mensaje sin responder es un paciente que agenda con la competencia. Pasa a las 10pm. Pasa el sábado. Pasa mientras atiendes otra persona.</p>
+      <div class="problema-points">
+        <div class="punto">
+          <div class="punto-icon">📵</div>
+          <div class="punto-body">
+            <h4>Sin respuesta fuera de horario</h4>
+            <p>El 68% de los mensajes llegan cuando la clínica está cerrada o el equipo está ocupado.</p>
+          </div>
+        </div>
+        <div class="punto">
+          <div class="punto-icon">⏱️</div>
+          <div class="punto-body">
+            <h4>Respuesta lenta = cliente perdido</h4>
+            <p>Si tardas más de 5 minutos en responder, la probabilidad de convertir cae un 80%.</p>
+          </div>
+        </div>
+        <div class="punto">
+          <div class="punto-icon">💸</div>
+          <div class="punto-body">
+            <h4>Cada paciente vale $150.000+</h4>
+            <p>Una clínica dental pierde 3-5 pacientes por semana solo por no responder a tiempo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="chat-mockup">
+        <div class="chat-header">
+          <div class="chat-avatar">🦷</div>
+          <div>
+            <div class="chat-name">Sofía — Nexvore AI</div>
+            <div class="chat-status">● Respondiendo ahora</div>
+          </div>
+        </div>
+        <div class="msg msg-user">
+          <div class="msg-bubble">Hola, ¿cuánto cuestan las carillas? 😊</div>
+          <div class="msg-time">22:47</div>
+        </div>
+        <div class="msg msg-ai">
+          <div class="msg-bubble">¡Hola! Las carillas de porcelana son una opción increíble para transformar tu sonrisa. El costo depende del plan personalizado que diseñemos para ti. ¿Te gustaría agendar una consulta gratuita esta semana?</div>
+          <div class="msg-time">22:47 · Respuesta en 2s</div>
+        </div>
+        <div class="msg msg-user">
+          <div class="msg-bubble">Sí, ¿tienen disponibilidad el jueves?</div>
+          <div class="msg-time">22:48</div>
+        </div>
+        <div class="msg msg-ai">
+          <div class="typing"><span></span><span></span><span></span></div>
+        </div>
+        <div class="response-time">
+          <div class="response-badge"><div class="dot-live"></div> Respondiendo en tiempo real · 22:48pm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section>
+  <div class="sec-label reveal">La solución</div>
+  <div class="sec-title reveal">Un sistema que <em>nunca para</em></div>
+  <p class="sec-sub reveal">Nexvore AI instala una recepcionista inteligente en tu negocio en 48 horas. Sin código. Sin complicaciones.</p>
+  <div class="features-grid reveal">
+    <div class="feat-card">
+      <div class="feat-num">Respuesta</div>
+      <div class="feat-icon">⚡</div>
+      <div class="feat-title">Respuesta en 3 segundos</div>
+      <div class="feat-desc">Tu agente responde al instante en WhatsApp, Instagram, web y teléfono — sin importar la hora ni el día.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-num">Agenda</div>
+      <div class="feat-icon">📅</div>
+      <div class="feat-title">Agenda automática</div>
+      <div class="feat-desc">El sistema agenda consultas directamente al calendario del negocio, confirma y envía recordatorios SMS.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-num">Captación</div>
+      <div class="feat-icon">🎯</div>
+      <div class="feat-title">Captura de leads</div>
+      <div class="feat-desc">Recopila nombre, teléfono, email y objetivo del paciente de forma natural y conversacional.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-num">Personalizado</div>
+      <div class="feat-icon">🧠</div>
+      <div class="feat-title">Conoce tu negocio</div>
+      <div class="feat-desc">El agente aprende todos tus servicios, precios y respuestas frecuentes. Suena exactamente como tu marca.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-num">Análisis</div>
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">Panel de control</div>
+      <div class="feat-desc">Ve cada conversación, análisis de llamadas y métricas de conversión en tiempo real desde tu dashboard.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-num">Global</div>
+      <div class="feat-icon">🌎</div>
+      <div class="feat-title">Multi-idioma</div>
+      <div class="feat-desc">Atiende en español, inglés y más. Perfecto para expandir a España, LATAM y USA sin cambiar nada.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARACIÓN -->
+<div class="compare-section">
+  <div class="compare-inner">
+    <div class="sec-label reveal">La diferencia</div>
+    <div class="sec-title reveal">Humana vs <em>Nexvore AI</em></div>
+    <div class="compare-table reveal">
+      <div class="compare-header">
+        <div class="col-label" style="color:var(--lgray);">Característica</div>
+        <div class="col-label bad">Recepcionista humana</div>
+        <div class="col-label good">Nexvore AI</div>
+      </div>
+      <div class="compare-row">
+        <div class="row-feature">Costo mensual</div>
+        <div class="row-bad">$2.500.000+ pesos</div>
+        <div class="row-good">Fracción del costo</div>
+      </div>
+      <div class="compare-row">
+        <div class="row-feature">Disponibilidad</div>
+        <div class="row-bad">8 horas al día</div>
+        <div class="row-good">24/7/365</div>
+      </div>
+      <div class="compare-row">
+        <div class="row-feature">Llamadas simultáneas</div>
+        <div class="row-bad">1 a la vez</div>
+        <div class="row-good">Ilimitadas</div>
+      </div>
+      <div class="compare-row">
+        <div class="row-feature">Tiempo de respuesta</div>
+        <div class="row-bad">Minutos u horas</div>
+        <div class="row-good">Menos de 3 segundos</div>
+      </div>
+      <div class="compare-row">
+        <div class="row-feature">Días de enfermedad</div>
+        <div class="row-bad">Frecuentes</div>
+        <div class="row-good">Nunca</div>
+      </div>
+      <div class="compare-row">
+        <div class="row-feature">Tiempo de instalación</div>
+        <div class="row-bad">Semanas de entrenamiento</div>
+        <div class="row-good">48 horas</div>
+      </div>
+      <div class="compare-row">
+        <div class="row-feature">Consistencia</div>
+        <div class="row-bad">Varía según el humor</div>
+        <div class="row-good">Perfecta cada vez</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTORES -->
+<section id="sectores">
+  <div class="sec-label reveal">Sectores</div>
+  <div class="sec-title reveal">Para cualquier negocio<br>que <em>recibe llamadas</em></div>
+  <div class="sectores-grid reveal">
+    <div class="sector-card">
+      <div class="sector-emoji">🦷</div>
+      <div>
+        <div class="sector-name">Clínicas dentales</div>
+        <div class="sector-desc">Carillas, blanqueamiento, implantes</div>
+      </div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-emoji">🏥</div>
+      <div>
+        <div class="sector-name">Consultorios médicos</div>
+        <div class="sector-desc">Agenda y triaje automático</div>
+      </div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-emoji">💇</div>
+      <div>
+        <div class="sector-name">Salones y spas</div>
+        <div class="sector-desc">Reservas y confirmaciones 24/7</div>
+      </div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-emoji">⚖️</div>
+      <div>
+        <div class="sector-name">Estudios de abogados</div>
+        <div class="sector-desc">Calificación de leads jurídicos</div>
+      </div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-emoji">🏠</div>
+      <div>
+        <div class="sector-name">Inmobiliarias</div>
+        <div class="sector-desc">Atención a compradores y arriendo</div>
+      </div>
+    </div>
+    <div class="sector-card">
+      <div class="sector-emoji">🐾</div>
+      <div>
+        <div class="sector-name">Veterinarias</div>
+        <div class="sector-desc">Urgencias y citas programadas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="como" style="background:var(--deep); max-width:100%; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 60px;">
+  <div class="sec-label reveal">Proceso</div>
+  <div class="sec-title reveal">Listo en <em>48 horas</em></div>
+  <div class="proceso-steps reveal">
+    <div class="paso"><div class="paso-badge">Paso 1</div><div class="paso-title">Conversamos</div>
+      <div class="paso-desc">15 minutos para entender tu negocio, servicios y tono de marca.</div>
+      <div class="paso-arrow">→</div>
+    </div>
+    <div class="paso"><div class="paso-badge">Paso 2</div><div class="paso-title">Construimos</div>
+      <div class="paso-desc">Personalizamos el agente con tu nombre, servicios y respuestas frecuentes.</div>
+      <div class="paso-arrow">→</div>
+    </div>
+    <div class="paso"><div class="paso-badge">Paso 3</div><div class="paso-title">Conectamos</div>
+      <div class="paso-desc">Lo activamos en tu WhatsApp, Instagram o número de teléfono. Sin complicaciones.</div>
+      <div class="paso-arrow">→</div>
+    </div>
+    <div class="paso"><div class="paso-badge">Paso 4</div><div class="paso-title">Escalamos</div>
+      <div class="paso-desc">Monitoreas resultados y nosotros optimizamos el agente cada mes.</div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-section" id="contacto">
+  <div class="cta-orb"></div>
+  <h2 class="reveal">¿Listo para no perder<br>otro <em>cliente?</em></h2>
+  <p class="reveal">Demo gratuita de 5 minutos. Sin compromiso. Sin tecnicismos.</p>
+  <a href="https://wa.me/56912345678?text=Hola%2C%20quiero%20ver%20la%20demo%20de%20Nexvore%20AI%20para%20mi%20negocio" class="btn-primary reveal" target="_blank">Quiero mi demo gratis →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">NEXV<span>O</span>RE <span style="color:var(--gray);font-size:16px;letter-spacing:3px;">AI</span></div>
+  <div class="footer-markets">🇨🇱 Chile &nbsp;·&nbsp; 🌎 LATAM &nbsp;·&nbsp; 🇪🇸 España &nbsp;·&nbsp; 🇺🇸 USA</div>
+  <div class="footer-note">© 2026 Nexvore AI · Chile · contacto@nexvoreai.com</div>
+</footer>
+
+<script>
+// Cursor — solo en desktop con mouse real
+if(window.matchMedia('(pointer: fine)').matches) {
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='16px'; cursor.style.height='16px'; ring.style.width='48px'; ring.style.height='48px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='8px'; cursor.style.height='8px'; ring.style.width='32px'; ring.style.height='32px'; });
+  });
+} else {
+  // Ocultar cursor elements en táctil
+  document.querySelectorAll('.cursor, .cursor-ring').forEach(el => el.style.display='none');
+}
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<!-- ONBOARDING SECTION -->
+<style>
+/* ── ONBOARDING FORM SECTION ── */
+.onboarding-section {
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+  padding: 120px 20px 80px;
+  display: none;
+}
+.onboarding-section.visible { display: block; }
+.onboarding-inner { max-width: 680px; margin: 0 auto; }
+
+/* Scoped form styles */
+.onboarding-inner .header { text-align: center; margin-bottom: 48px; }
+.onboarding-inner .logo { font-size: 14px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; display: inline-block; color: var(--white); }
+.onboarding-inner .logo span { color: var(--blue); }
+.onboarding-inner .header h1 { font-size: clamp(24px, 4vw, 34px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; color: var(--white); }
+.onboarding-inner .header p { font-size: 15px; color: var(--lgray); font-weight: 400; max-width: 480px; margin: 0 auto; line-height: 1.6; }
+.onboarding-inner .progress-wrap { width: 100%; margin-bottom: 36px; }
+.onboarding-inner .progress-steps { display: flex; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; }
+.onboarding-inner .step-label { font-size: 11px; font-weight: 600; color: var(--gray); transition: color 0.3s; }
+.onboarding-inner .step-label.active { color: var(--blue); }
+.onboarding-inner .step-label.done { color: #00C27A; }
+.onboarding-inner .progress-bar { height: 3px; background: var(--border); border-radius: 10px; overflow: hidden; }
+.onboarding-inner .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--pulse)); border-radius: 10px; transition: width 0.5s ease; width: 25%; }
+.onboarding-inner .form-card { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.onboarding-inner .step-panel { display: none; padding: 40px; }
+.onboarding-inner .step-panel.active { display: block; }
+.onboarding-inner .step-header { margin-bottom: 32px; }
+.onboarding-inner .step-num { font-size: 11px; font-weight: 600; color: var(--blue); margin-bottom: 8px; }
+.onboarding-inner .step-title { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; color: var(--white); }
+.onboarding-inner .step-desc { font-size: 14px; color: var(--lgray); line-height: 1.6; }
+.onboarding-inner .field { margin-bottom: 22px; }
+.onboarding-inner .field label { display: block; font-size: 13px; font-weight: 600; color: var(--silver); margin-bottom: 8px; }
+.onboarding-inner .field label span { color: var(--blue); }
+.onboarding-inner .field input,
+.onboarding-inner .field textarea,
+.onboarding-inner .field select {
+  width: 100%; background: var(--deep); border: 1px solid var(--border); border-radius: 10px;
+  padding: 13px 16px; font-size: 14px; font-family: 'Manrope','Geist',sans-serif;
+  color: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none;
+}
+.onboarding-inner .field input::placeholder,
+.onboarding-inner .field textarea::placeholder { color: var(--gray); }
+.onboarding-inner .field input:focus,
+.onboarding-inner .field textarea:focus,
+.onboarding-inner .field select:focus {
+  border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,85,255,0.12);
+}
+.onboarding-inner .field textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+.onboarding-inner .field select option { background: var(--deep); color: var(--white); }
+.onboarding-inner .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.onboarding-inner .check-group { display: flex; flex-direction: column; gap: 10px; }
+.onboarding-inner .check-item { display: flex; align-items: center; gap: 12px; background: var(--deep); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; cursor: pointer; transition: border-color 0.2s; }
+.onboarding-inner .check-item:hover { border-color: rgba(0,85,255,0.3); }
+.onboarding-inner .check-item input[type="checkbox"] { display: none; }
+.onboarding-inner .check-box { width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 5px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.onboarding-inner .check-item input:checked ~ .check-box { background: var(--blue); border-color: var(--blue); }
+.onboarding-inner .check-item input:checked ~ .check-box::after { content: '✓'; font-size: 11px; color: white; font-weight: 700; }
+.onboarding-inner .check-text { font-size: 14px; color: var(--lgray); font-weight: 500; }
+.onboarding-inner .faq-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.onboarding-inner .faq-item { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: start; }
+.onboarding-inner .faq-remove { width: 38px; height: 42px; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--gray); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+.onboarding-inner .faq-remove:hover { border-color: #FF4D6A; color: #FF4D6A; }
+.onboarding-inner .add-faq { display: flex; align-items: center; gap: 8px; background: transparent; border: 1px dashed var(--border); border-radius: 10px; padding: 11px 16px; color: var(--lgray); font-size: 13px; font-weight: 600; font-family: 'Manrope','Geist',sans-serif; cursor: pointer; width: 100%; transition: all 0.2s; }
+.onboarding-inner .add-faq:hover { border-color: var(--blue); color: var(--blue); }
+.onboarding-inner .horario-grid { display: flex; flex-direction: column; gap: 8px; }
+.onboarding-inner .horario-row { display: grid; grid-template-columns: 100px 1fr 1fr auto; gap: 10px; align-items: center; }
+.onboarding-inner .horario-dia { font-size: 13px; font-weight: 600; color: var(--lgray); }
+.onboarding-inner .toggle { position: relative; width: 38px; height: 22px; }
+.onboarding-inner .toggle input { display: none; }
+.onboarding-inner .toggle-slider { position: absolute; inset: 0; background: var(--border); border-radius: 20px; cursor: pointer; transition: background 0.2s; }
+.onboarding-inner .toggle-slider::before { content: ''; position: absolute; width: 16px; height: 16px; background: var(--gray); border-radius: 50%; top: 3px; left: 3px; transition: all 0.2s; }
+.onboarding-inner .toggle input:checked + .toggle-slider { background: rgba(0,85,255,0.3); }
+.onboarding-inner .toggle input:checked + .toggle-slider::before { background: var(--blue); transform: translateX(16px); }
+.onboarding-inner .form-nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 40px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.2); }
+.onboarding-inner .btn-back { background: transparent; border: 1px solid var(--border); color: var(--lgray); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; font-family: 'Manrope','Geist',sans-serif; cursor: pointer; transition: all 0.2s; }
+.onboarding-inner .btn-back:hover { border-color: var(--lgray); color: var(--white); }
+.onboarding-inner .btn-next { background: var(--blue); border: none; color: var(--white); padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 700; font-family: 'Manrope','Geist',sans-serif; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+.onboarding-inner .btn-next:hover { background: var(--elec); transform: translateY(-1px); }
+.onboarding-inner .success { display: none; text-align: center; padding: 60px 40px; }
+.onboarding-inner .success.show { display: block; }
+.onboarding-inner .success-icon { width: 64px; height: 64px; background: rgba(0,194,122,0.1); border: 1px solid rgba(0,194,122,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 28px; }
+.onboarding-inner .success h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; color: var(--white); }
+.onboarding-inner .success p { font-size: 15px; color: var(--lgray); line-height: 1.6; margin-bottom: 32px; }
+.onboarding-inner .result-box { background: var(--deep); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: left; }
+.onboarding-inner .result-box h4 { font-size: 12px; font-weight: 600; color: var(--blue); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+.onboarding-inner .result-data { font-size: 12px; color: var(--lgray); line-height: 2; white-space: pre-wrap; font-family: monospace; }
+.onboarding-inner .copy-result { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 20px; border: 1px solid var(--border); border-radius: 8px; background: transparent; color: var(--lgray); font-size: 13px; font-weight: 600; font-family: 'Manrope','Geist',sans-serif; cursor: pointer; transition: all 0.2s; }
+.onboarding-inner .copy-result:hover { border-color: var(--blue); color: var(--blue); }
+.onboarding-inner .hint { font-size: 12px; color: var(--gray); margin-top: 6px; }
+@media (max-width: 580px) {
+  .onboarding-inner .step-panel { padding: 20px 14px; }
+  .onboarding-inner .form-nav { padding: 14px 16px; }
+  .onboarding-inner .field-row { grid-template-columns: 1fr; }
+  .onboarding-inner .faq-item { grid-template-columns: 1fr auto; }
+  .onboarding-inner .horario-row { grid-template-columns: 65px 1fr 1fr auto; gap: 4px; }
+  .onboarding-inner .step-title { font-size: 18px; }
+  .onboarding-inner .btn-next, .onboarding-inner .btn-back { padding: 10px 16px; font-size: 13px; }
+}
+</style>
+
+<!-- Trigger button visible en CTA section — reemplaza el actual -->
+<div class="onboarding-section" id="onboardingSection">
+  <div class="onboarding-inner">
+
+    <div class="header">
+      <div class="logo">NEXV<span>O</span>RE AI</div>
+      <h1>Configura tu agente de IA</h1>
+      <p>Completa este formulario para que tu recepcionista virtual conozca tu negocio a fondo. Lo tendrás listo en 48 horas.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-steps">
+        <span class="step-label active" id="ob-lbl-1">Datos del negocio</span>
+        <span class="step-label" id="ob-lbl-2">Servicios</span>
+        <span class="step-label" id="ob-lbl-3">Horarios</span>
+        <span class="step-label" id="ob-lbl-4">Preguntas frecuentes</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="ob-progressFill"></div></div>
+    </div>
+
+    <div class="form-card">
+
+      <div class="step-panel active" id="ob-step-1">
+        <div class="step-header">
+          <div class="step-num">Paso 1 de 4</div>
+          <div class="step-title">Datos del negocio</div>
+          <div class="step-desc">Tu agente necesita conocer quién eres para presentarse correctamente a cada cliente.</div>
+        </div>
+        <div class="field"><label>Nombre del negocio <span>*</span></label><input type="text" id="ob-nombre" placeholder="Ej: Clínica Dental Downtown" /></div>
+        <div class="field-row">
+          <div class="field"><label>Nombre del dueño <span>*</span></label><input type="text" id="ob-dueno" placeholder="Ej: Dr. Andrés Pérez" /></div>
+          <div class="field"><label>Rubro <span>*</span></label>
+            <select id="ob-rubro">
+              <option value="" disabled selected>Selecciona...</option>
+              <option>Clínica dental</option><option>Consultorio médico</option>
+              <option>Salón de belleza / Spa</option><option>Estudio de abogados</option>
+              <option>Inmobiliaria</option><option>Veterinaria</option><option>Otro</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Teléfono <span>*</span></label><input type="tel" id="ob-telefono" placeholder="+56 9 XXXX XXXX" /></div>
+          <div class="field"><label>Correo electrónico</label><input type="email" id="ob-email" placeholder="hola@tunegocio.cl" /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>WhatsApp Business</label><input type="tel" id="ob-whatsapp" placeholder="+56 9 XXXX XXXX" /></div>
+          <div class="field"><label>Instagram</label><input type="text" id="ob-instagram" placeholder="@tunegocio" /></div>
+        </div>
+        <div class="field"><label>Dirección / Ciudad</label><input type="text" id="ob-direccion" placeholder="Ej: Av. Providencia 1234, Santiago" /></div>
+        <div class="field"><label>¿Cómo quieres llamar a tu agente IA?</label><input type="text" id="ob-agente" placeholder="Ej: Sofía, Valentina, Ana..." /><div class="hint">Déjalo en blanco para usar el nombre por defecto.</div></div>
+      </div>
+
+      <div class="step-panel" id="ob-step-2">
+        <div class="step-header">
+          <div class="step-num">Paso 2 de 4</div>
+          <div class="step-title">Servicios que ofreces</div>
+          <div class="step-desc">Tu agente describirá estos servicios cuando los clientes pregunten.</div>
+        </div>
+        <div class="field"><label>Lista tus servicios <span>*</span></label><textarea id="ob-servicios" placeholder="Ej:&#10;- Blanqueamiento dental&#10;- Carillas de porcelana&#10;- Diseño de sonrisa&#10;- Implantes dentales"></textarea><div class="hint">Un servicio por línea.</div></div>
+        <div class="field"><label>Rango de precios (opcional)</label><textarea id="ob-precios" placeholder="Ej:&#10;- Blanqueamiento: desde $80.000&#10;- Carillas: consultar en clínica" style="min-height:90px;"></textarea><div class="hint">Si prefieres no mostrar precios, el agente derivará al equipo.</div></div>
+        <div class="field"><label>¿Qué hace especial a tu negocio?</label><textarea id="ob-diferencial" placeholder="Ej: 10 años de experiencia, tecnología de última generación, financiamiento sin interés..." style="min-height:90px;"></textarea></div>
+        <div class="field"><label>Canales de atención</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" id="ob-ch-wa" checked><div class="check-box"></div><span class="check-text">WhatsApp</span></label>
+            <label class="check-item"><input type="checkbox" id="ob-ch-ig"><div class="check-box"></div><span class="check-text">Instagram / DMs</span></label>
+            <label class="check-item"><input type="checkbox" id="ob-ch-tel"><div class="check-box"></div><span class="check-text">Llamadas telefónicas</span></label>
+            <label class="check-item"><input type="checkbox" id="ob-ch-web"><div class="check-box"></div><span class="check-text">Chat en sitio web</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-panel" id="ob-step-3">
+        <div class="step-header">
+          <div class="step-num">Paso 3 de 4</div>
+          <div class="step-title">Horarios de atención</div>
+          <div class="step-desc">Tu agente informará estos horarios y gestionará citas según disponibilidad.</div>
+        </div>
+        <div class="field"><label>Horario por día</label><div class="horario-grid" id="ob-horarioGrid"></div></div>
+        <div class="field" style="margin-top:24px;"><label>Mensaje fuera de horario</label><textarea id="ob-fueraHorario" placeholder="Ej: En este momento estamos fuera del horario de atención. Te responderemos a primera hora del próximo día hábil." style="min-height:100px;"></textarea></div>
+        <div class="field"><label>¿Atienden urgencias fuera de horario?</label>
+          <div class="check-group"><label class="check-item"><input type="checkbox" id="ob-ch-urg"><div class="check-box"></div><span class="check-text">Sí, tenemos número de urgencias</span></label></div>
+          <input type="tel" id="ob-urgencias" placeholder="Número de urgencias: +56 9 XXXX XXXX" style="margin-top:10px;display:none;" />
+        </div>
+      </div>
+
+      <div class="step-panel" id="ob-step-4">
+        <div class="step-header">
+          <div class="step-num">Paso 4 de 4</div>
+          <div class="step-title">Preguntas frecuentes</div>
+          <div class="step-desc">Agrega las preguntas que más te hacen tus clientes. Tu agente las responderá automáticamente.</div>
+        </div>
+        <div class="field"><label>Preguntas y respuestas <span>*</span></label><div class="faq-list" id="ob-faqList"></div><button class="add-faq" onclick="obAddFaq()">+ Agregar pregunta</button><div class="hint">Mínimo 3. Piensa en lo que más te preguntan por WhatsApp.</div></div>
+        <div class="field" style="margin-top:8px;"><label>¿Algo más que deba saber el agente?</label><textarea id="ob-extra" placeholder="Ej: No atendemos obras sociales. Estacionamiento gratuito. Pagos en efectivo o transferencia." style="min-height:90px;"></textarea></div>
+      </div>
+
+      <div class="success" id="ob-successPanel">
+        <div class="success-icon">✓</div>
+        <h2>¡Formulario completado!</h2>
+        <p>Nexvore AI tiene todo lo necesario para configurar tu agente. Estarás activo en 48 horas.</p>
+        <div class="result-box"><h4>Resumen de configuración</h4><div class="result-data" id="ob-resultData"></div></div>
+        <button class="copy-result" onclick="obCopyResult()">📋 Copiar datos completos</button>
+      </div>
+
+      <div class="form-nav" id="ob-formNav">
+        <button class="btn-back" id="ob-btnBack" onclick="obPrev()" style="visibility:hidden">← Volver</button>
+        <button class="btn-next" id="ob-btnNext" onclick="obNext()">Siguiente →</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ONBOARDING FORM ──
+let obStep = 1;
+const obTotal = 4;
+const obDias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+const obOpen = [true,true,true,true,true,true,false];
+const obStart = ['09:00','09:00','09:00','09:00','09:00','10:00','10:00'];
+const obEnd   = ['18:00','18:00','18:00','18:00','18:00','14:00','14:00'];
+let obFaqCount = 0;
+
+function obBuildHorario() {
+  const g = document.getElementById('ob-horarioGrid');
+  if(!g) return;
+  g.innerHTML = obDias.map((d,i) => `
+    <div class="horario-row">
+      <span class="horario-dia">${d}</span>
+      <input type="time" id="ob-hs-${i}" value="${obStart[i]}" ${!obOpen[i]?'disabled style="opacity:0.3"':''}>
+      <input type="time" id="ob-he-${i}" value="${obEnd[i]}"   ${!obOpen[i]?'disabled style="opacity:0.3"':''}>
+      <label class="toggle"><input type="checkbox" id="ob-ho-${i}" ${obOpen[i]?'checked':''} onchange="obToggleDia(${i})"><div class="toggle-slider"></div></label>
+    </div>`).join('');
+}
+
+function obToggleDia(i) {
+  const open = document.getElementById(`ob-ho-${i}`).checked;
+  ['ob-hs-','ob-he-'].forEach(p => {
+    const el = document.getElementById(p+i);
+    el.disabled = !open; el.style.opacity = open?'1':'0.3';
+  });
+}
+
+function obAddFaq() {
+  obFaqCount++;
+  const list = document.getElementById('ob-faqList');
+  const item = document.createElement('div');
+  item.className = 'faq-item'; item.id = `ob-faq-${obFaqCount}`;
+  item.innerHTML = `
+    <input type="text" placeholder="Pregunta del cliente..." id="ob-fq-${obFaqCount}">
+    <input type="text" placeholder="Respuesta del agente..." id="ob-fa-${obFaqCount}">
+    <button class="faq-remove" onclick="obRemoveFaq(${obFaqCount})">×</button>`;
+  list.appendChild(item);
+}
+
+function obRemoveFaq(id) { const el = document.getElementById(`ob-faq-${id}`); if(el) el.remove(); }
+
+function obUpdateUI() {
+  document.querySelectorAll('#onboardingSection .step-panel').forEach((p,i) => p.classList.toggle('active', i+1 === obStep));
+  document.getElementById('ob-progressFill').style.width = (obStep/obTotal*100)+'%';
+  document.getElementById('ob-btnBack').style.visibility = obStep>1?'visible':'hidden';
+  document.getElementById('ob-btnNext').textContent = obStep===obTotal?'Finalizar ✓':'Siguiente →';
+  ['ob-lbl-1','ob-lbl-2','ob-lbl-3','ob-lbl-4'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.className = 'step-label'+(i+1<obStep?' done':i+1===obStep?' active':'');
+  });
+}
+
+function obNext() {
+  if(obStep < obTotal) { obStep++; obUpdateUI(); document.getElementById('onboardingSection').scrollIntoView({behavior:'smooth'}); }
+  else obSubmit();
+}
+
+function obPrev() {
+  if(obStep>1) { obStep--; obUpdateUI(); document.getElementById('onboardingSection').scrollIntoView({behavior:'smooth'}); }
+}
+
+function obSubmit() {
+  const horario = obDias.map((d,i) => {
+    const open = document.getElementById(`ob-ho-${i}`)?.checked;
+    return !open ? `  ${d}: Cerrado` : `  ${d}: ${document.getElementById('ob-hs-'+i)?.value} – ${document.getElementById('ob-he-'+i)?.value}`;
+  }).join('\n');
+  const faqs = [];
+  document.querySelectorAll('#ob-faqList .faq-item').forEach(item => {
+    const id = item.id.replace('ob-faq-','');
+    const q = document.getElementById(`ob-fq-${id}`)?.value;
+    const a = document.getElementById(`ob-fa-${id}`)?.value;
+    if(q) faqs.push(`  P: ${q}\n  R: ${a||'(sin respuesta)'}`);
+  });
+  const canales = ['WhatsApp','Instagram','Teléfono','Web'].filter((_,i) =>
+    [document.getElementById('ob-ch-wa'),document.getElementById('ob-ch-ig'),
+     document.getElementById('ob-ch-tel'),document.getElementById('ob-ch-web')][i]?.checked).join(', ');
+
+  const data = `NEGOCIO
+  Nombre: ${document.getElementById('ob-nombre')?.value||'—'}
+  Dueño: ${document.getElementById('ob-dueno')?.value||'—'}
+  Rubro: ${document.getElementById('ob-rubro')?.value||'—'}
+  Teléfono: ${document.getElementById('ob-telefono')?.value||'—'}
+  Email: ${document.getElementById('ob-email')?.value||'—'}
+  WhatsApp: ${document.getElementById('ob-whatsapp')?.value||'—'}
+  Instagram: ${document.getElementById('ob-instagram')?.value||'—'}
+  Dirección: ${document.getElementById('ob-direccion')?.value||'—'}
+  Nombre agente: ${document.getElementById('ob-agente')?.value||'Sofía (default)'}
+
+SERVICIOS
+${document.getElementById('ob-servicios')?.value||'—'}
+
+PRECIOS
+${document.getElementById('ob-precios')?.value||'No especificado'}
+
+DIFERENCIAL
+${document.getElementById('ob-diferencial')?.value||'—'}
+
+CANALES: ${canales||'—'}
+
+HORARIOS
+${horario}
+
+FUERA DE HORARIO
+${document.getElementById('ob-fueraHorario')?.value||'—'}
+
+PREGUNTAS FRECUENTES
+${faqs.length?faqs.join('\n\n'):'—'}
+
+INFO ADICIONAL
+${document.getElementById('ob-extra')?.value||'—'}`.trim();
+
+  document.getElementById('ob-resultData').textContent = data;
+  document.querySelectorAll('#ob-step-1,#ob-step-2,#ob-step-3,#ob-step-4').forEach(p=>p.classList.remove('active'));
+  document.getElementById('ob-successPanel').classList.add('show');
+  document.getElementById('ob-formNav').style.display='none';
+  document.getElementById('ob-progressFill').style.width='100%';
+  ['ob-lbl-1','ob-lbl-2','ob-lbl-3','ob-lbl-4'].forEach(id=>document.getElementById(id).className='step-label done');
+  window._obData = data;
+}
+
+function obCopyResult() {
+  const text = window._obData||'';
+  const btn = document.querySelector('#onboardingSection .copy-result');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>{
+      btn.textContent='✅ Copiado!';
+      setTimeout(()=>btn.textContent='📋 Copiar datos completos',2000);
+    }).catch(()=>obFallbackCopy(text,btn));
+  } else { obFallbackCopy(text,btn); }
+}
+function obFallbackCopy(text,btn){
+  const ta=document.createElement('textarea');
+  ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try{ document.execCommand('copy'); btn.textContent='✅ Copiado!'; setTimeout(()=>btn.textContent='📋 Copiar datos completos',2000); }
+  catch(e){ btn.textContent='⚠️ Copia manual'; }
+  document.body.removeChild(ta);
+}
+
+// Show form when clicking CTA
+function initOnboarding(){
+  obBuildHorario();
+  obAddFaq(); obAddFaq(); obAddFaq();
+  obUpdateUI();
+  document.getElementById('ob-ch-urg')?.addEventListener('change', function(){
+    document.getElementById('ob-urgencias').style.display = this.checked?'block':'none';
+  });
+  // Hook all "demo" buttons to reveal form
+  document.querySelectorAll('a[href="#contacto"]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      document.getElementById('onboardingSection').classList.add('visible');
+      setTimeout(()=>document.getElementById('onboardingSection').scrollIntoView({behavior:'smooth'}),100);
+    });
+  });
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initOnboarding);}else{initOnboarding();}
+</script>
+
+</body>
+</html>
