@@ -164,6 +164,13 @@
   .reveal-delay-5 { transition-delay: 0.40s; }
   .reveal-delay-6 { transition-delay: 0.48s; }
 
+  /* ── Font family — explicit, no dependency on Tailwind CDN ── */
+  body { font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; }
+  h1, h2, h3,
+  .font-display-lg, .font-display-lg-mobile,
+  .font-headline-lg, .font-headline-lg-mobile,
+  .font-headline-md { font-family: 'Sora', ui-sans-serif, sans-serif; }
+
   /* ── Calendly overrides ── */
   .calendly-overlay { z-index: 9999 !important; }
 </style>
