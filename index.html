@@ -4,508 +4,575 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>NEXVORE | Tu Sitio Web. Tu Mejor Vendedor.</title>
-<meta name="description" content="Ecosistemas digitales que convierten. Estrategia, diseño y automatización que trabajan como un sistema. Tu negocio crece incluso cuando no estás."/>
+<meta name="description" content="No creamos páginas. Construimos ecosistemas digitales de alto rendimiento que transforman el tráfico en facturación real."/>
 <meta property="og:title" content="NEXVORE | Tu Sitio Web. Tu Mejor Vendedor."/>
-<meta property="og:description" content="Dejás de vender. Empezás a atraer. Ecosistemas digitales que convierten."/>
+<meta property="og:description" content="Agencia digital en Chile. Ecosistemas digitales que convierten tráfico en facturación real."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://nex-vore.com"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="theme-color" content="#7b2fff"/>
+<meta name="theme-color" content="#e00363"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preconnect" href="https://assets.calendly.com"/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237b2fff'/><text y='.9em' font-size='70' x='15' fill='white' font-family='Arial' font-weight='bold'>N</text></svg>"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23e00363'/><text y='.88em' font-size='68' x='14' fill='white' font-family='Arial' font-weight='900'>N</text></svg>"/>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          "bg":            "#12121d",
-          "bg-deep":       "#0d0d17",
-          "bg-card":       "#1b1b25",
-          "bg-card-high":  "#1f1f29",
-          "border-glass":  "rgba(255,255,255,0.07)",
-          "purple":        "#7b2fff",
-          "pink":          "#e00363",
-          "on-dark":       "#e4e1f0",
-          "muted":         "#9999bb",
-          "outline-dark":  "#4a4456",
-        },
-        fontFamily: { sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui"] }
-      }
-    }
-  }
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
 <style>
-  /* ── Reset & base ── */
-  *, *::before, *::after { box-sizing: border-box; }
-  html { background: #12121d; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; }
+  html { background: #0e0e18; scroll-behavior: smooth; }
   body {
-    background-color: #12121d;
-    color: #e4e1f0;
+    background-color: #0e0e18;
+    color: #e2dfef;
     font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ── Grid texture ── */
+  /* Grid texture */
   .grid-bg {
     background-image:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
 
-  /* ── Brand gradient ── */
-  .grad { background: linear-gradient(135deg, #ff2d78 0%, #7b2fff 100%); }
+  /* Brand gradient: pink → purple */
+  .grad { background: linear-gradient(135deg, #e00363 0%, #7b2fff 100%); }
   .grad-text {
-    background: linear-gradient(135deg, #ff2d78 0%, #a855f7 100%);
+    background: linear-gradient(135deg, #e00363 0%, #b060ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .grad-border {
-    position: relative;
-    border: 1px solid transparent;
-    background-clip: padding-box;
-  }
 
-  /* ── Glass card ── */
+  /* Glass */
   .glass {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.07);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
   }
-  .glass-strong {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.10);
+  .glass-md {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
     backdrop-filter: blur(20px);
   }
 
-  /* ── Neon glow ── */
-  .glow-purple { box-shadow: 0 0 30px rgba(123,47,255,0.45), 0 0 60px rgba(123,47,255,0.15); }
-  .glow-pink   { box-shadow: 0 0 30px rgba(224,3,99,0.45),  0 0 60px rgba(224,3,99,0.15); }
-  .text-glow-purple { text-shadow: 0 0 20px rgba(177,100,255,0.6); }
-  .text-glow-pink   { text-shadow: 0 0 20px rgba(255,45,120,0.5); }
+  /* Glows */
+  .glow-pink   { box-shadow: 0 0 40px rgba(224,3,99,0.5),  0 0 80px rgba(224,3,99,0.12); }
+  .glow-purple { box-shadow: 0 0 40px rgba(123,47,255,0.5), 0 0 80px rgba(123,47,255,0.12); }
+  .text-glow-pink   { text-shadow: 0 0 28px rgba(224,3,99,0.55); }
+  .text-glow-white  { text-shadow: 0 0 24px rgba(255,255,255,0.25); }
 
-  /* ── Buttons ── */
-  .btn-grad {
-    background: linear-gradient(135deg, #ff2d78 0%, #7b2fff 100%);
-    color: #fff;
-    font-weight: 800;
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, #e00363 0%, #7b2fff 100%);
+    color: #fff; font-weight: 800;
     border-radius: 9999px;
-    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    transition: transform .2s, box-shadow .2s;
+    border: none; cursor: pointer;
   }
-  .btn-grad:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 32px rgba(123,47,255,0.5); }
-  .btn-grad:active { transform: scale(0.97); }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 10px 36px rgba(224,3,99,0.5); }
+  .btn-primary:active { transform: scale(0.97); }
 
   .btn-ghost {
-    background: rgba(255,255,255,0.05);
-    color: #e4e1f0;
-    font-weight: 700;
+    background: rgba(255,255,255,0.06);
+    color: #e2dfef; font-weight: 700;
     border-radius: 9999px;
     border: 1px solid rgba(255,255,255,0.12);
-    transition: transform 0.2s, background 0.2s;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
   }
-  .btn-ghost:hover { background: rgba(255,255,255,0.10); transform: translateY(-2px); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.11); transform: translateY(-2px); }
 
   .btn-ml {
-    background: linear-gradient(135deg, #00b1ea 0%, #009ee3 100%);
-    color: #fff;
-    font-weight: 800;
+    background: linear-gradient(135deg, #009ee3 0%, #00b1ea 100%);
+    color: #fff; font-weight: 800;
     border-radius: 9999px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform .2s, box-shadow .2s;
   }
-  .btn-ml:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 32px rgba(0,158,227,0.45); }
+  .btn-ml:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 10px 36px rgba(0,158,227,0.45); }
 
-  /* ── Marquee ── */
-  .marquee-track { white-space: nowrap; animation: marquee 28s linear infinite; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  /* ── Pulse dot ── */
+  /* Pulse dot */
   .pulse-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #ff2d78;
-    animation: pulse-anim 1.8s ease-in-out infinite;
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 50%; background: #e00363; flex-shrink: 0;
+    animation: pulse 1.8s ease-in-out infinite;
   }
-  @keyframes pulse-anim {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.3; transform: scale(0.7); }
-  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.65)} }
 
-  /* ── Scroll reveal ── */
-  .reveal {
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-  }
+  /* Marquee */
+  .marquee-track { white-space: nowrap; animation: marquee 30s linear infinite; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.08s; }
-  .reveal-delay-2 { transition-delay: 0.16s; }
-  .reveal-delay-3 { transition-delay: 0.24s; }
-  .reveal-delay-4 { transition-delay: 0.32s; }
-  .reveal-delay-5 { transition-delay: 0.40s; }
-  .reveal-delay-6 { transition-delay: 0.48s; }
+  .d1{transition-delay:.07s} .d2{transition-delay:.14s} .d3{transition-delay:.21s}
+  .d4{transition-delay:.28s} .d5{transition-delay:.35s} .d6{transition-delay:.42s}
 
-  /* ── Nav link active ── */
-  .nav-link { position: relative; }
+  /* Nav active */
+  .nav-link { position: relative; transition: color .2s; }
   .nav-link::after {
-    content: ''; position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 2px;
-    background: linear-gradient(135deg, #ff2d78, #7b2fff);
-    transition: width 0.3s; border-radius: 2px;
+    content:''; position:absolute; bottom:-5px; left:0;
+    width:0; height:2px; border-radius:2px;
+    background:linear-gradient(135deg,#e00363,#7b2fff);
+    transition: width .3s;
   }
-  .nav-link.active { color: #d1bcff !important; }
+  .nav-link.active { color: #e8c0d8 !important; }
   .nav-link.active::after { width: 100%; }
 
-  /* ── Checklist items ── */
-  .check-item::before {
-    content: '✓';
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 22px; height: 22px; border-radius: 50%;
-    background: linear-gradient(135deg, #ff2d78, #7b2fff);
-    color: #fff; font-size: 12px; font-weight: 900;
-    flex-shrink: 0;
-  }
-
-  /* ── Mobile menu ── */
+  /* Mobile menu */
   #mobile-menu {
     display: none; flex-direction: column;
     opacity: 0; transform: translateY(-8px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: opacity .2s, transform .2s;
   }
   #mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
 
-  /* ── Calendly ── */
-  .calendly-overlay { z-index: 9999 !important; }
+  /* Hover lift */
+  .lift { transition: transform .3s, box-shadow .3s; }
+  .lift:hover { transform: translateY(-5px); }
 
-  /* ── Hover lift ── */
-  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .hover-lift:hover { transform: translateY(-4px); }
+  /* Check items */
+  .chk::before {
+    content: '✓';
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, #e00363, #7b2fff);
+    color: #fff; font-size: 11px; font-weight: 900;
+  }
+
+  /* Section divider */
+  .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); }
+
+  /* Portfolio card hover */
+  .port-card { overflow: hidden; }
+  .port-card img { transition: transform .5s ease; }
+  .port-card:hover img { transform: scale(1.05); }
+  .port-card .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,14,24,0.85) 0%, transparent 60%);
+    opacity: 0; transition: opacity .3s;
+  }
+  .port-card:hover .overlay { opacity: 1; }
+  .port-card .label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px; transform: translateY(10px);
+    transition: transform .3s; opacity: 0;
+  }
+  .port-card:hover .label { transform: translateY(0); opacity: 1; }
 </style>
 </head>
 <body class="grid-bg">
 
-<!-- ══════════════ AMBIENT GLOWS ══════════════ -->
+<!-- ════ AMBIENT GLOWS ════ -->
 <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-  <div class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
-       style="background:radial-gradient(circle, rgba(123,47,255,0.18) 0%, transparent 70%)"></div>
-  <div class="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full"
-       style="background:radial-gradient(circle, rgba(224,3,99,0.12) 0%, transparent 70%)"></div>
-  <div class="absolute bottom-0 left-1/3 w-[500px] h-[500px] rounded-full"
-       style="background:radial-gradient(circle, rgba(123,47,255,0.12) 0%, transparent 70%)"></div>
+  <div class="absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full"
+       style="background:radial-gradient(circle,rgba(224,3,99,0.14) 0%,transparent 65%)"></div>
+  <div class="absolute top-1/2 -right-48 w-[600px] h-[600px] rounded-full"
+       style="background:radial-gradient(circle,rgba(123,47,255,0.13) 0%,transparent 65%)"></div>
+  <div class="absolute -bottom-32 left-1/3 w-[500px] h-[500px] rounded-full"
+       style="background:radial-gradient(circle,rgba(224,3,99,0.10) 0%,transparent 65%)"></div>
 </div>
 
-<!-- ══════════════ NAV ══════════════ -->
-<nav class="fixed top-0 w-full z-50 h-[68px] flex items-center"
-     style="background:rgba(13,13,23,0.85); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.06);">
-  <div class="max-w-6xl mx-auto px-6 w-full flex justify-between items-center">
+<!-- ════ NAV ════ -->
+<nav id="navbar" class="fixed top-0 w-full z-50 h-[66px] flex items-center"
+     style="background:rgba(11,11,20,0.82); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-6xl mx-auto px-5 w-full flex justify-between items-center">
 
-    <a href="#" class="flex flex-col leading-none">
-      <span style="font-size:20px;font-weight:900;letter-spacing:-0.03em;color:#fff;">NEXVORE</span>
-      <span style="font-size:9px;font-weight:700;letter-spacing:0.2em;color:#9999bb;text-transform:uppercase;">Digital Studio</span>
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 select-none">
+      <span class="w-8 h-8 rounded-lg grad flex items-center justify-center text-white font-black text-base shrink-0">N</span>
+      <span class="font-black text-lg tracking-tight" style="color:#fff; letter-spacing:-0.02em;">Nexvore</span>
     </a>
 
+    <!-- Desktop nav -->
     <div class="hidden md:flex items-center gap-8">
-      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#servicios" data-section="servicios" style="color:#9999bb;">Servicios</a>
-      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#paquete"   data-section="paquete"   style="color:#9999bb;">Paquete</a>
-      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#proceso"   data-section="proceso"   style="color:#9999bb;">Proceso</a>
-      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#resultados" data-section="resultados" style="color:#9999bb;">Resultados</a>
+      <a class="nav-link text-[13px] font-semibold" href="#servicios" data-section="servicios" style="color:#8888aa;">Servicios</a>
+      <a class="nav-link text-[13px] font-semibold" href="#portfolio"  data-section="portfolio"  style="color:#8888aa;">Portfolio</a>
+      <a class="nav-link text-[13px] font-semibold" href="#paquete"    data-section="paquete"    style="color:#8888aa;">Paquete</a>
+      <a class="nav-link text-[13px] font-semibold" href="#contacto"   data-section="contacto"   style="color:#8888aa;">Contacto</a>
     </div>
 
     <button onclick="openCalendly(event)"
-            class="hidden md:inline-flex btn-grad items-center gap-2 px-5 py-2.5 text-sm cursor-pointer">
+            class="hidden md:inline-flex btn-primary items-center gap-2 px-5 py-2.5 text-[13px]">
       <span class="pulse-dot"></span>
-      Agendar llamada
+      Agendar llamada gratis
     </button>
 
     <!-- Hamburger -->
-    <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
-            class="md:hidden flex flex-col gap-[5px] w-10 h-10 items-center justify-center rounded-lg"
+    <button id="menu-toggle" aria-label="Menú" aria-expanded="false"
+            class="md:hidden w-10 h-10 flex flex-col gap-[5px] items-center justify-center rounded-lg"
             style="background:rgba(255,255,255,0.05);">
-      <span class="hamburger-bar block h-0.5 w-5 bg-on-dark rounded transition-all duration-300 origin-center" style="background:#e4e1f0;"></span>
-      <span class="hamburger-bar block h-0.5 w-5 bg-on-dark rounded transition-all duration-300" style="background:#e4e1f0;"></span>
-      <span class="hamburger-bar block h-0.5 w-5 bg-on-dark rounded transition-all duration-300 origin-center" style="background:#e4e1f0;"></span>
+      <span class="hbar block h-0.5 w-[18px] rounded transition-all duration-300 origin-center" style="background:#e2dfef;"></span>
+      <span class="hbar block h-0.5 w-[18px] rounded transition-all duration-300" style="background:#e2dfef;"></span>
+      <span class="hbar block h-0.5 w-[18px] rounded transition-all duration-300 origin-center" style="background:#e2dfef;"></span>
     </button>
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="absolute top-[68px] left-0 w-full px-6 py-5 gap-1"
-       style="background:rgba(13,13,23,0.97); border-bottom:1px solid rgba(255,255,255,0.06);">
-    <a href="#servicios"  class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Servicios</a>
-    <a href="#paquete"    class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Paquete</a>
-    <a href="#proceso"    class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Proceso</a>
-    <a href="#resultados" class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Resultados</a>
+  <div id="mobile-menu" class="absolute top-[66px] left-0 w-full px-5 py-4 gap-0.5"
+       style="background:rgba(11,11,20,0.97); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <a href="#servicios" class="m-link block py-3 text-[13px] font-semibold border-b" style="color:#8888aa; border-color:rgba(255,255,255,0.06);">Servicios</a>
+    <a href="#portfolio"  class="m-link block py-3 text-[13px] font-semibold border-b" style="color:#8888aa; border-color:rgba(255,255,255,0.06);">Portfolio</a>
+    <a href="#paquete"    class="m-link block py-3 text-[13px] font-semibold border-b" style="color:#8888aa; border-color:rgba(255,255,255,0.06);">Paquete</a>
+    <a href="#contacto"   class="m-link block py-3 text-[13px] font-semibold border-b" style="color:#8888aa; border-color:rgba(255,255,255,0.06);">Contacto</a>
     <button onclick="openCalendly(event)"
-            class="btn-grad w-full mt-4 py-3 text-sm cursor-pointer flex items-center justify-center gap-2">
-      <span class="pulse-dot"></span>
-      Agendar llamada gratuita
+            class="btn-primary w-full mt-4 py-3 text-[13px] flex items-center justify-center gap-2">
+      <span class="pulse-dot"></span> Agendar llamada gratis
     </button>
   </div>
 </nav>
 
-<!-- ══════════════ HERO ══════════════ -->
-<header class="pt-[112px] pb-20 px-6">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    <div class="space-y-7">
-      <span class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em]"
-            style="background:rgba(123,47,255,0.15); border:1px solid rgba(123,47,255,0.3); color:#d1bcff;">
+<!-- ════ HERO ════ -->
+<header class="pt-[108px] pb-20 px-5">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.05fr] gap-10 items-center">
+
+    <!-- Left -->
+    <div class="space-y-6">
+      <span class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-[0.18em]"
+            style="background:rgba(224,3,99,0.12); border:1px solid rgba(224,3,99,0.3); color:#ff7db5;">
         <span class="pulse-dot"></span>
-        Ecosistemas digitales que convierten
+        Agencia Digital en Chile
       </span>
 
-      <h1 class="reveal reveal-delay-1 font-black leading-[0.92] tracking-[-0.04em]"
-          style="font-size:clamp(42px,7vw,72px); color:#fff;">
-        TU SITIO WEB.<br/>
-        <span class="grad-text">TU MEJOR<br/>VENDEDOR.</span>
+      <h1 class="reveal d1 font-black leading-[0.88] tracking-[-0.045em]"
+          style="font-size:clamp(46px,7.5vw,76px); color:#fff;">
+        TU SITIO WEB,<br/>
+        TU MEJOR<br/>
+        <span class="grad-text text-glow-pink">VENDEDOR.</span>
       </h1>
 
-      <p class="reveal reveal-delay-2 text-base leading-relaxed max-w-lg" style="color:#9999bb;">
-        Estrategia, diseño y automatización que trabajan como un sistema. Tu negocio crece incluso cuando no estás.
+      <p class="reveal d2 text-[15px] leading-relaxed max-w-md" style="color:#8888aa;">
+        No creamos "páginas". Construimos ecosistemas digitales de alto rendimiento que transforman el tráfico en facturación real.
       </p>
 
-      <div class="reveal reveal-delay-3 flex flex-wrap gap-3 pt-2">
+      <div class="reveal d3 flex flex-wrap gap-3 pt-1">
         <button onclick="openCalendly(event)"
-                class="btn-grad px-7 py-3.5 text-sm cursor-pointer inline-flex items-center gap-2">
-          Agendar llamada gratuita
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 text-[14px]">
+          Impulsar mis ventas
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
         </button>
-        <a href="#paquete" class="btn-ghost px-7 py-3.5 text-sm inline-flex items-center gap-2">
-          Ver el paquete →
+        <a href="#portfolio" class="btn-ghost inline-flex items-center gap-2 px-6 py-3.5 text-[14px]">
+          Ver portfolio
         </a>
       </div>
 
-      <!-- Hero stats -->
-      <div class="reveal reveal-delay-4 grid grid-cols-3 gap-4 pt-4 border-t" style="border-color:rgba(255,255,255,0.08);">
+      <!-- Stats -->
+      <div class="reveal d4 grid grid-cols-3 gap-4 pt-4 border-t" style="border-color:rgba(255,255,255,0.07);">
         <div>
-          <div class="stat-counter text-2xl font-black" style="color:#d1bcff;" data-target="340" data-prefix="+" data-suffix="%">+0%</div>
-          <div class="text-xs font-semibold mt-0.5 uppercase tracking-wider" style="color:#9999bb;">Tráfico orgánico</div>
+          <div class="stat-counter font-black text-[26px] leading-none"
+               style="color:#e8c0d8;" data-target="340" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="text-[11px] font-bold uppercase tracking-wider mt-1" style="color:#555577;">Tráfico</div>
         </div>
         <div>
-          <div class="stat-counter text-2xl font-black" style="color:#d1bcff;" data-target="215" data-prefix="+" data-suffix="%">+0%</div>
-          <div class="text-xs font-semibold mt-0.5 uppercase tracking-wider" style="color:#9999bb;">Leads generados</div>
+          <div class="stat-counter font-black text-[26px] leading-none"
+               style="color:#e8c0d8;" data-target="215" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="text-[11px] font-bold uppercase tracking-wider mt-1" style="color:#555577;">Leads</div>
         </div>
         <div>
-          <div class="stat-counter text-2xl font-black" style="color:#d1bcff;" data-target="178" data-prefix="+" data-suffix="%">+0%</div>
-          <div class="text-xs font-semibold mt-0.5 uppercase tracking-wider" style="color:#9999bb;">Ventas cerradas</div>
+          <div class="stat-counter font-black text-[26px] leading-none"
+               style="color:#e8c0d8;" data-target="178" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="text-[11px] font-bold uppercase tracking-wider mt-1" style="color:#555577;">Ventas</div>
         </div>
       </div>
     </div>
 
-    <!-- Hero visual -->
-    <div class="reveal reveal-delay-2 relative">
-      <div class="absolute -inset-4 rounded-3xl blur-3xl opacity-30"
-           style="background:linear-gradient(135deg,rgba(224,3,99,0.4),rgba(123,47,255,0.4))"></div>
-      <div class="relative glass rounded-2xl p-5 overflow-hidden">
-        <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto rounded-xl" aria-label="Dashboard NEXVORE">
-          <defs>
-            <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#ff2d78"/>
-              <stop offset="100%" stop-color="#7b2fff"/>
-            </linearGradient>
-            <linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ff2d78" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#ff2d78" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#7b2fff" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#7b2fff" stop-opacity="0"/>
-            </linearGradient>
-            <filter id="glow-f"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          </defs>
+    <!-- Right: Device mockup -->
+    <div class="reveal d2 relative">
+      <!-- Glow behind -->
+      <div class="absolute -inset-6 rounded-3xl blur-3xl opacity-40 -z-10"
+           style="background:linear-gradient(135deg,rgba(224,3,99,0.35),rgba(123,47,255,0.35))"></div>
 
-          <!-- Background -->
-          <rect width="520" height="360" fill="#0d0d17" rx="12"/>
-          <!-- Grid lines -->
-          <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
-            <line x1="0" y1="40" x2="520" y2="40"/>
-            <line x1="0" y1="80" x2="520" y2="80"/>
-            <line x1="0" y1="120" x2="520" y2="120"/>
-            <line x1="0" y1="200" x2="520" y2="200"/>
-            <line x1="0" y1="280" x2="520" y2="280"/>
-            <line x1="130" y1="0" x2="130" y2="360"/>
-            <line x1="260" y1="0" x2="260" y2="360"/>
-            <line x1="390" y1="0" x2="390" y2="360"/>
-          </g>
+      <svg viewBox="0 0 620 440" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-2xl" aria-label="Nexvore UI mockup">
+        <defs>
+          <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e00363"/>
+            <stop offset="100%" stop-color="#7b2fff"/>
+          </linearGradient>
+          <linearGradient id="lg2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e00363" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#e00363" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="lg3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a1a2e"/>
+            <stop offset="100%" stop-color="#0d0d18"/>
+          </linearGradient>
+          <clipPath id="lapClip"><rect x="60" y="30" width="420" height="270" rx="6"/></clipPath>
+          <clipPath id="ph1Clip"><rect x="470" y="60" width="120" height="220" rx="16"/></clipPath>
+          <clipPath id="ph2Clip"><rect x="30" y="160" width="100" height="190" rx="14"/></clipPath>
+          <filter id="dshadow"><feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#000" flood-opacity=".7"/></filter>
+          <filter id="gf"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
 
-          <!-- Top bar -->
-          <rect width="520" height="44" fill="rgba(255,255,255,0.03)" rx="0"/>
-          <rect y="44" width="520" height="1" fill="rgba(255,255,255,0.06)"/>
-          <text x="16" y="27" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="800" fill="#fff">NEXVORE Analytics</text>
-          <rect x="390" y="10" width="114" height="24" rx="12" fill="url(#hg1)"/>
-          <text x="447" y="26" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">● LIVE</text>
+        <!-- ─ Laptop body ─ -->
+        <g filter="url(#dshadow)">
+          <!-- Screen housing -->
+          <rect x="55" y="24" width="430" height="282" rx="12" fill="#1a1a26" stroke="#2a2a3a" stroke-width="1.5"/>
+          <!-- Screen bezel -->
+          <rect x="60" y="30" width="420" height="270" rx="7" fill="#0a0a14"/>
+          <!-- Webcam dot -->
+          <circle cx="270" cy="39" r="3" fill="#1e1e2e"/>
 
-          <!-- KPI cards -->
-          <rect x="12" y="56" width="110" height="62" rx="10" fill="rgba(123,47,255,0.12)" stroke="rgba(123,47,255,0.3)" stroke-width="1"/>
-          <text x="22" y="76" font-family="sans-serif" font-size="9" fill="#9999bb">Tráfico orgánico</text>
-          <text x="22" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#d1bcff">+340%</text>
+          <!-- ── SCREEN CONTENT ── -->
+          <g clip-path="url(#lapClip)">
+            <!-- Background -->
+            <rect x="60" y="30" width="420" height="270" fill="url(#lg3)"/>
+            <!-- Grid lines -->
+            <g stroke="rgba(255,255,255,0.04)" stroke-width=".8">
+              <line x1="60" y1="75" x2="480" y2="75"/>
+              <line x1="60" y1="120" x2="480" y2="120"/>
+              <line x1="60" y1="165" x2="480" y2="165"/>
+              <line x1="60" y1="210" x2="480" y2="210"/>
+              <line x1="60" y1="255" x2="480" y2="255"/>
+              <line x1="165" y1="30" x2="165" y2="300"/>
+              <line x1="270" y1="30" x2="270" y2="300"/>
+              <line x1="375" y1="30" x2="375" y2="300"/>
+            </g>
 
-          <rect x="132" y="56" width="110" height="62" rx="10" fill="rgba(224,3,99,0.10)" stroke="rgba(224,3,99,0.25)" stroke-width="1"/>
-          <text x="142" y="76" font-family="sans-serif" font-size="9" fill="#9999bb">Leads</text>
-          <text x="142" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#ffb1c0">+215%</text>
+            <!-- Navbar on screen -->
+            <rect x="60" y="30" width="420" height="34" fill="rgba(0,0,0,0.4)"/>
+            <rect x="68" y="39" width="28" height="16" rx="4" fill="url(#lg1)"/>
+            <text x="100" y="51" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="800" fill="#fff">Nexvore</text>
+            <rect x="370" y="38" width="100" height="17" rx="9" fill="url(#lg1)"/>
+            <text x="420" y="50" font-family="sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">● Agendar gratis</text>
 
-          <rect x="252" y="56" width="110" height="62" rx="10" fill="rgba(123,47,255,0.12)" stroke="rgba(123,47,255,0.3)" stroke-width="1"/>
-          <text x="262" y="76" font-family="sans-serif" font-size="9" fill="#9999bb">Ventas</text>
-          <text x="262" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#d1bcff">+178%</text>
+            <!-- KPI row -->
+            <rect x="70" y="76" width="90" height="52" rx="7" fill="rgba(224,3,99,0.12)" stroke="rgba(224,3,99,0.25)" stroke-width=".8"/>
+            <text x="78" y="93" font-family="sans-serif" font-size="7.5" fill="#8888aa">Ingresos</text>
+            <text x="78" y="115" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="900" fill="#e8c0d8">$12.7M</text>
 
-          <rect x="372" y="56" width="136" height="62" rx="10" fill="url(#hg1)" opacity="0.9"/>
-          <text x="382" y="76" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Ingresos generados</text>
-          <text x="382" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#fff">$12.7M</text>
+            <rect x="170" y="76" width="90" height="52" rx="7" fill="rgba(123,47,255,0.12)" stroke="rgba(123,47,255,0.25)" stroke-width=".8"/>
+            <text x="178" y="93" font-family="sans-serif" font-size="7.5" fill="#8888aa">Tráfico</text>
+            <text x="178" y="115" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="900" fill="#e8c0d8">+340%</text>
 
-          <!-- Main chart area -->
-          <rect x="12" y="130" width="330" height="200" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <text x="24" y="152" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="800" fill="#fff">Crecimiento mensual</text>
+            <rect x="270" y="76" width="90" height="52" rx="7" fill="rgba(224,3,99,0.12)" stroke="rgba(224,3,99,0.25)" stroke-width=".8"/>
+            <text x="278" y="93" font-family="sans-serif" font-size="7.5" fill="#8888aa">Leads</text>
+            <text x="278" y="115" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="900" fill="#e8c0d8">3.214</text>
 
-          <!-- Chart grid -->
-          <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
-            <line x1="24" y1="300" x2="330" y2="300"/>
-            <line x1="24" y1="272" x2="330" y2="272"/>
-            <line x1="24" y1="244" x2="330" y2="244"/>
-            <line x1="24" y1="216" x2="330" y2="216"/>
-            <line x1="24" y1="188" x2="330" y2="188"/>
-          </g>
+            <rect x="370" y="76" width="90" height="52" rx="7" fill="url(#lg1)"/>
+            <text x="378" y="93" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,0.7)">Conversión</text>
+            <text x="378" y="115" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="900" fill="#fff">6.4%</text>
 
-          <!-- Area fill (pink) -->
-          <path d="M30 290 L78 276 L126 258 L174 236 L222 214 L270 194 L318 178 L335 168 L335 300 L30 300 Z" fill="url(#hg2)" opacity="0.6"/>
-          <!-- Line (pink) -->
-          <path d="M30 290 L78 276 L126 258 L174 236 L222 214 L270 194 L318 178 L335 168" fill="none" stroke="url(#hg1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow-f)"/>
+            <!-- Chart -->
+            <rect x="70" y="140" width="250" height="130" rx="7" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width=".8"/>
+            <text x="80" y="156" font-family="'Plus Jakarta Sans',sans-serif" font-size="8.5" font-weight="700" fill="#fff">Crecimiento mensual</text>
+            <g stroke="rgba(255,255,255,0.05)" stroke-width=".7">
+              <line x1="80" y1="245" x2="310" y2="245"/>
+              <line x1="80" y1="224" x2="310" y2="224"/>
+              <line x1="80" y1="203" x2="310" y2="203"/>
+              <line x1="80" y1="182" x2="310" y2="182"/>
+            </g>
+            <!-- Area -->
+            <path d="M84 238 L116 227 L148 213 L180 199 L212 185 L244 174 L276 164 L292 158 L292 246 L84 246 Z" fill="url(#lg2)" opacity=".55"/>
+            <!-- Line -->
+            <path d="M84 238 L116 227 L148 213 L180 199 L212 185 L244 174 L276 164 L292 158"
+                  fill="none" stroke="url(#lg1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#gf)"/>
+            <!-- Dots -->
+            <g fill="#e00363">
+              <circle cx="84"  cy="238" r="2.5"/>
+              <circle cx="116" cy="227" r="2.5"/>
+              <circle cx="148" cy="213" r="2.5"/>
+              <circle cx="180" cy="199" r="2.5"/>
+              <circle cx="212" cy="185" r="2.5"/>
+              <circle cx="244" cy="174" r="2.5"/>
+              <circle cx="276" cy="164" r="2.5"/>
+            </g>
+            <circle cx="292" cy="158" r="4" fill="url(#lg1)"/>
+            <!-- Month labels -->
+            <g font-family="sans-serif" font-size="7" fill="#444466" text-anchor="middle">
+              <text x="84"  y="257">Ene</text>
+              <text x="116" y="257">Feb</text>
+              <text x="148" y="257">Mar</text>
+              <text x="180" y="257">Abr</text>
+              <text x="212" y="257">May</text>
+              <text x="244" y="257">Jun</text>
+              <text x="276" y="257">Jul</text>
+            </g>
+            <!-- Tooltip -->
+            <rect x="268" y="143" width="62" height="22" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width=".8"/>
+            <text x="299" y="157" font-family="sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">$12.7M ↑</text>
 
-          <!-- Dots -->
-          <g fill="#ff2d78">
-            <circle cx="30"  cy="290" r="3.5"/>
-            <circle cx="78"  cy="276" r="3.5"/>
-            <circle cx="126" cy="258" r="3.5"/>
-            <circle cx="174" cy="236" r="3.5"/>
-            <circle cx="222" cy="214" r="3.5"/>
-            <circle cx="270" cy="194" r="3.5"/>
-            <circle cx="318" cy="178" r="3.5"/>
-          </g>
-          <circle cx="335" cy="168" r="5" fill="url(#hg1)"/>
+            <!-- Side mini -->
+            <rect x="330" y="140" width="130" height="60" rx="7" fill="rgba(123,47,255,0.12)" stroke="rgba(123,47,255,0.25)" stroke-width=".8"/>
+            <text x="340" y="158" font-family="sans-serif" font-size="8" font-weight="700" fill="#d1bcff">Conversión media</text>
+            <text x="340" y="188" font-family="'Plus Jakarta Sans',sans-serif" font-size="26" font-weight="900" fill="#d1bcff">6.4%</text>
+            <text x="454" y="188" font-family="sans-serif" font-size="8" font-weight="700" fill="#e00363" text-anchor="end">↑ óptimo</text>
+            <rect x="340" y="194" width="110" height="2.5" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+            <rect x="340" y="194" width="71" height="2.5" rx="1.5" fill="url(#lg1)"/>
 
-          <!-- Tooltip -->
-          <rect x="298" y="148" width="72" height="28" rx="6" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-          <text x="334" y="166" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">$12.7M ↑</text>
-
-          <!-- Month labels -->
-          <g font-family="sans-serif" font-size="9" fill="#4a4456" text-anchor="middle">
-            <text x="30"  y="316">Ene</text>
-            <text x="78"  y="316">Feb</text>
-            <text x="126" y="316">Mar</text>
-            <text x="174" y="316">Abr</text>
-            <text x="222" y="316">May</text>
-            <text x="270" y="316">Jun</text>
-            <text x="318" y="316">Jul</text>
-          </g>
-
-          <!-- Right mini charts -->
-          <rect x="354" y="130" width="154" height="92" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <text x="364" y="150" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff">Leads por canal</text>
-          <g>
-            <rect x="364" y="200" width="20" height="12" rx="3" fill="url(#hg1)" opacity="0.7"/>
-            <rect x="390" y="190" width="20" height="22" rx="3" fill="url(#hg1)"/>
-            <rect x="416" y="182" width="20" height="30" rx="3" fill="#ff2d78"/>
-            <rect x="442" y="188" width="20" height="24" rx="3" fill="url(#hg1)" opacity="0.8"/>
-            <g font-family="sans-serif" font-size="8" fill="#4a4456" text-anchor="middle">
-              <text x="374" y="220">Org</text>
-              <text x="400" y="220">Email</text>
-              <text x="426" y="220">RRSS</text>
-              <text x="452" y="220">Ads</text>
+            <rect x="330" y="210" width="130" height="60" rx="7" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width=".8"/>
+            <text x="340" y="228" font-family="sans-serif" font-size="8" font-weight="700" fill="#fff">Leads por canal</text>
+            <rect x="340" y="246" width="14" height="8"  rx="2" fill="url(#lg1)" opacity=".6"/>
+            <rect x="358" y="238" width="14" height="16" rx="2" fill="url(#lg1)"/>
+            <rect x="376" y="232" width="14" height="22" rx="2" fill="#e00363"/>
+            <rect x="394" y="240" width="14" height="14" rx="2" fill="url(#lg1)" opacity=".75"/>
+            <rect x="412" y="244" width="14" height="10" rx="2" fill="url(#lg1)" opacity=".5"/>
+            <g font-family="sans-serif" font-size="6.5" fill="#444466" text-anchor="middle">
+              <text x="347" y="260">Org</text>
+              <text x="365" y="260">Em</text>
+              <text x="383" y="260">RRSS</text>
+              <text x="401" y="260">Ads</text>
+              <text x="419" y="260">SEO</text>
             </g>
           </g>
+          <!-- Screen glass reflection -->
+          <rect x="60" y="30" width="420" height="270" rx="7"
+                fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
 
-          <rect x="354" y="234" width="154" height="96" rx="10" fill="rgba(123,47,255,0.10)" stroke="rgba(123,47,255,0.25)" stroke-width="1"/>
-          <text x="364" y="255" font-family="sans-serif" font-size="10" font-weight="700" fill="#d1bcff">Conversión media</text>
-          <text x="364" y="296" font-family="'Plus Jakarta Sans',sans-serif" font-size="32" font-weight="900" fill="#d1bcff">6.4%</text>
-          <text x="495" y="296" font-family="sans-serif" font-size="10" fill="#ff2d78" text-anchor="end" font-weight="700">↑ óptimo</text>
-          <!-- Progress bar -->
-          <rect x="364" y="302" width="134" height="3" rx="2" fill="rgba(255,255,255,0.08)"/>
-          <rect x="364" y="302" width="86" height="3" rx="2" fill="url(#hg1)"/>
-        </svg>
-      </div>
+          <!-- Bottom lid / hinge -->
+          <rect x="55" y="304" width="430" height="10" rx="3" fill="#151520" stroke="#252535" stroke-width="1"/>
+        </g>
+
+        <!-- Laptop base -->
+        <rect x="30" y="312" width="480" height="22" rx="5" fill="#111120" stroke="#222230" stroke-width="1"/>
+        <rect x="195" y="326" width="150" height="8" rx="4" fill="#0d0d1a"/>
+
+        <!-- ─ Phone left ─ -->
+        <g filter="url(#dshadow)" transform="translate(-14, 20)">
+          <rect x="30" y="160" width="100" height="190" rx="16" fill="#111120" stroke="#222230" stroke-width="1.5"/>
+          <g clip-path="url(#ph2Clip)">
+            <rect x="30" y="160" width="100" height="190" fill="#0d0d18"/>
+            <!-- phone content -->
+            <rect x="30" y="160" width="100" height="32" fill="rgba(0,0,0,0.5)"/>
+            <rect x="40" y="170" width="40" height="12" rx="3" fill="url(#lg1)"/>
+            <text x="60" y="180" font-family="sans-serif" font-size="7" font-weight="700" fill="#fff" text-anchor="middle">Nexvore</text>
+            <!-- status bar -->
+            <rect x="100" y="162" width="24" height="10" rx="3" fill="rgba(255,255,255,0.05)"/>
+            <!-- Hero text preview -->
+            <rect x="38" y="200" width="70" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
+            <rect x="38" y="211" width="55" height="5" rx="3" fill="rgba(255,255,255,0.07)"/>
+            <rect x="38" y="221" width="62" height="5" rx="3" fill="rgba(255,255,255,0.07)"/>
+            <!-- CTA -->
+            <rect x="38" y="234" width="64" height="18" rx="9" fill="url(#lg1)"/>
+            <text x="70" y="246" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">Ver más →</text>
+            <!-- metrics mini -->
+            <rect x="38" y="260" width="28" height="28" rx="6" fill="rgba(224,3,99,0.15)" stroke="rgba(224,3,99,0.2)" stroke-width=".8"/>
+            <text x="52" y="273" font-family="sans-serif" font-size="8" font-weight="900" fill="#e8c0d8" text-anchor="middle">+178%</text>
+            <text x="52" y="283" font-family="sans-serif" font-size="5.5" fill="#8888aa" text-anchor="middle">ventas</text>
+            <rect x="72" y="260" width="28" height="28" rx="6" fill="rgba(123,47,255,0.15)" stroke="rgba(123,47,255,0.2)" stroke-width=".8"/>
+            <text x="86" y="273" font-family="sans-serif" font-size="8" font-weight="900" fill="#d1bcff" text-anchor="middle">+340%</text>
+            <text x="86" y="283" font-family="sans-serif" font-size="5.5" fill="#8888aa" text-anchor="middle">tráfico</text>
+          </g>
+          <!-- notch -->
+          <rect x="63" y="160" width="34" height="10" rx="5" fill="#111120"/>
+        </g>
+
+        <!-- ─ Phone right ─ -->
+        <g filter="url(#dshadow)" transform="translate(14, -10)">
+          <rect x="470" y="60" width="120" height="220" rx="18" fill="#111120" stroke="#222230" stroke-width="1.5"/>
+          <g clip-path="url(#ph1Clip)">
+            <rect x="470" y="60" width="120" height="220" fill="#0d0d18"/>
+            <!-- nav -->
+            <rect x="470" y="60" width="120" height="36" fill="rgba(0,0,0,0.5)"/>
+            <rect x="480" y="70" width="38" height="16" rx="4" fill="url(#lg1)"/>
+            <text x="499" y="82" font-family="sans-serif" font-size="8" font-weight="800" fill="#fff" text-anchor="middle">N</text>
+            <!-- chart preview -->
+            <path d="M478 180 L498 170 L518 155 L538 145 L558 134 L578 128 L582 126 L582 200 L478 200 Z"
+                  fill="url(#lg2)" opacity=".55"/>
+            <path d="M478 180 L498 170 L518 155 L538 145 L558 134 L578 128 L582 126"
+                  fill="none" stroke="url(#lg1)" stroke-width="2" stroke-linecap="round" filter="url(#gf)"/>
+            <circle cx="582" cy="126" r="4.5" fill="url(#lg1)"/>
+            <!-- KPIs -->
+            <rect x="480" y="108" width="50" height="42" rx="7" fill="rgba(224,3,99,0.12)" stroke="rgba(224,3,99,0.25)" stroke-width=".8"/>
+            <text x="505" y="123" font-family="sans-serif" font-size="7" fill="#8888aa" text-anchor="middle">Leads</text>
+            <text x="505" y="143" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="900" fill="#e8c0d8" text-anchor="middle">3.2K</text>
+            <rect x="538" y="108" width="46" height="42" rx="7" fill="rgba(123,47,255,0.12)" stroke="rgba(123,47,255,0.25)" stroke-width=".8"/>
+            <text x="561" y="123" font-family="sans-serif" font-size="7" fill="#8888aa" text-anchor="middle">Conv.</text>
+            <text x="561" y="143" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="900" fill="#d1bcff" text-anchor="middle">6.4%</text>
+            <!-- label -->
+            <text x="480" y="218" font-family="sans-serif" font-size="7" fill="#8888aa">Jul 2025</text>
+            <text x="582" y="218" font-family="sans-serif" font-size="8" font-weight="700" fill="#e00363" text-anchor="end">↑ +12%</text>
+          </g>
+          <!-- notch -->
+          <rect x="510" y="60" width="40" height="12" rx="6" fill="#111120"/>
+        </g>
+      </svg>
     </div>
   </div>
 </header>
 
-<!-- ══════════════ MARQUEE ══════════════ -->
-<div class="overflow-hidden py-4 border-y" style="border-color:rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+<!-- ════ MARQUEE ════ -->
+<div class="overflow-hidden py-4 border-y" style="border-color:rgba(255,255,255,0.06); background:rgba(255,255,255,0.015);">
   <div class="flex marquee-track">
-    <div class="flex gap-12 items-center px-6 shrink-0">
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">ESTRATEGIA DIGITAL</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">DISEÑO QUE CONVIERTE</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">EMBUDOS AUTOMATIZADOS</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">CONTENIDO QUE VENDE</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">RESULTADOS REALES</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">NEXVORE DIGITAL STUDIO</span>
-      <span class="grad-text font-black text-xl">·</span>
+    <div class="flex gap-10 items-center px-5 shrink-0">
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">ESTRATEGIA DIGITAL</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">DISEÑO QUE CONVIERTE</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">EMBUDOS AUTOMATIZADOS</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">CONTENIDO QUE VENDE</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">NEXVORE DIGITAL STUDIO</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">AGENCIA EN CHILE</span>
+      <span class="grad-text font-black text-2xl">·</span>
     </div>
-    <div class="flex gap-12 items-center px-6 shrink-0" aria-hidden="true">
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">ESTRATEGIA DIGITAL</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">DISEÑO QUE CONVIERTE</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">EMBUDOS AUTOMATIZADOS</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">CONTENIDO QUE VENDE</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">RESULTADOS REALES</span>
-      <span class="grad-text font-black text-xl">·</span>
-      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">NEXVORE DIGITAL STUDIO</span>
-      <span class="grad-text font-black text-xl">·</span>
+    <div class="flex gap-10 items-center px-5 shrink-0" aria-hidden="true">
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">ESTRATEGIA DIGITAL</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">DISEÑO QUE CONVIERTE</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">EMBUDOS AUTOMATIZADOS</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">CONTENIDO QUE VENDE</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">NEXVORE DIGITAL STUDIO</span>
+      <span class="grad-text font-black text-2xl">·</span>
+      <span class="text-[12px] font-black tracking-[0.13em] uppercase" style="color:rgba(232,192,216,0.65);">AGENCIA EN CHILE</span>
+      <span class="grad-text font-black text-2xl">·</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════ PROBLEMA ══════════════ -->
-<section class="py-24 px-6">
+<!-- ════ PROBLEMA ════ -->
+<section class="py-24 px-5">
   <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
-    <div class="lg:col-span-7 space-y-10">
+    <div class="lg:col-span-7 space-y-8">
       <div class="reveal">
-        <span class="text-xs font-black uppercase tracking-[0.2em] mb-3 block" style="color:#ff2d78;">— El diagnóstico</span>
-        <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tight" style="color:#fff;">
+        <span class="text-[11px] font-black uppercase tracking-[0.2em] mb-3 block" style="color:#e00363;">— El diagnóstico</span>
+        <h2 class="text-3xl md:text-[38px] font-black leading-[1.05] tracking-tight" style="color:#fff;">
           MÁS POSTS NO ARREGLAN<br/>UN NEGOCIO SIN BASE.
         </h2>
       </div>
       <div class="space-y-4">
-        <div class="reveal reveal-delay-1 glass rounded-2xl p-7 hover-lift border-l-4" style="border-color:#ff2d78;">
+        <div class="reveal d1 glass rounded-2xl p-7 lift border-l-4" style="border-color:#e00363;">
           <div class="text-2xl mb-3">📉</div>
-          <h3 class="text-lg font-black mb-2" style="color:#fff;">Redes activas, ventas ausentes</h3>
-          <p class="text-sm leading-relaxed" style="color:#9999bb;">Generás contenido diario pero el link de tu biografía sigue sin recibir clics calificados.</p>
+          <h3 class="text-base font-black mb-2" style="color:#fff;">Redes activas, ventas ausentes</h3>
+          <p class="text-sm leading-relaxed" style="color:#8888aa;">Generás contenido a diario pero el link de tu bio sigue sin convertir visitantes en clientes.</p>
         </div>
-        <div class="reveal reveal-delay-2 glass rounded-2xl p-7 hover-lift border-l-4" style="border-color:#7b2fff;">
+        <div class="reveal d2 glass rounded-2xl p-7 lift border-l-4" style="border-color:#7b2fff;">
           <div class="text-2xl mb-3">🌐</div>
-          <h3 class="text-lg font-black mb-2" style="color:#fff;">Web que no trabaja para vos</h3>
-          <p class="text-sm leading-relaxed" style="color:#9999bb;">Un sitio que es un folleto digital estático, no una máquina de captura de clientes 24/7.</p>
+          <h3 class="text-base font-black mb-2" style="color:#fff;">Web que no trabaja para vos</h3>
+          <p class="text-sm leading-relaxed" style="color:#8888aa;">Un sitio estático que es un folleto digital, no una máquina de captura de clientes 24/7.</p>
         </div>
-        <div class="reveal reveal-delay-3 glass rounded-2xl p-7 hover-lift border-l-4" style="border-color:rgba(255,255,255,0.15);">
+        <div class="reveal d3 glass rounded-2xl p-7 lift border-l-4" style="border-color:rgba(255,255,255,0.12);">
           <div class="text-2xl mb-3">💬</div>
-          <h3 class="text-lg font-black mb-2" style="color:#fff;">Precio negociado por DM</h3>
-          <p class="text-sm leading-relaxed" style="color:#9999bb;">Si tu cliente solo te elige por precio o por insistencia, no tenés un ecosistema, tenés un empleo.</p>
+          <h3 class="text-base font-black mb-2" style="color:#fff;">Precio negociado por DM</h3>
+          <p class="text-sm leading-relaxed" style="color:#8888aa;">Si tu cliente solo te elige por precio o por insistencia, no tenés un ecosistema, tenés un empleo.</p>
         </div>
       </div>
     </div>
 
-    <!-- Quote card -->
+    <!-- Quote -->
     <div class="lg:col-span-5 sticky top-24">
-      <div class="reveal relative rounded-3xl p-10 overflow-hidden glow-purple"
-           style="background:linear-gradient(135deg,rgba(123,47,255,0.25),rgba(224,3,99,0.15)); border:1px solid rgba(123,47,255,0.4);">
-        <div class="absolute top-4 left-4 text-8xl font-black leading-none select-none" style="color:rgba(255,255,255,0.06);">"</div>
-        <div class="relative z-10 space-y-6">
-          <p class="text-2xl font-black leading-tight italic" style="color:#fff;">
-            "EL CAMBIO NO FUE ESTÉTICO. FUE DE
-            <span class="grad-text">FACTURACIÓN.</span>"
-          </p>
-          <div class="flex items-center gap-3 pt-2">
-            <div class="w-11 h-11 rounded-full grad flex items-center justify-center text-white font-black text-sm">SR</div>
-            <div>
-              <p class="text-sm font-bold" style="color:#fff;">Santiago Rossi</p>
-              <p class="text-xs" style="color:#9999bb;">CEO, TechPioneer Solutions</p>
-            </div>
+      <div class="reveal rounded-3xl p-10 overflow-hidden glow-pink"
+           style="background:linear-gradient(135deg,rgba(224,3,99,0.2),rgba(123,47,255,0.12)); border:1px solid rgba(224,3,99,0.35);">
+        <div class="text-8xl font-black leading-none select-none mb-2" style="color:rgba(255,255,255,0.05);">"</div>
+        <p class="text-2xl font-black leading-tight italic" style="color:#fff;">
+          "EL CAMBIO NO FUE ESTÉTICO. FUE DE
+          <span class="grad-text">FACTURACIÓN.</span>"
+        </p>
+        <div class="flex items-center gap-3 mt-8">
+          <div class="w-11 h-11 rounded-full grad flex items-center justify-center text-white font-black text-sm">SR</div>
+          <div>
+            <p class="text-sm font-bold" style="color:#fff;">Santiago Rossi</p>
+            <p class="text-xs" style="color:#8888aa;">CEO, TechPioneer Solutions</p>
           </div>
         </div>
       </div>
@@ -513,129 +580,309 @@
   </div>
 </section>
 
-<!-- ══════════════ SERVICIOS ══════════════ -->
-<section class="py-24 px-6" id="servicios">
+<!-- ════ SERVICIOS ════ -->
+<section class="py-24 px-5 border-t" id="servicios" style="border-color:rgba(255,255,255,0.05);">
   <div class="max-w-6xl mx-auto">
     <div class="reveal text-center mb-14 space-y-3">
-      <span class="text-xs font-black uppercase tracking-[0.2em]" style="color:#7b2fff;">— Qué recibís</span>
-      <h2 class="text-3xl md:text-4xl font-black tracking-tight" style="color:#fff;">UN ECOSISTEMA COMPLETO</h2>
-      <p class="text-base max-w-2xl mx-auto" style="color:#9999bb;">Diseñamos cada parte de tu presencia digital para que trabaje en armonía hacia un solo objetivo: tu crecimiento.</p>
+      <span class="text-[11px] font-black uppercase tracking-[0.2em]" style="color:#7b2fff;">— Qué recibís</span>
+      <h2 class="text-3xl md:text-[38px] font-black tracking-tight" style="color:#fff;">UN ECOSISTEMA COMPLETO</h2>
+      <p class="text-sm max-w-xl mx-auto" style="color:#8888aa;">Cada pieza diseñada para que trabaje en armonía. Desde la captación hasta el cierre.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="reveal reveal-delay-1 glass rounded-2xl p-8 hover-lift group">
-        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">01</span>
-        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Estrategia Digital</h3>
-        <p class="text-sm leading-relaxed" style="color:#9999bb;">Mapa de ruta personalizado basado en datos, no en suposiciones. Entendemos a tu cliente mejor que él mismo.</p>
+      <div class="reveal d1 glass rounded-2xl p-8 lift group cursor-default">
+        <span class="text-5xl font-black block mb-3 grad-text opacity-20 group-hover:opacity-40 transition-opacity">01</span>
+        <h3 class="font-black mb-3" style="color:#e8c0d8;">Estrategia Digital</h3>
+        <p class="text-sm leading-relaxed" style="color:#8888aa;">Mapa de ruta basado en datos reales. Entendemos a tu cliente mejor que él mismo.</p>
       </div>
-      <div class="reveal reveal-delay-2 glass rounded-2xl p-8 hover-lift group">
-        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">02</span>
-        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Diseño que convierte</h3>
-        <p class="text-sm leading-relaxed" style="color:#9999bb;">Interfaces premium que guían el ojo del usuario directamente hacia el botón de compra o reserva.</p>
+      <div class="reveal d2 glass rounded-2xl p-8 lift group cursor-default">
+        <span class="text-5xl font-black block mb-3 grad-text opacity-20 group-hover:opacity-40 transition-opacity">02</span>
+        <h3 class="font-black mb-3" style="color:#e8c0d8;">Diseño que convierte</h3>
+        <p class="text-sm leading-relaxed" style="color:#8888aa;">Interfaces premium que llevan el ojo del usuario directo al botón de compra.</p>
       </div>
-      <div class="reveal reveal-delay-3 glass rounded-2xl p-8 hover-lift group">
-        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">03</span>
-        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Embudos automatizados</h3>
-        <p class="text-sm leading-relaxed" style="color:#9999bb;">Sistemas de ventas que filtran curiosos y entregan clientes listos para pagar de forma recurrente.</p>
+      <div class="reveal d3 glass rounded-2xl p-8 lift group cursor-default">
+        <span class="text-5xl font-black block mb-3 grad-text opacity-20 group-hover:opacity-40 transition-opacity">03</span>
+        <h3 class="font-black mb-3" style="color:#e8c0d8;">Embudos automatizados</h3>
+        <p class="text-sm leading-relaxed" style="color:#8888aa;">Sistemas que filtran curiosos y entregan clientes listos para pagar de forma recurrente.</p>
       </div>
-      <div class="reveal reveal-delay-4 glass rounded-2xl p-8 hover-lift group">
-        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">04</span>
-        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Contenido que vende</h3>
-        <p class="text-sm leading-relaxed" style="color:#9999bb;">No solo "likes". Creamos autoridad y deseo a través de narrativa estratégica y diseño de alto impacto.</p>
+      <div class="reveal d4 glass rounded-2xl p-8 lift group cursor-default">
+        <span class="text-5xl font-black block mb-3 grad-text opacity-20 group-hover:opacity-40 transition-opacity">04</span>
+        <h3 class="font-black mb-3" style="color:#e8c0d8;">Contenido que vende</h3>
+        <p class="text-sm leading-relaxed" style="color:#8888aa;">Narrativa estratégica y diseño de alto impacto. No solo "likes" — autoridad y deseo.</p>
       </div>
-      <div class="reveal reveal-delay-5 glass rounded-2xl p-8 hover-lift group">
-        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">05</span>
-        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Automatización de seguimiento</h3>
-        <p class="text-sm leading-relaxed" style="color:#9999bb;">Eliminamos las tareas manuales. Tu equipo solo habla con leads que ya conocen tu valor.</p>
+      <div class="reveal d5 glass rounded-2xl p-8 lift group cursor-default">
+        <span class="text-5xl font-black block mb-3 grad-text opacity-20 group-hover:opacity-40 transition-opacity">05</span>
+        <h3 class="font-black mb-3" style="color:#e8c0d8;">Automatización</h3>
+        <p class="text-sm leading-relaxed" style="color:#8888aa;">Eliminamos las tareas manuales. Tu equipo solo habla con leads que ya conocen tu valor.</p>
       </div>
-      <div class="reveal reveal-delay-6 glass rounded-2xl p-8 hover-lift group">
-        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">06</span>
-        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Optimización continua</h3>
-        <p class="text-sm leading-relaxed" style="color:#9999bb;">Lo que no se mide no crece. Ajustamos el sistema en tiempo real para maximizar tu ROI.</p>
+      <div class="reveal d6 glass rounded-2xl p-8 lift group cursor-default">
+        <span class="text-5xl font-black block mb-3 grad-text opacity-20 group-hover:opacity-40 transition-opacity">06</span>
+        <h3 class="font-black mb-3" style="color:#e8c0d8;">Optimización continua</h3>
+        <p class="text-sm leading-relaxed" style="color:#8888aa;">Medimos todo. Ajustamos el sistema en tiempo real para maximizar tu ROI.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ PAQUETE / PRICING ══════════════ -->
-<section class="py-24 px-6" id="paquete">
-  <div class="max-w-5xl mx-auto">
+<!-- ════ PORTFOLIO ════ -->
+<section class="py-24 px-5 border-t" id="portfolio" style="border-color:rgba(255,255,255,0.05);">
+  <div class="max-w-6xl mx-auto">
     <div class="reveal text-center mb-14 space-y-3">
-      <span class="text-xs font-black uppercase tracking-[0.2em]" style="color:#ff2d78;">— Oferta única</span>
-      <h2 class="text-3xl md:text-4xl font-black tracking-tight" style="color:#fff;">EL PAQUETE NEXVORE</h2>
-      <p class="text-base max-w-xl mx-auto" style="color:#9999bb;">Todo lo que necesitás para dominar tu mercado digital, en un solo paquete con resultados garantizados.</p>
+      <span class="text-[11px] font-black uppercase tracking-[0.2em]" style="color:#e00363;">— Nuestro trabajo</span>
+      <h2 class="text-3xl md:text-[38px] font-black tracking-tight" style="color:#fff;">PRODUCCIÓN DE NIVEL MUNDIAL</h2>
+      <p class="text-sm max-w-xl mx-auto" style="color:#8888aa;">Creatividad al nivel de las marcas globales más reconocidas. Aplicada a tu negocio.</p>
     </div>
 
-    <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-      <!-- Left: what's included -->
-      <div class="glass-strong rounded-2xl p-8 space-y-5">
-        <h3 class="text-xl font-black" style="color:#fff;">TODO LO QUE INCLUYE</h3>
-        <div class="space-y-3">
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Sitio web profesional de alta conversión</span>
+    <!-- Brand reference grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+
+      <!-- Card 1: AG1-style -->
+      <div class="reveal d1 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:linear-gradient(160deg,#f5f0e8,#e8e0d0);">
+        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 font-black text-white text-xl"
+               style="background:#1e5c2e;">AG1</div>
+          <p class="font-black text-xl leading-tight mb-2" style="color:#1a2a1a; font-family:'Plus Jakarta Sans',sans-serif;">Free Duffel +<br/>Welcome Kit!</p>
+          <p class="text-xs font-bold uppercase tracking-widest mb-5" style="color:#555;">2026 New Year Offer</p>
+          <!-- product pills -->
+          <div class="flex gap-2">
+            <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#1e5c2e; color:#fff;">30 Day Supply</span>
+            <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:rgba(0,0,0,0.08); color:#1a2a1a;">5 Extras</span>
           </div>
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Estrategia digital personalizada 90 días</span>
-          </div>
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Embudo de ventas automatizado completo</span>
-          </div>
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Contenido estratégico para redes sociales</span>
-          </div>
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Automatización de seguimiento de leads</span>
-          </div>
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Dashboard de métricas en tiempo real</span>
-          </div>
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Soporte prioritario por 3 meses</span>
-          </div>
-          <div class="flex items-start gap-3 check-item">
-            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Optimización continua basada en datos</span>
-          </div>
+        </div>
+        <!-- Limited supply badge -->
+        <div class="absolute top-4 left-4 w-14 h-14 rounded-full flex items-center justify-center text-center text-[10px] font-black leading-tight"
+             style="background:#4caf50; color:#fff; transform:rotate(-15deg);">LIMITED<br/>SUPPLY</div>
+        <div class="overlay"></div>
+        <div class="label">
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Campaña Producto</p>
+          <p class="text-sm font-black" style="color:#fff;">Welcome Kit Promotion</p>
         </div>
       </div>
 
-      <!-- Right: price + CTA -->
-      <div class="rounded-2xl p-8 flex flex-col justify-between glow-purple"
-           style="background:linear-gradient(135deg,rgba(123,47,255,0.2),rgba(224,3,99,0.1)); border:1px solid rgba(123,47,255,0.4);">
-        <div class="space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider"
-               style="background:rgba(255,45,120,0.15); border:1px solid rgba(255,45,120,0.3); color:#ffb1c0;">
-            <span class="pulse-dot"></span>
-            Oferta por tiempo limitado
+      <!-- Card 2: Celsius-style -->
+      <div class="reveal d2 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:linear-gradient(160deg,#f8f8f8,#ffe8ee,#fff9e6);">
+        <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
+          <!-- Can mockup SVG -->
+          <svg viewBox="0 0 160 280" class="w-28 h-auto mb-4 drop-shadow-xl" aria-label="Product can">
+            <defs>
+              <linearGradient id="canGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#d8d8d8"/>
+                <stop offset="30%" stop-color="#f5f5f5"/>
+                <stop offset="70%" stop-color="#e8e8e8"/>
+                <stop offset="100%" stop-color="#c5c5c5"/>
+              </linearGradient>
+              <linearGradient id="canLabel" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff9ec4"/>
+                <stop offset="100%" stop-color="#ffcf70"/>
+              </linearGradient>
+            </defs>
+            <rect x="20" y="30" width="120" height="230" rx="18" fill="url(#canGrad)"/>
+            <rect x="24" y="80" width="112" height="140" rx="4" fill="url(#canLabel)" opacity=".9"/>
+            <text x="80" y="108" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="900" fill="#fff" text-anchor="middle" letter-spacing="-0.5">CELSIUS</text>
+            <text x="80" y="120" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">LIVE FIT</text>
+            <text x="80" y="150" font-family="sans-serif" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">FIZZ-FREE</text>
+            <text x="80" y="163" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,0.85)" text-anchor="middle">ESSENTIAL ENERGY</text>
+            <rect x="32" y="170" width="96" height="14" rx="3" fill="rgba(255,255,255,0.25)"/>
+            <text x="80" y="180" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">0 SUGAR</text>
+            <!-- tab -->
+            <rect x="65" y="15" width="30" height="20" rx="4" fill="#c5c5c5"/>
+            <rect x="72" y="10" width="16" height="12" rx="3" fill="#d8d8d8"/>
+          </svg>
+          <p class="text-xs font-bold uppercase tracking-widest text-center" style="color:#888;">Pink Lemonade · Fizz-Free</p>
+        </div>
+        <div class="overlay"></div>
+        <div class="label">
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Producto Digital</p>
+          <p class="text-sm font-black" style="color:#fff;">Lifestyle Brand Campaign</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Liquid I.V.-style -->
+      <div class="reveal d3 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:linear-gradient(160deg,#1a2a3a,#0d1820,#2a1a0a);">
+        <!-- Moody background elements -->
+        <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 30%, rgba(0,120,200,0.15), transparent 60%)"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
+          <!-- Packet mockup SVG -->
+          <svg viewBox="0 0 100 220" class="w-20 h-auto mb-4 drop-shadow-2xl" aria-label="Stick packet">
+            <defs>
+              <linearGradient id="pkGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#0070b0"/>
+                <stop offset="100%" stop-color="#004a90"/>
+              </linearGradient>
+            </defs>
+            <rect x="15" y="5" width="70" height="210" rx="8" fill="url(#pkGrad)"/>
+            <rect x="18" y="50" width="64" height="90" rx="4" fill="rgba(220,70,80,0.9)"/>
+            <text x="50" y="75" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="900" fill="#fff" text-anchor="middle">LIQUID I.V.</text>
+            <text x="50" y="89" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,0.7)" text-anchor="middle">HYDRATION MULTIPLIER</text>
+            <text x="50" y="115" font-family="sans-serif" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">GUAVA</text>
+            <text x="50" y="128" font-family="sans-serif" font-size="5.5" fill="rgba(255,255,255,0.7)" text-anchor="middle">ELECTROLYTE DRINK MIX</text>
+          </svg>
+          <!-- Fruit dots -->
+          <div class="flex gap-2">
+            <span class="text-lg">🍈</span>
+            <span class="text-lg">🍃</span>
           </div>
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9999bb;">Inversión única</p>
-            <div class="flex items-end gap-2">
-              <span class="font-black leading-none tracking-tight" style="font-size:clamp(44px,8vw,64px); color:#fff;">$19.990</span>
-              <span class="text-lg font-bold mb-2" style="color:#9999bb;">CLP</span>
+        </div>
+        <div class="overlay" style="background:linear-gradient(to top, rgba(10,20,30,0.9) 0%, transparent 60%)"></div>
+        <div class="label">
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.5);">Pack Shot</p>
+          <p class="text-sm font-black" style="color:#fff;">Moody Product Photography</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Grüns-style split -->
+      <div class="reveal d4 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer">
+        <div class="absolute inset-0 grid grid-cols-2">
+          <div style="background:#2a2a2a;"></div>
+          <div style="background:#e8f0e0;"></div>
+        </div>
+        <div class="absolute inset-0 flex flex-col items-center justify-start p-5 text-center">
+          <p class="text-base font-black leading-snug mb-4 drop-shadow-md" style="color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.5);">Not all routines<br/>are created equal.</p>
+          <div class="grid grid-cols-2 gap-3 w-full mt-2">
+            <div class="glass rounded-xl p-3">
+              <p class="text-[10px] font-bold" style="color:#aaa;">The Old Way</p>
+              <p class="text-xs font-black mt-1" style="color:#fff;">Messy<br/>Powders</p>
+            </div>
+            <div class="rounded-xl p-3" style="background:rgba(30,80,30,0.9);">
+              <p class="text-[10px] font-bold" style="color:#90c890;">The New Way</p>
+              <p class="text-xs font-black mt-1" style="color:#fff;">1 Tasty<br/>Gummy</p>
             </div>
           </div>
-          <p class="text-sm" style="color:#9999bb;">Pago único, sin mensualidades ocultas. Resultados en 30 días o te devolvemos el dinero.</p>
+          <div class="mt-auto w-full rounded-full py-2 font-black text-[12px]"
+               style="background:#fff; color:#1a3a1a;">SHOP NOW</div>
+        </div>
+        <div class="overlay"></div>
+        <div class="label">
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Comparativa</p>
+          <p class="text-sm font-black" style="color:#fff;">Before / After Ad Creative</p>
+        </div>
+      </div>
 
-          <!-- Guarantee badge -->
+      <!-- Card 5: CGI Product -->
+      <div class="reveal d5 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:linear-gradient(160deg,#001840,#002060,#001020);">
+        <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 40%, rgba(0,160,255,0.3), transparent 65%)"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-6">
+          <!-- CGI sphere cluster -->
+          <svg viewBox="0 0 200 200" class="w-full h-auto" aria-label="CGI product spheres">
+            <defs>
+              <radialGradient id="sph1" cx="35%" cy="30%">
+                <stop offset="0%" stop-color="#80e8ff"/>
+                <stop offset="40%" stop-color="#00aadd"/>
+                <stop offset="100%" stop-color="#004499"/>
+              </radialGradient>
+              <radialGradient id="sph2" cx="35%" cy="30%">
+                <stop offset="0%" stop-color="#aaf0ff"/>
+                <stop offset="40%" stop-color="#22ccee"/>
+                <stop offset="100%" stop-color="#0055aa"/>
+              </radialGradient>
+              <filter id="sblur"><feGaussianBlur stdDeviation="2"/></filter>
+            </defs>
+            <!-- Shadow -->
+            <ellipse cx="100" cy="185" rx="60" ry="8" fill="rgba(0,0,80,0.5)" filter="url(#sblur)"/>
+            <!-- Cluster of spheres -->
+            <circle cx="100" cy="90" r="42" fill="url(#sph1)"/>
+            <circle cx="68"  cy="108" r="28" fill="url(#sph2)" opacity=".9"/>
+            <circle cx="132" cy="108" r="28" fill="url(#sph1)" opacity=".85"/>
+            <circle cx="84"  cy="72"  r="22" fill="url(#sph2)" opacity=".95"/>
+            <circle cx="116" cy="72"  r="22" fill="url(#sph1)" opacity=".9"/>
+            <!-- Highlight drops -->
+            <circle cx="88"  cy="75"  r="5" fill="rgba(255,255,255,0.8)"/>
+            <circle cx="62"  cy="100" r="4" fill="rgba(255,255,255,0.7)"/>
+            <circle cx="122" cy="100" r="3.5" fill="rgba(255,255,255,0.6)"/>
+          </svg>
+        </div>
+        <div class="overlay" style="background:linear-gradient(to top,rgba(0,16,40,0.9) 0%, transparent 60%)"></div>
+        <div class="label">
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.5);">CGI · 3D Render</p>
+          <p class="text-sm font-black" style="color:#fff;">Ultra-Premium Product Visual</p>
+        </div>
+      </div>
+
+      <!-- Card 6: General brand -->
+      <div class="reveal d6 glass rounded-2xl p-8 lift flex flex-col justify-between aspect-[4/5] cursor-default">
+        <div>
+          <span class="text-[11px] font-black uppercase tracking-[0.18em] block mb-5" style="color:#e00363;">Siguiente proyecto</span>
+          <h3 class="text-2xl font-black leading-tight mb-4" style="color:#fff;">¿TU MARCA<br/>AQUÍ?</h3>
+          <p class="text-sm leading-relaxed" style="color:#8888aa;">Trabajamos con marcas que quieren dominar su mercado. ¿Estás listo para crecer?</p>
+        </div>
+        <button onclick="openCalendly(event)"
+                class="btn-primary py-3.5 text-sm w-full inline-flex items-center justify-center gap-2">
+          Agendar llamada
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PAQUETE / PRICING ════ -->
+<section class="py-24 px-5 border-t" id="paquete" style="border-color:rgba(255,255,255,0.05);">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal text-center mb-14 space-y-3">
+      <span class="text-[11px] font-black uppercase tracking-[0.2em]" style="color:#e00363;">— Oferta única</span>
+      <h2 class="text-3xl md:text-[38px] font-black tracking-tight" style="color:#fff;">EL PAQUETE NEXVORE</h2>
+      <p class="text-sm max-w-xl mx-auto" style="color:#8888aa;">Todo lo que necesitás para dominar tu mercado digital, en una sola inversión.</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
+      <!-- Checklist -->
+      <div class="glass-md rounded-2xl p-8 space-y-5">
+        <h3 class="text-lg font-black" style="color:#fff;">TODO LO QUE INCLUYE</h3>
+        <div class="space-y-3.5">
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Sitio web profesional de alta conversión</span></div>
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Estrategia digital personalizada 90 días</span></div>
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Embudo de ventas automatizado completo</span></div>
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Contenido estratégico para redes sociales</span></div>
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Automatización de seguimiento de leads</span></div>
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Dashboard de métricas en tiempo real</span></div>
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Soporte prioritario por 3 meses</span></div>
+          <div class="flex items-start gap-3 chk"><span class="text-sm font-semibold leading-relaxed" style="color:#e2dfef;">Optimización continua basada en datos</span></div>
+        </div>
+      </div>
+
+      <!-- Price card -->
+      <div class="rounded-2xl p-8 flex flex-col justify-between glow-pink"
+           style="background:linear-gradient(135deg,rgba(224,3,99,0.18),rgba(123,47,255,0.10)); border:1px solid rgba(224,3,99,0.35);">
+        <div class="space-y-5">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider"
+                style="background:rgba(224,3,99,0.15); border:1px solid rgba(224,3,99,0.3); color:#ff7db5;">
+            <span class="pulse-dot"></span>
+            Oferta por tiempo limitado
+          </span>
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-widest mb-1" style="color:#8888aa;">Inversión única</p>
+            <div class="flex items-end gap-2">
+              <span class="font-black leading-none tracking-tight" style="font-size:clamp(50px,9vw,70px); color:#fff;">$19.990</span>
+              <span class="text-base font-bold mb-2" style="color:#8888aa;">CLP</span>
+            </div>
+          </div>
+          <p class="text-sm" style="color:#8888aa;">Pago único. Sin mensualidades ocultas. Resultados en 30 días o te devolvemos el dinero.</p>
+          <!-- Guarantee -->
           <div class="glass rounded-xl p-4 flex items-center gap-3">
             <div class="text-2xl">🛡️</div>
             <div>
               <p class="text-sm font-black" style="color:#fff;">Garantía 30 días</p>
-              <p class="text-xs" style="color:#9999bb;">Si no ves resultados, reembolso completo.</p>
+              <p class="text-xs" style="color:#8888aa;">Si no ves resultados, reembolso completo.</p>
             </div>
           </div>
         </div>
-
         <div class="space-y-3 mt-6">
           <a href="https://mpago.la/16tyR7V" target="_blank" rel="noopener"
-             class="btn-ml w-full py-4 text-base flex items-center justify-center gap-3 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 50 50" fill="none">
-              <circle cx="25" cy="25" r="25" fill="#fff"/>
-              <text x="25" y="32" font-size="18" text-anchor="middle" font-family="Arial" font-weight="900" fill="#009ee3">MP</text>
+             class="btn-ml w-full py-4 text-sm flex items-center justify-center gap-3 rounded-full font-black">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 50 50">
+              <circle cx="25" cy="25" r="25" fill="rgba(255,255,255,0.25)"/>
+              <text x="25" y="33" font-size="16" text-anchor="middle" font-family="Arial" font-weight="900" fill="#fff">MP</text>
             </svg>
-            Pagar con MercadoPago
+            Pagar con MercadoPago — $19.990
           </a>
           <button onclick="openCalendly(event)"
-                  class="btn-ghost w-full py-3.5 text-sm cursor-pointer flex items-center justify-center gap-2">
+                  class="btn-ghost w-full py-3.5 text-sm flex items-center justify-center gap-2">
             ¿Tenés dudas? Hablemos gratis
           </button>
         </div>
@@ -644,98 +891,94 @@
   </div>
 </section>
 
-<!-- ══════════════ PROCESO ══════════════ -->
-<section class="py-24 px-6" id="proceso"
-         style="background:rgba(255,255,255,0.015); border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05);">
+<!-- ════ PROCESO ════ -->
+<section class="py-24 px-5 border-t" id="proceso" style="border-color:rgba(255,255,255,0.05); background:rgba(255,255,255,0.01);">
   <div class="max-w-5xl mx-auto">
     <div class="reveal text-center mb-14 space-y-3">
-      <span class="text-xs font-black uppercase tracking-[0.2em]" style="color:#7b2fff;">— Cómo trabajamos</span>
-      <h2 class="text-3xl md:text-4xl font-black tracking-tight" style="color:#fff;">
+      <span class="text-[11px] font-black uppercase tracking-[0.2em]" style="color:#7b2fff;">— Cómo trabajamos</span>
+      <h2 class="text-3xl md:text-[38px] font-black tracking-tight" style="color:#fff;">
         UN PROCESO SIMPLE.<br/><span class="grad-text">RESULTADOS REALES.</span>
       </h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-      <!-- connector line -->
-      <div class="hidden md:block absolute top-9 left-[18%] right-[18%] h-px"
-           style="background:linear-gradient(90deg,rgba(123,47,255,0.4),rgba(224,3,99,0.4))"></div>
-      <div class="reveal reveal-delay-1 text-center space-y-4">
-        <div class="w-18 h-18 grad rounded-full flex items-center justify-center text-white font-black text-xl mx-auto glow-purple"
-             style="width:72px;height:72px;font-size:22px;">01</div>
-        <h3 class="text-lg font-black uppercase tracking-tight" style="color:#fff;">Analizamos</h3>
-        <p class="text-sm leading-relaxed px-4" style="color:#9999bb;">Auditoría profunda de tu ecosistema actual y detección de fugas de dinero.</p>
+      <div class="hidden md:block absolute top-9 left-[20%] right-[20%] h-px"
+           style="background:linear-gradient(90deg,rgba(224,3,99,0.4),rgba(123,47,255,0.4))"></div>
+      <div class="reveal d1 text-center space-y-4">
+        <div class="w-[72px] h-[72px] grad rounded-full flex items-center justify-center text-white font-black text-xl mx-auto glow-pink">01</div>
+        <h3 class="font-black uppercase tracking-tight" style="color:#fff;">Analizamos</h3>
+        <p class="text-sm leading-relaxed px-4" style="color:#8888aa;">Auditoría profunda de tu ecosistema actual y detección de fugas de dinero.</p>
       </div>
-      <div class="reveal reveal-delay-2 text-center space-y-4">
-        <div class="w-18 h-18 flex items-center justify-center text-white font-black text-xl mx-auto glow-pink rounded-full"
-             style="width:72px;height:72px;font-size:22px;background:linear-gradient(135deg,#ff2d78,#e00363);">02</div>
-        <h3 class="text-lg font-black uppercase tracking-tight" style="color:#fff;">Diseñamos</h3>
-        <p class="text-sm leading-relaxed px-4" style="color:#9999bb;">Construcción de la infraestructura técnica y visual de tu nueva máquina de ventas.</p>
+      <div class="reveal d2 text-center space-y-4">
+        <div class="w-[72px] h-[72px] rounded-full flex items-center justify-center text-white font-black text-xl mx-auto glow-purple"
+             style="background:linear-gradient(135deg,#7b2fff,#a855f7);">02</div>
+        <h3 class="font-black uppercase tracking-tight" style="color:#fff;">Diseñamos</h3>
+        <p class="text-sm leading-relaxed px-4" style="color:#8888aa;">Construcción de tu infraestructura digital y visual de alto rendimiento.</p>
       </div>
-      <div class="reveal reveal-delay-3 text-center space-y-4">
-        <div class="w-18 h-18 grad rounded-full flex items-center justify-center text-white font-black text-xl mx-auto glow-purple"
-             style="width:72px;height:72px;font-size:22px;">03</div>
-        <h3 class="text-lg font-black uppercase tracking-tight" style="color:#fff;">Optimizamos</h3>
-        <p class="text-sm leading-relaxed px-4" style="color:#9999bb;">Lanzamiento, medición de KPIs y escalabilidad agresiva basada en conversiones.</p>
+      <div class="reveal d3 text-center space-y-4">
+        <div class="w-[72px] h-[72px] grad rounded-full flex items-center justify-center text-white font-black text-xl mx-auto glow-pink">03</div>
+        <h3 class="font-black uppercase tracking-tight" style="color:#fff;">Optimizamos</h3>
+        <p class="text-sm leading-relaxed px-4" style="color:#8888aa;">Lanzamiento, medición de KPIs y escala agresiva basada en conversiones reales.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ RESULTADOS ══════════════ -->
-<section class="py-24 px-6" id="resultados">
+<!-- ════ RESULTADOS / STATS ════ -->
+<section class="py-24 px-5 border-t" id="resultados" style="border-color:rgba(255,255,255,0.05);">
   <div class="max-w-6xl mx-auto">
-    <h2 class="reveal text-3xl md:text-4xl font-black tracking-tight text-center mb-14" style="color:#fff;">
+    <h2 class="reveal text-3xl md:text-[38px] font-black tracking-tight text-center mb-14" style="color:#fff;">
       EL CAMBIO QUE <span class="grad-text text-glow-pink">FACTURA</span>
     </h2>
 
     <!-- Testimonials -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-      <div class="reveal reveal-delay-1 glass rounded-2xl p-8 hover-lift">
-        <div class="text-5xl font-black leading-none mb-4 select-none" style="color:rgba(123,47,255,0.3);">"</div>
-        <p class="text-sm leading-relaxed mb-6 italic" style="color:#ccc3d9;">"Pasamos de estar rogando por recomendaciones a tener una agenda llena automáticamente cada mes. El diseño es increíble, pero el sistema detrás es lo que realmente cambió nuestro juego."</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+      <div class="reveal d1 glass rounded-2xl p-8 lift">
+        <div class="text-5xl font-black leading-none mb-4 select-none" style="color:rgba(224,3,99,0.25);">"</div>
+        <p class="text-sm leading-relaxed mb-6 italic" style="color:#ccc0d6;">"Pasamos de estar rogando por recomendaciones a tener una agenda llena automáticamente cada mes. El sistema detrás es lo que realmente cambió nuestro juego."</p>
         <div class="flex items-center gap-3">
           <div class="w-12 h-12 grad rounded-full flex items-center justify-center text-white font-black text-sm">MF</div>
           <div>
             <p class="text-sm font-bold" style="color:#fff;">Marta Fernández</p>
-            <p class="text-xs" style="color:#9999bb;">Founder, Bloom Marketing</p>
+            <p class="text-xs" style="color:#8888aa;">Founder, Bloom Marketing</p>
           </div>
         </div>
       </div>
-      <div class="reveal reveal-delay-2 glass rounded-2xl p-8 hover-lift">
-        <div class="text-5xl font-black leading-none mb-4 select-none" style="color:rgba(224,3,99,0.3);">"</div>
-        <p class="text-sm leading-relaxed mb-6 italic" style="color:#ccc3d9;">"NEXVORE no solo hizo una web bonita. Creó un flujo de adquisición que duplicó nuestro ticket promedio en solo 4 meses. Su enfoque en conversión es brutal."</p>
+      <div class="reveal d2 glass rounded-2xl p-8 lift">
+        <div class="text-5xl font-black leading-none mb-4 select-none" style="color:rgba(123,47,255,0.3);">"</div>
+        <p class="text-sm leading-relaxed mb-6 italic" style="color:#ccc0d6;">"NEXVORE no solo hizo una web bonita. Creó un flujo de adquisición que duplicó nuestro ticket promedio en solo 4 meses. Su enfoque en conversión es brutal."</p>
         <div class="flex items-center gap-3">
           <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-sm"
-               style="background:linear-gradient(135deg,#ff2d78,#e00363);">CM</div>
+               style="background:linear-gradient(135deg,#7b2fff,#a855f7);">CM</div>
           <div>
             <p class="text-sm font-bold" style="color:#fff;">Carlos Méndez</p>
-            <p class="text-xs" style="color:#9999bb;">Director, FinTech Latam</p>
+            <p class="text-xs" style="color:#8888aa;">Director, FinTech Latam</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Stats bar -->
-    <div class="reveal rounded-2xl p-10 glow-purple"
-         style="background:linear-gradient(135deg,rgba(123,47,255,0.2),rgba(224,3,99,0.1)); border:1px solid rgba(123,47,255,0.3);">
+    <div class="reveal rounded-2xl p-10 glow-pink"
+         style="background:linear-gradient(135deg,rgba(224,3,99,0.18),rgba(123,47,255,0.1)); border:1px solid rgba(224,3,99,0.3);">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.08);">
-          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Ingresos generados</p>
-          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
+        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.07);">
+          <p class="text-[11px] font-black uppercase tracking-widest" style="color:rgba(232,192,216,0.5);">Ingresos generados</p>
+          <p class="stat-counter text-3xl font-black text-glow-pink" style="color:#e8c0d8;"
              data-target="12.7" data-prefix="$" data-suffix="M" data-decimal="1">$0M</p>
         </div>
-        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.08);">
-          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Leads capturados</p>
-          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
+        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.07);">
+          <p class="text-[11px] font-black uppercase tracking-widest" style="color:rgba(232,192,216,0.5);">Leads capturados</p>
+          <p class="stat-counter text-3xl font-black text-glow-pink" style="color:#e8c0d8;"
              data-target="3214" data-thousands>0</p>
         </div>
-        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.08);">
-          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Ventas directas</p>
-          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
+        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.07);">
+          <p class="text-[11px] font-black uppercase tracking-widest" style="color:rgba(232,192,216,0.5);">Ventas directas</p>
+          <p class="stat-counter text-3xl font-black text-glow-pink" style="color:#e8c0d8;"
              data-target="842">0</p>
         </div>
         <div class="space-y-1">
-          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Conversión media</p>
-          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
+          <p class="text-[11px] font-black uppercase tracking-widest" style="color:rgba(232,192,216,0.5);">Conversión media</p>
+          <p class="stat-counter text-3xl font-black text-glow-pink" style="color:#e8c0d8;"
              data-target="6.4" data-suffix="%" data-decimal="1">0%</p>
         </div>
       </div>
@@ -743,29 +986,33 @@
   </div>
 </section>
 
-<!-- ══════════════ FINAL CTA ══════════════ -->
-<section class="py-28 px-6 relative overflow-hidden" id="contacto">
+<!-- ════ FINAL CTA ════ -->
+<section class="py-28 px-5 relative overflow-hidden" id="contacto">
   <div class="absolute inset-0 -z-10"
-       style="background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(123,47,255,0.2),transparent)"></div>
+       style="background:radial-gradient(ellipse 90% 60% at 50% 100%,rgba(224,3,99,0.18),transparent)"></div>
   <div class="max-w-3xl mx-auto text-center space-y-8">
-    <h2 class="reveal font-black leading-[0.9] tracking-[-0.04em]"
-        style="font-size:clamp(40px,8vw,72px); color:#fff;">
-      DEVORA LA <span class="grad-text">INEFICIENCIA.</span><br/>DOMINA EL MERCADO.
+    <h2 class="reveal font-black leading-[0.88] tracking-[-0.045em]"
+        style="font-size:clamp(42px,9vw,76px); color:#fff;">
+      DEVORA LA<br/><span class="grad-text text-glow-pink">INEFICIENCIA.</span><br/>
+      <span style="font-size:0.75em; color:rgba(255,255,255,0.75);">DOMINA EL MERCADO.</span>
     </h2>
-    <p class="reveal reveal-delay-1 text-base max-w-xl mx-auto" style="color:#9999bb;">
-      No construimos sitios web. Construimos activos financieros. Elegí cómo querés empezar.
+    <p class="reveal d1 text-sm max-w-lg mx-auto" style="color:#8888aa;">
+      No construimos sitios web. Construimos activos financieros que trabajan para vos las 24 horas.
     </p>
-    <div class="reveal reveal-delay-2 flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <div class="reveal d2 flex flex-col sm:flex-row gap-4 justify-center items-center">
       <button onclick="openCalendly(event)"
-              class="btn-grad px-8 py-4 text-base cursor-pointer inline-flex items-center gap-2">
+              class="btn-primary px-8 py-4 text-sm inline-flex items-center gap-2">
         Agendar llamada gratuita
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
       </button>
       <a href="https://mpago.la/16tyR7V" target="_blank" rel="noopener"
-         class="btn-ml px-8 py-4 text-base inline-flex items-center gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50" fill="none">
+         class="btn-ml px-8 py-4 text-sm inline-flex items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
           <circle cx="25" cy="25" r="25" fill="rgba(255,255,255,0.2)"/>
-          <text x="25" y="32" font-size="16" text-anchor="middle" font-family="Arial" font-weight="900" fill="#fff">MP</text>
+          <text x="25" y="33" font-size="15" text-anchor="middle" font-family="Arial" font-weight="900" fill="#fff">MP</text>
         </svg>
         Conseguir el paquete — $19.990
       </a>
@@ -773,33 +1020,37 @@
   </div>
 </section>
 
-<!-- ══════════════ FOOTER ══════════════ -->
-<footer class="px-6 py-14 border-t" style="border-color:rgba(255,255,255,0.06); background:rgba(0,0,0,0.3);">
+<!-- ════ FOOTER ════ -->
+<footer class="px-5 py-14 border-t" style="border-color:rgba(255,255,255,0.05); background:rgba(0,0,0,0.25);">
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
     <div class="md:col-span-2 space-y-3">
-      <div>
-        <span class="text-xl font-black tracking-tight" style="color:#fff;">NEXVORE</span><br/>
-        <span class="text-xs font-bold uppercase tracking-[0.2em]" style="color:#9999bb;">Digital Studio</span>
+      <div class="flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg grad flex items-center justify-center text-white font-black text-base">N</span>
+        <div>
+          <span class="font-black tracking-tight" style="color:#fff; letter-spacing:-0.02em;">Nexvore</span>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] ml-2" style="color:#8888aa;">Digital Studio</span>
+        </div>
       </div>
-      <p class="text-xs leading-relaxed max-w-xs" style="color:#9999bb;">© 2025 Nexvore Digital Studio. All rights reserved. Elevando estándares digitales en cada píxel.</p>
+      <p class="text-[12px] leading-relaxed max-w-xs" style="color:#555577;">© 2025 Nexvore Digital Studio. Todos los derechos reservados. Elevando estándares digitales en Chile y Latinoamérica.</p>
     </div>
-    <div class="space-y-3">
-      <p class="text-xs font-black uppercase tracking-[0.15em] mb-4" style="color:#d1bcff;">Seguinos</p>
-      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;"
+    <div class="space-y-2.5">
+      <p class="text-[11px] font-black uppercase tracking-[0.18em] mb-4" style="color:#e8c0d8;">Seguinos</p>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#8888aa;"
          href="https://www.instagram.com/nexvorecl/" target="_blank" rel="noopener">Instagram</a>
-      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">LinkedIn</a>
-      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">Twitter / X</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#8888aa;" href="#">LinkedIn</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#8888aa;" href="#">Twitter / X</a>
     </div>
-    <div class="space-y-3">
-      <p class="text-xs font-black uppercase tracking-[0.15em] mb-4" style="color:#d1bcff;">Compañía</p>
-      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">Privacy Policy</a>
-      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">Terms of Service</a>
-      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="mailto:hello@nex-vore.com">hello@nex-vore.com</a>
+    <div class="space-y-2.5">
+      <p class="text-[11px] font-black uppercase tracking-[0.18em] mb-4" style="color:#e8c0d8;">Compañía</p>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#8888aa;" href="#">Privacy Policy</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#8888aa;" href="#">Terms of Service</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#8888aa;"
+         href="mailto:hello@nex-vore.com">hello@nex-vore.com</a>
     </div>
   </div>
 </footer>
 
-<!-- Calendly -->
+<!-- Calendly widget -->
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <script>
@@ -814,35 +1065,34 @@ function openCalendly(e) {
 }
 
 /* ── Mobile menu ── */
-const toggle = document.getElementById('menu-toggle');
-const mMenu  = document.getElementById('mobile-menu');
-const bars   = toggle.querySelectorAll('.hamburger-bar');
-
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const hbars = menuToggle.querySelectorAll('.hbar');
 function closeMenu() {
-  mMenu.classList.remove('open');
-  toggle.setAttribute('aria-expanded', 'false');
-  bars[0].style.transform = '';
-  bars[1].style.opacity   = '1';
-  bars[2].style.transform = '';
+  mobileMenu.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  hbars[0].style.transform = '';
+  hbars[1].style.opacity = '1';
+  hbars[2].style.transform = '';
 }
-toggle.addEventListener('click', () => {
-  if (mMenu.classList.contains('open')) {
+menuToggle.addEventListener('click', () => {
+  if (mobileMenu.classList.contains('open')) {
     closeMenu();
   } else {
-    mMenu.classList.add('open');
-    toggle.setAttribute('aria-expanded', 'true');
-    bars[0].style.transform = 'translateY(7px) rotate(45deg)';
-    bars[1].style.opacity   = '0';
-    bars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    mobileMenu.classList.add('open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    hbars[0].style.transform = 'translateY(7px) rotate(45deg)';
+    hbars[1].style.opacity = '0';
+    hbars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
   }
 });
-document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', closeMenu));
 
 /* ── Scroll reveal ── */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 /* ── Counter animation ── */
 function animateCounter(el) {
@@ -850,37 +1100,38 @@ function animateCounter(el) {
   const prefix   = el.dataset.prefix  || '';
   const suffix   = el.dataset.suffix  || '';
   const decimals = parseInt(el.dataset.decimal || '0');
-  const thousands = el.hasAttribute('data-thousands');
-  const duration = 1800;
-  const start = performance.now();
-  function fmt(val) {
-    let s = val.toFixed(decimals);
-    if (thousands) s = parseFloat(s).toLocaleString('es-CL');
+  const useThousands = el.hasAttribute('data-thousands');
+  const dur = 1900;
+  const t0 = performance.now();
+  function fmt(v) {
+    let s = v.toFixed(decimals);
+    if (useThousands) s = parseFloat(s).toLocaleString('es-CL');
     return prefix + s + suffix;
   }
-  (function step(now) {
-    const p = Math.min((now - start) / duration, 1);
-    const e = 1 - Math.pow(1 - p, 3);
-    el.textContent = fmt(target * e);
-    if (p < 1) requestAnimationFrame(step);
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(target * ease);
+    if (p < 1) requestAnimationFrame(tick);
     else el.textContent = fmt(target);
-  })(start);
+  })(t0);
 }
-const counterObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); } });
+const co = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); co.unobserve(e.target); } });
 }, { threshold: 0.5 });
-document.querySelectorAll('.stat-counter').forEach(el => counterObs.observe(el));
+document.querySelectorAll('.stat-counter').forEach(el => co.observe(el));
 
 /* ── Active nav ── */
-const sections = ['servicios','paquete','proceso','resultados','contacto'].map(id => document.getElementById(id)).filter(Boolean);
-const navLinks = document.querySelectorAll('.nav-link[data-section]');
-const navObs = new IntersectionObserver(entries => {
+const sections = ['servicios','portfolio','paquete','proceso','resultados','contacto']
+  .map(id => document.getElementById(id)).filter(Boolean);
+const links = document.querySelectorAll('.nav-link[data-section]');
+const no = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting)
-      navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === e.target.id));
+      links.forEach(l => l.classList.toggle('active', l.dataset.section === e.target.id));
   });
 }, { rootMargin: '-30% 0px -60% 0px' });
-sections.forEach(s => navObs.observe(s));
+sections.forEach(s => no.observe(s));
 </script>
 </body>
 </html>
