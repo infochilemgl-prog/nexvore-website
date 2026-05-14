@@ -530,6 +530,146 @@
   </div>
 </div>
 
+<!-- ════ FORMULARIO CALIFICACIÓN ════ -->
+<section class="py-20 px-5" id="agendar">
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal rounded-3xl p-8 md:p-12 relative overflow-hidden"
+         style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08);">
+
+      <!-- Glow bg -->
+      <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full pointer-events-none -z-0"
+           style="background:radial-gradient(circle,rgba(224,3,99,0.18),transparent 70%)"></div>
+      <div class="absolute -bottom-20 -left-20 w-56 h-56 rounded-full pointer-events-none -z-0"
+           style="background:radial-gradient(circle,rgba(123,47,255,0.15),transparent 70%)"></div>
+
+      <div class="relative z-10 space-y-7">
+        <!-- Header -->
+        <div class="space-y-3">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em]"
+                style="background:rgba(224,3,99,0.15); border:1px solid rgba(224,3,99,0.3); color:#ff7db5;">
+            <span class="pulse-dot"></span>
+            Crecimiento garantizado
+          </span>
+          <h2 class="text-[28px] md:text-[34px] font-black leading-tight tracking-tight" style="color:#fff;">
+            AGENDAR UNA LLAMADA 1:1
+          </h2>
+          <p class="text-sm leading-relaxed" style="color:#8888aa;">
+            Analicemos tu negocio en profundidad. Esta no es una llamada de ventas, es una sesión de diagnóstico estratégico para identificar tus cuellos de botella digitales.
+          </p>
+        </div>
+
+        <!-- Features -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                 style="background:rgba(224,3,99,0.12); border:1px solid rgba(224,3,99,0.2);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                   stroke="#e00363" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-black" style="color:#fff;">Duración: 30–45 min</p>
+              <p class="text-xs" style="color:#8888aa;">Vía Google Meet o Zoom</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                 style="background:rgba(123,47,255,0.12); border:1px solid rgba(123,47,255,0.2);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                   stroke="#7b2fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-black" style="color:#fff;">Estrategia Personalizada</p>
+              <p class="text-xs" style="color:#8888aa;">Salís con una hoja de ruta clara</p>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border-color:rgba(255,255,255,0.07);"/>
+
+        <!-- Form -->
+        <form id="qualify-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+          <div class="space-y-1.5">
+            <label class="block text-[10px] font-black uppercase tracking-[0.15em]" style="color:#8888aa;">
+              Nombre de la empresa
+            </label>
+            <input type="text" name="empresa" required placeholder="Nexvore Studio"
+                   class="w-full rounded-xl px-4 py-3 text-sm font-semibold transition-colors outline-none"
+                   style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); color:#e2dfef;"
+                   onfocus="this.style.borderColor='rgba(224,3,99,0.5)'"
+                   onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="block text-[10px] font-black uppercase tracking-[0.15em]" style="color:#8888aa;">
+              Nicho / Industria
+            </label>
+            <input type="text" name="nicho" required placeholder="E-commerce de moda"
+                   class="w-full rounded-xl px-4 py-3 text-sm font-semibold transition-colors outline-none"
+                   style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); color:#e2dfef;"
+                   onfocus="this.style.borderColor='rgba(224,3,99,0.5)'"
+                   onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="block text-[10px] font-black uppercase tracking-[0.15em]" style="color:#8888aa;">
+              Tráfico mensual estimado
+            </label>
+            <div class="relative">
+              <select name="trafico" required
+                      class="w-full rounded-xl px-4 py-3 text-sm font-semibold transition-colors outline-none appearance-none cursor-pointer"
+                      style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); color:#8888aa;"
+                      onfocus="this.style.borderColor='rgba(224,3,99,0.5)'"
+                      onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
+                      onchange="this.style.color='#e2dfef'">
+                <option value="" disabled selected style="background:#1a1a2e; color:#8888aa;">Seleccionar rango...</option>
+                <option value="0-500"     style="background:#1a1a2e; color:#e2dfef;">0 – 500 visitas/mes</option>
+                <option value="500-2k"    style="background:#1a1a2e; color:#e2dfef;">500 – 2.000 visitas/mes</option>
+                <option value="2k-10k"    style="background:#1a1a2e; color:#e2dfef;">2.000 – 10.000 visitas/mes</option>
+                <option value="10k-50k"   style="background:#1a1a2e; color:#e2dfef;">10.000 – 50.000 visitas/mes</option>
+                <option value="50k+"      style="background:#1a1a2e; color:#e2dfef;">+50.000 visitas/mes</option>
+              </select>
+              <svg class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
+                   xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                   fill="none" stroke="#8888aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="block text-[10px] font-black uppercase tracking-[0.15em]" style="color:#8888aa;">
+              Objetivo principal de negocio
+            </label>
+            <textarea name="objetivo" rows="3" required
+                      placeholder="ej: Quiero triplicar mi tasa de conversión en los próximos 3 meses..."
+                      class="w-full rounded-xl px-4 py-3 text-sm font-semibold transition-colors outline-none resize-none"
+                      style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); color:#e2dfef;"
+                      onfocus="this.style.borderColor='rgba(224,3,99,0.5)'"
+                      onblur="this.style.borderColor='rgba(255,255,255,0.08)'"></textarea>
+          </div>
+
+          <button type="submit" id="form-btn"
+                  class="btn-primary w-full py-4 text-[15px] tracking-wide flex items-center justify-center gap-2">
+            Solicitar sesión gratuita
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+
+          <p class="text-center text-[11px]" style="color:#555577;">
+            Sin compromisos. 100% confidencial. Respondemos en menos de 24h.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════ PROBLEMA ════ -->
 <section class="py-24 px-5">
   <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
@@ -632,26 +772,26 @@
       <p class="text-sm max-w-xl mx-auto" style="color:#8888aa;">Creatividad al nivel de las marcas globales más reconocidas. Aplicada a tu negocio.</p>
     </div>
 
-    <!-- Brand reference grid -->
+    <!-- Brand image grid — images go in assets/ folder -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
 
-      <!-- Card 1: AG1-style -->
+      <!-- Imagen 1: CGI Product (esferas azules) -->
       <div class="reveal d1 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
-           style="background:linear-gradient(160deg,#f5f0e8,#e8e0d0);">
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 font-black text-white text-xl"
-               style="background:#1e5c2e;">AG1</div>
-          <p class="font-black text-xl leading-tight mb-2" style="color:#1a2a1a; font-family:'Plus Jakarta Sans',sans-serif;">Free Duffel +<br/>Welcome Kit!</p>
-          <p class="text-xs font-bold uppercase tracking-widest mb-5" style="color:#555;">2026 New Year Offer</p>
-          <!-- product pills -->
-          <div class="flex gap-2">
-            <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#1e5c2e; color:#fff;">30 Day Supply</span>
-            <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:rgba(0,0,0,0.08); color:#1a2a1a;">5 Extras</span>
-          </div>
+           style="background:#001830;">
+        <img src="assets/portfolio-cgi.jpg" alt="CGI Product Visual"
+             class="absolute inset-0 w-full h-full object-cover"/>
+        <div class="overlay"></div>
+        <div class="label">
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.5);">CGI · 3D Render</p>
+          <p class="text-sm font-black" style="color:#fff;">Ultra-Premium Product Visual</p>
         </div>
-        <!-- Limited supply badge -->
-        <div class="absolute top-4 left-4 w-14 h-14 rounded-full flex items-center justify-center text-center text-[10px] font-black leading-tight"
-             style="background:#4caf50; color:#fff; transform:rotate(-15deg);">LIMITED<br/>SUPPLY</div>
+      </div>
+
+      <!-- Imagen 2: AG1 Welcome Kit -->
+      <div class="reveal d2 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:#f0ece4;">
+        <img src="assets/portfolio-ag1.jpg" alt="AG1 Welcome Kit Campaign"
+             class="absolute inset-0 w-full h-full object-cover"/>
         <div class="overlay"></div>
         <div class="label">
           <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Campaña Producto</p>
@@ -659,149 +799,43 @@
         </div>
       </div>
 
-      <!-- Card 2: Celsius-style -->
-      <div class="reveal d2 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
-           style="background:linear-gradient(160deg,#f8f8f8,#ffe8ee,#fff9e6);">
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
-          <!-- Can mockup SVG -->
-          <svg viewBox="0 0 160 280" class="w-28 h-auto mb-4 drop-shadow-xl" aria-label="Product can">
-            <defs>
-              <linearGradient id="canGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#d8d8d8"/>
-                <stop offset="30%" stop-color="#f5f5f5"/>
-                <stop offset="70%" stop-color="#e8e8e8"/>
-                <stop offset="100%" stop-color="#c5c5c5"/>
-              </linearGradient>
-              <linearGradient id="canLabel" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ff9ec4"/>
-                <stop offset="100%" stop-color="#ffcf70"/>
-              </linearGradient>
-            </defs>
-            <rect x="20" y="30" width="120" height="230" rx="18" fill="url(#canGrad)"/>
-            <rect x="24" y="80" width="112" height="140" rx="4" fill="url(#canLabel)" opacity=".9"/>
-            <text x="80" y="108" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="900" fill="#fff" text-anchor="middle" letter-spacing="-0.5">CELSIUS</text>
-            <text x="80" y="120" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">LIVE FIT</text>
-            <text x="80" y="150" font-family="sans-serif" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">FIZZ-FREE</text>
-            <text x="80" y="163" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,0.85)" text-anchor="middle">ESSENTIAL ENERGY</text>
-            <rect x="32" y="170" width="96" height="14" rx="3" fill="rgba(255,255,255,0.25)"/>
-            <text x="80" y="180" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">0 SUGAR</text>
-            <!-- tab -->
-            <rect x="65" y="15" width="30" height="20" rx="4" fill="#c5c5c5"/>
-            <rect x="72" y="10" width="16" height="12" rx="3" fill="#d8d8d8"/>
-          </svg>
-          <p class="text-xs font-bold uppercase tracking-widest text-center" style="color:#888;">Pink Lemonade · Fizz-Free</p>
-        </div>
+      <!-- Imagen 3: Celsius Pink Lemonade -->
+      <div class="reveal d3 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:#f8f0f0;">
+        <img src="assets/portfolio-celsius.jpg" alt="Celsius Pink Lemonade"
+             class="absolute inset-0 w-full h-full object-cover"/>
         <div class="overlay"></div>
         <div class="label">
-          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Producto Digital</p>
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Product Photography</p>
           <p class="text-sm font-black" style="color:#fff;">Lifestyle Brand Campaign</p>
         </div>
       </div>
 
-      <!-- Card 3: Liquid I.V.-style -->
-      <div class="reveal d3 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
-           style="background:linear-gradient(160deg,#1a2a3a,#0d1820,#2a1a0a);">
-        <!-- Moody background elements -->
-        <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 30%, rgba(0,120,200,0.15), transparent 60%)"></div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
-          <!-- Packet mockup SVG -->
-          <svg viewBox="0 0 100 220" class="w-20 h-auto mb-4 drop-shadow-2xl" aria-label="Stick packet">
-            <defs>
-              <linearGradient id="pkGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#0070b0"/>
-                <stop offset="100%" stop-color="#004a90"/>
-              </linearGradient>
-            </defs>
-            <rect x="15" y="5" width="70" height="210" rx="8" fill="url(#pkGrad)"/>
-            <rect x="18" y="50" width="64" height="90" rx="4" fill="rgba(220,70,80,0.9)"/>
-            <text x="50" y="75" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="900" fill="#fff" text-anchor="middle">LIQUID I.V.</text>
-            <text x="50" y="89" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,0.7)" text-anchor="middle">HYDRATION MULTIPLIER</text>
-            <text x="50" y="115" font-family="sans-serif" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">GUAVA</text>
-            <text x="50" y="128" font-family="sans-serif" font-size="5.5" fill="rgba(255,255,255,0.7)" text-anchor="middle">ELECTROLYTE DRINK MIX</text>
-          </svg>
-          <!-- Fruit dots -->
-          <div class="flex gap-2">
-            <span class="text-lg">🍈</span>
-            <span class="text-lg">🍃</span>
-          </div>
-        </div>
-        <div class="overlay" style="background:linear-gradient(to top, rgba(10,20,30,0.9) 0%, transparent 60%)"></div>
+      <!-- Imagen 4: Liquid I.V. Guava -->
+      <div class="reveal d4 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:#1a2530;">
+        <img src="assets/portfolio-liquidiv.jpg" alt="Liquid I.V. Guava Pack Shot"
+             class="absolute inset-0 w-full h-full object-cover"/>
+        <div class="overlay" style="background:linear-gradient(to top,rgba(10,20,30,0.9) 0%,transparent 55%)"></div>
         <div class="label">
-          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.5);">Pack Shot</p>
-          <p class="text-sm font-black" style="color:#fff;">Moody Product Photography</p>
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.5);">Pack Shot · Moody</p>
+          <p class="text-sm font-black" style="color:#fff;">Product Photography</p>
         </div>
       </div>
 
-      <!-- Card 4: Grüns-style split -->
-      <div class="reveal d4 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer">
-        <div class="absolute inset-0 grid grid-cols-2">
-          <div style="background:#2a2a2a;"></div>
-          <div style="background:#e8f0e0;"></div>
-        </div>
-        <div class="absolute inset-0 flex flex-col items-center justify-start p-5 text-center">
-          <p class="text-base font-black leading-snug mb-4 drop-shadow-md" style="color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.5);">Not all routines<br/>are created equal.</p>
-          <div class="grid grid-cols-2 gap-3 w-full mt-2">
-            <div class="glass rounded-xl p-3">
-              <p class="text-[10px] font-bold" style="color:#aaa;">The Old Way</p>
-              <p class="text-xs font-black mt-1" style="color:#fff;">Messy<br/>Powders</p>
-            </div>
-            <div class="rounded-xl p-3" style="background:rgba(30,80,30,0.9);">
-              <p class="text-[10px] font-bold" style="color:#90c890;">The New Way</p>
-              <p class="text-xs font-black mt-1" style="color:#fff;">1 Tasty<br/>Gummy</p>
-            </div>
-          </div>
-          <div class="mt-auto w-full rounded-full py-2 font-black text-[12px]"
-               style="background:#fff; color:#1a3a1a;">SHOP NOW</div>
-        </div>
+      <!-- Imagen 5: Grüns Before/After -->
+      <div class="reveal d5 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
+           style="background:#e8f0e0;">
+        <img src="assets/portfolio-gruns.jpg" alt="Grüns Before After Ad"
+             class="absolute inset-0 w-full h-full object-cover"/>
         <div class="overlay"></div>
         <div class="label">
-          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Comparativa</p>
-          <p class="text-sm font-black" style="color:#fff;">Before / After Ad Creative</p>
+          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.6);">Before / After</p>
+          <p class="text-sm font-black" style="color:#fff;">Comparative Ad Creative</p>
         </div>
       </div>
 
-      <!-- Card 5: CGI Product -->
-      <div class="reveal d5 relative rounded-2xl overflow-hidden lift port-card aspect-[4/5] cursor-pointer"
-           style="background:linear-gradient(160deg,#001840,#002060,#001020);">
-        <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 40%, rgba(0,160,255,0.3), transparent 65%)"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-6">
-          <!-- CGI sphere cluster -->
-          <svg viewBox="0 0 200 200" class="w-full h-auto" aria-label="CGI product spheres">
-            <defs>
-              <radialGradient id="sph1" cx="35%" cy="30%">
-                <stop offset="0%" stop-color="#80e8ff"/>
-                <stop offset="40%" stop-color="#00aadd"/>
-                <stop offset="100%" stop-color="#004499"/>
-              </radialGradient>
-              <radialGradient id="sph2" cx="35%" cy="30%">
-                <stop offset="0%" stop-color="#aaf0ff"/>
-                <stop offset="40%" stop-color="#22ccee"/>
-                <stop offset="100%" stop-color="#0055aa"/>
-              </radialGradient>
-              <filter id="sblur"><feGaussianBlur stdDeviation="2"/></filter>
-            </defs>
-            <!-- Shadow -->
-            <ellipse cx="100" cy="185" rx="60" ry="8" fill="rgba(0,0,80,0.5)" filter="url(#sblur)"/>
-            <!-- Cluster of spheres -->
-            <circle cx="100" cy="90" r="42" fill="url(#sph1)"/>
-            <circle cx="68"  cy="108" r="28" fill="url(#sph2)" opacity=".9"/>
-            <circle cx="132" cy="108" r="28" fill="url(#sph1)" opacity=".85"/>
-            <circle cx="84"  cy="72"  r="22" fill="url(#sph2)" opacity=".95"/>
-            <circle cx="116" cy="72"  r="22" fill="url(#sph1)" opacity=".9"/>
-            <!-- Highlight drops -->
-            <circle cx="88"  cy="75"  r="5" fill="rgba(255,255,255,0.8)"/>
-            <circle cx="62"  cy="100" r="4" fill="rgba(255,255,255,0.7)"/>
-            <circle cx="122" cy="100" r="3.5" fill="rgba(255,255,255,0.6)"/>
-          </svg>
-        </div>
-        <div class="overlay" style="background:linear-gradient(to top,rgba(0,16,40,0.9) 0%, transparent 60%)"></div>
-        <div class="label">
-          <p class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.5);">CGI · 3D Render</p>
-          <p class="text-sm font-black" style="color:#fff;">Ultra-Premium Product Visual</p>
-        </div>
-      </div>
-
-      <!-- Card 6: General brand -->
+      <!-- Card 6: CTA tu marca -->
       <div class="reveal d6 glass rounded-2xl p-8 lift flex flex-col justify-between aspect-[4/5] cursor-default">
         <div>
           <span class="text-[11px] font-black uppercase tracking-[0.18em] block mb-5" style="color:#e00363;">Siguiente proyecto</span>
@@ -1054,6 +1088,15 @@
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <script>
+/* ── Qualify form → Calendly ── */
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('form-btn');
+  btn.textContent = 'Abriendo agenda...';
+  btn.disabled = true;
+  setTimeout(() => openCalendly(null), 300);
+}
+
 /* ── Calendly ── */
 function openCalendly(e) {
   if (e) e.preventDefault();
