@@ -1,159 +1,143 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>NEXVORE Digital Studio | Ecosistemas Digitales que Convierten</title>
-<meta name="description" content="Estrategia, diseño y automatización que trabajan como un sistema. Tu negocio crece incluso cuando no estás."/>
-<meta property="og:title" content="NEXVORE Digital Studio | Ecosistemas Digitales que Convierten"/>
-<meta property="og:description" content="Ecosistemas digitales que convierten. Dejás de vender, empezás a atraer."/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NEXVORE | Tu Sitio Web. Tu Mejor Vendedor.</title>
+<meta name="description" content="Ecosistemas digitales que convierten. Estrategia, diseño y automatización que trabajan como un sistema. Tu negocio crece incluso cuando no estás."/>
+<meta property="og:title" content="NEXVORE | Tu Sitio Web. Tu Mejor Vendedor."/>
+<meta property="og:description" content="Dejás de vender. Empezás a atraer. Ecosistemas digitales que convierten."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://nex-vore.com"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="theme-color" content="#400090"/>
+<meta name="theme-color" content="#7b2fff"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preconnect" href="https://assets.calendly.com"/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23400090'/><text y='.9em' font-size='70' x='15' fill='white' font-family='Arial' font-weight='bold'>N</text></svg>"/>
-<!-- Calendly widget -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237b2fff'/><text y='.9em' font-size='70' x='15' fill='white' font-family='Arial' font-weight='bold'>N</text></svg>"/>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Geist:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script>
   tailwind.config = {
-    darkMode: "class",
     theme: {
       extend: {
         colors: {
-          "background": "#fcf8f8",
-          "primary-fixed-dim": "#d2bbff",
-          "on-tertiary": "#ffffff",
-          "on-surface": "#1c1b1b",
-          "on-tertiary-fixed-variant": "#0039b3",
-          "tertiary-fixed-dim": "#b6c4ff",
-          "on-primary-fixed": "#25005a",
-          "on-secondary-container": "#fffbff",
-          "on-primary-fixed-variant": "#5a00c6",
-          "surface-container": "#f0edec",
-          "surface-container-high": "#ebe7e7",
-          "surface-variant": "#e5e2e1",
-          "on-error-container": "#93000a",
-          "inverse-surface": "#313030",
-          "on-error": "#ffffff",
-          "outline": "#7b7486",
-          "primary": "#400090",
-          "on-background": "#1c1b1b",
-          "on-tertiary-fixed": "#001551",
-          "tertiary-container": "#003ab5",
-          "inverse-on-surface": "#f3f0ef",
-          "on-primary": "#ffffff",
-          "on-surface-variant": "#4a4455",
-          "error-container": "#ffdad6",
-          "secondary-fixed": "#ffdadb",
-          "secondary-container": "#e7004e",
-          "outline-variant": "#ccc3d7",
-          "on-tertiary-container": "#a0b3ff",
-          "surface-container-highest": "#e5e2e1",
-          "secondary": "#b9003c",
-          "tertiary": "#002782",
-          "primary-fixed": "#eaddff",
-          "surface-container-low": "#f6f3f2",
-          "on-secondary-fixed-variant": "#91002e",
-          "surface-bright": "#fcf8f8",
-          "surface-container-lowest": "#ffffff",
-          "surface-tint": "#7332df",
-          "on-secondary-fixed": "#40000f",
-          "secondary-fixed-dim": "#ffb2b9",
-          "surface-dim": "#dcd9d9",
-          "surface": "#fcf8f8",
-          "primary-container": "#5b00c8",
-          "on-secondary": "#ffffff",
-          "tertiary-fixed": "#dce1ff",
-          "inverse-primary": "#d2bbff",
-          "error": "#ba1a1a",
-          "on-primary-container": "#c5a8ff"
+          "bg":            "#12121d",
+          "bg-deep":       "#0d0d17",
+          "bg-card":       "#1b1b25",
+          "bg-card-high":  "#1f1f29",
+          "border-glass":  "rgba(255,255,255,0.07)",
+          "purple":        "#7b2fff",
+          "pink":          "#e00363",
+          "on-dark":       "#e4e1f0",
+          "muted":         "#9999bb",
+          "outline-dark":  "#4a4456",
         },
-        borderRadius: {
-          "DEFAULT": "0.25rem",
-          "lg": "0.5rem",
-          "xl": "0.75rem",
-          "full": "9999px"
-        },
-        spacing: {
-          "margin-desktop": "40px",
-          "section-padding-sm": "64px",
-          "container-max": "1280px",
-          "unit": "8px",
-          "margin-mobile": "20px",
-          "section-padding-lg": "120px",
-          "gutter": "24px"
-        },
-        fontFamily: {
-          "headline-lg-mobile": ["Sora"],
-          "button": ["Geist"],
-          "label-md": ["Geist"],
-          "display-lg": ["Sora"],
-          "display-lg-mobile": ["Sora"],
-          "headline-lg": ["Sora"],
-          "body-lg": ["Geist"],
-          "body-md": ["Geist"],
-          "headline-md": ["Sora"]
-        },
-        fontSize: {
-          "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-          "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
-          "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-          "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-          "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-          "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-          "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-          "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
-        }
+        fontFamily: { sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui"] }
       }
     }
   }
 </script>
 <style>
-  /* ── Base ── */
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-  .pink-glow { text-shadow: 0 0 20px rgba(232, 0, 78, 0.2); }
-  .shadow-soft-purple { box-shadow: 0 10px 40px -10px rgba(91, 0, 200, 0.08); }
-  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(91, 0, 200, 0.12); }
+  /* ── Reset & base ── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: #12121d; }
+  body {
+    background-color: #12121d;
+    color: #e4e1f0;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── Grid texture ── */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── Brand gradient ── */
+  .grad { background: linear-gradient(135deg, #ff2d78 0%, #7b2fff 100%); }
+  .grad-text {
+    background: linear-gradient(135deg, #ff2d78 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grad-border {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  /* ── Glass card ── */
+  .glass {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px);
+  }
+  .glass-strong {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(20px);
+  }
+
+  /* ── Neon glow ── */
+  .glow-purple { box-shadow: 0 0 30px rgba(123,47,255,0.45), 0 0 60px rgba(123,47,255,0.15); }
+  .glow-pink   { box-shadow: 0 0 30px rgba(224,3,99,0.45),  0 0 60px rgba(224,3,99,0.15); }
+  .text-glow-purple { text-shadow: 0 0 20px rgba(177,100,255,0.6); }
+  .text-glow-pink   { text-shadow: 0 0 20px rgba(255,45,120,0.5); }
+
+  /* ── Buttons ── */
+  .btn-grad {
+    background: linear-gradient(135deg, #ff2d78 0%, #7b2fff 100%);
+    color: #fff;
+    font-weight: 800;
+    border-radius: 9999px;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  }
+  .btn-grad:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 32px rgba(123,47,255,0.5); }
+  .btn-grad:active { transform: scale(0.97); }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: #e4e1f0;
+    font-weight: 700;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.10); transform: translateY(-2px); }
+
+  .btn-ml {
+    background: linear-gradient(135deg, #00b1ea 0%, #009ee3 100%);
+    color: #fff;
+    font-weight: 800;
+    border-radius: 9999px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-ml:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 32px rgba(0,158,227,0.45); }
 
   /* ── Marquee ── */
-  .marquee { white-space: nowrap; animation: marquee-scroll 30s linear infinite; }
-  @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { white-space: nowrap; animation: marquee 28s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* ── Mobile menu ── */
-  #mobile-menu {
-    display: none;
-    flex-direction: column;
-    opacity: 0;
-    transform: translateY(-8px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+  /* ── Pulse dot ── */
+  .pulse-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ff2d78;
+    animation: pulse-anim 1.8s ease-in-out infinite;
   }
-  #mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
-
-  /* ── Nav active link ── */
-  .nav-link { position: relative; }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 2px;
-    background: #b9003c;
-    transition: width 0.3s ease;
-    border-radius: 2px;
+  @keyframes pulse-anim {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.3; transform: scale(0.7); }
   }
-  .nav-link.active { color: #b9003c !important; }
-  .nav-link.active::after { width: 100%; }
 
   /* ── Scroll reveal ── */
   .reveal {
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 0; transform: translateY(28px);
     transition: opacity 0.65s ease, transform 0.65s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -164,306 +148,363 @@
   .reveal-delay-5 { transition-delay: 0.40s; }
   .reveal-delay-6 { transition-delay: 0.48s; }
 
-  /* ── Font family — explicit, no dependency on Tailwind CDN ── */
-  body { font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; }
-  h1, h2, h3,
-  .font-display-lg, .font-display-lg-mobile,
-  .font-headline-lg, .font-headline-lg-mobile,
-  .font-headline-md { font-family: 'Sora', ui-sans-serif, sans-serif; }
+  /* ── Nav link active ── */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(135deg, #ff2d78, #7b2fff);
+    transition: width 0.3s; border-radius: 2px;
+  }
+  .nav-link.active { color: #d1bcff !important; }
+  .nav-link.active::after { width: 100%; }
 
-  /* ── Calendly overrides ── */
+  /* ── Checklist items ── */
+  .check-item::before {
+    content: '✓';
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff2d78, #7b2fff);
+    color: #fff; font-size: 12px; font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* ── Mobile menu ── */
+  #mobile-menu {
+    display: none; flex-direction: column;
+    opacity: 0; transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  #mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
+
+  /* ── Calendly ── */
   .calendly-overlay { z-index: 9999 !important; }
+
+  /* ── Hover lift ── */
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-4px); }
 </style>
 </head>
-<body class="bg-background text-on-surface selection:bg-secondary-container selection:text-on-secondary-container font-body-md overflow-x-hidden">
+<body class="grid-bg">
 
-<!-- ══════════════════════════════════
-     NAV
-════════════════════════════════════ -->
-<nav id="main-nav" class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md shadow-sm h-20 flex items-center">
-  <div class="max-w-container-max mx-auto px-margin-desktop w-full flex justify-between items-center">
+<!-- ══════════════ AMBIENT GLOWS ══════════════ -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+  <div class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
+       style="background:radial-gradient(circle, rgba(123,47,255,0.18) 0%, transparent 70%)"></div>
+  <div class="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full"
+       style="background:radial-gradient(circle, rgba(224,3,99,0.12) 0%, transparent 70%)"></div>
+  <div class="absolute bottom-0 left-1/3 w-[500px] h-[500px] rounded-full"
+       style="background:radial-gradient(circle, rgba(123,47,255,0.12) 0%, transparent 70%)"></div>
+</div>
 
-    <a href="#" class="flex flex-col">
-      <span class="font-headline-md text-headline-md font-extrabold tracking-tighter text-primary leading-none">NEXVORE</span>
-      <span class="font-label-md text-[10px] tracking-widest text-on-surface-variant uppercase">Digital Studio</span>
+<!-- ══════════════ NAV ══════════════ -->
+<nav class="fixed top-0 w-full z-50 h-[68px] flex items-center"
+     style="background:rgba(13,13,23,0.85); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-6xl mx-auto px-6 w-full flex justify-between items-center">
+
+    <a href="#" class="flex flex-col leading-none">
+      <span style="font-size:20px;font-weight:900;letter-spacing:-0.03em;color:#fff;">NEXVORE</span>
+      <span style="font-size:9px;font-weight:700;letter-spacing:0.2em;color:#9999bb;text-transform:uppercase;">Digital Studio</span>
     </a>
 
-    <div class="hidden md:flex items-center gap-gutter">
-      <a class="nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#servicios" data-section="servicios">Servicios</a>
-      <a class="nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#proceso"   data-section="proceso">Proceso</a>
-      <a class="nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#resultados" data-section="resultados">Resultados</a>
-      <a class="nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#contacto"  data-section="contacto">Contacto</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#servicios" data-section="servicios" style="color:#9999bb;">Servicios</a>
+      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#paquete"   data-section="paquete"   style="color:#9999bb;">Paquete</a>
+      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#proceso"   data-section="proceso"   style="color:#9999bb;">Proceso</a>
+      <a class="nav-link text-sm font-semibold text-muted hover:text-on-dark transition-colors" href="#resultados" data-section="resultados" style="color:#9999bb;">Resultados</a>
     </div>
 
     <button onclick="openCalendly(event)"
-            class="hidden md:inline-block bg-secondary text-on-secondary px-6 py-3 rounded-xl font-button transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-secondary/20 cursor-pointer">
+            class="hidden md:inline-flex btn-grad items-center gap-2 px-5 py-2.5 text-sm cursor-pointer">
+      <span class="pulse-dot"></span>
       Agendar llamada
     </button>
 
+    <!-- Hamburger -->
     <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
-            class="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 p-2 rounded-lg hover:bg-surface-container transition-colors">
-      <span class="hamburger-bar block h-0.5 w-full bg-on-surface rounded transition-all duration-300 origin-center"></span>
-      <span class="hamburger-bar block h-0.5 w-full bg-on-surface rounded transition-all duration-300"></span>
-      <span class="hamburger-bar block h-0.5 w-full bg-on-surface rounded transition-all duration-300 origin-center"></span>
+            class="md:hidden flex flex-col gap-[5px] w-10 h-10 items-center justify-center rounded-lg"
+            style="background:rgba(255,255,255,0.05);">
+      <span class="hamburger-bar block h-0.5 w-5 bg-on-dark rounded transition-all duration-300 origin-center" style="background:#e4e1f0;"></span>
+      <span class="hamburger-bar block h-0.5 w-5 bg-on-dark rounded transition-all duration-300" style="background:#e4e1f0;"></span>
+      <span class="hamburger-bar block h-0.5 w-5 bg-on-dark rounded transition-all duration-300 origin-center" style="background:#e4e1f0;"></span>
     </button>
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu"
-       class="absolute top-20 left-0 w-full bg-background/95 backdrop-blur-md border-b border-outline-variant shadow-lg px-[20px] py-6">
-    <a href="#servicios"  class="mobile-nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors py-3 border-b border-outline-variant/40 block">Servicios</a>
-    <a href="#proceso"    class="mobile-nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors py-3 border-b border-outline-variant/40 block">Proceso</a>
-    <a href="#resultados" class="mobile-nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors py-3 border-b border-outline-variant/40 block">Resultados</a>
-    <a href="#contacto"   class="mobile-nav-link font-label-md text-on-surface-variant hover:text-secondary transition-colors py-3 border-b border-outline-variant/40 block">Contacto</a>
+  <div id="mobile-menu" class="absolute top-[68px] left-0 w-full px-6 py-5 gap-1"
+       style="background:rgba(13,13,23,0.97); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <a href="#servicios"  class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Servicios</a>
+    <a href="#paquete"    class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Paquete</a>
+    <a href="#proceso"    class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Proceso</a>
+    <a href="#resultados" class="mobile-nav-link block py-3 text-sm font-semibold border-b" style="color:#9999bb; border-color:rgba(255,255,255,0.06);">Resultados</a>
     <button onclick="openCalendly(event)"
-            class="mt-4 w-full bg-secondary text-on-secondary px-6 py-3 rounded-xl font-button text-center transition-all hover:scale-105 shadow-lg shadow-secondary/20 cursor-pointer">
-      Agendar llamada
+            class="btn-grad w-full mt-4 py-3 text-sm cursor-pointer flex items-center justify-center gap-2">
+      <span class="pulse-dot"></span>
+      Agendar llamada gratuita
     </button>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════
-     HERO
-════════════════════════════════════ -->
-<header class="pt-40 pb-section-padding-lg">
-  <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-    <div class="space-y-8">
-      <span class="reveal inline-block px-4 py-1.5 bg-primary-fixed text-on-primary-fixed font-label-md rounded-full">
+<!-- ══════════════ HERO ══════════════ -->
+<header class="pt-[112px] pb-20 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="space-y-7">
+      <span class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em]"
+            style="background:rgba(123,47,255,0.15); border:1px solid rgba(123,47,255,0.3); color:#d1bcff;">
+        <span class="pulse-dot"></span>
         Ecosistemas digitales que convierten
       </span>
-      <h1 class="reveal reveal-delay-1 font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg leading-tight">
-        DEJÁS DE VENDER.<br/>
-        EMPEZÁS A <span class="text-secondary pink-glow">ATRAER.</span>
+
+      <h1 class="reveal reveal-delay-1 font-black leading-[0.92] tracking-[-0.04em]"
+          style="font-size:clamp(42px,7vw,72px); color:#fff;">
+        TU SITIO WEB.<br/>
+        <span class="grad-text">TU MEJOR<br/>VENDEDOR.</span>
       </h1>
-      <p class="reveal reveal-delay-2 font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+
+      <p class="reveal reveal-delay-2 text-base leading-relaxed max-w-lg" style="color:#9999bb;">
         Estrategia, diseño y automatización que trabajan como un sistema. Tu negocio crece incluso cuando no estás.
       </p>
-      <div class="reveal reveal-delay-3 flex flex-wrap gap-4 pt-4">
+
+      <div class="reveal reveal-delay-3 flex flex-wrap gap-3 pt-2">
         <button onclick="openCalendly(event)"
-                class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-button text-lg transition-all hover:scale-105 shadow-xl shadow-secondary/25 cursor-pointer">
-          Quiero mi ecosistema
+                class="btn-grad px-7 py-3.5 text-sm cursor-pointer inline-flex items-center gap-2">
+          Agendar llamada gratuita
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
-        <a href="#resultados"
-           class="border-2 border-primary text-primary px-8 py-4 rounded-xl font-button text-lg transition-all hover:bg-primary/5">
-          Ver resultados →
+        <a href="#paquete" class="btn-ghost px-7 py-3.5 text-sm inline-flex items-center gap-2">
+          Ver el paquete →
         </a>
       </div>
-      <div class="reveal reveal-delay-4 grid grid-cols-3 gap-8 pt-12 border-t border-outline-variant">
+
+      <!-- Hero stats -->
+      <div class="reveal reveal-delay-4 grid grid-cols-3 gap-4 pt-4 border-t" style="border-color:rgba(255,255,255,0.08);">
         <div>
-          <div class="text-primary font-headline-md text-headline-md font-bold stat-counter" data-target="340" data-prefix="+" data-suffix="%">+0%</div>
-          <div class="font-label-md text-on-surface-variant">Tráfico orgánico</div>
+          <div class="stat-counter text-2xl font-black" style="color:#d1bcff;" data-target="340" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="text-xs font-semibold mt-0.5 uppercase tracking-wider" style="color:#9999bb;">Tráfico orgánico</div>
         </div>
         <div>
-          <div class="text-primary font-headline-md text-headline-md font-bold stat-counter" data-target="215" data-prefix="+" data-suffix="%">+0%</div>
-          <div class="font-label-md text-on-surface-variant">Leads generados</div>
+          <div class="stat-counter text-2xl font-black" style="color:#d1bcff;" data-target="215" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="text-xs font-semibold mt-0.5 uppercase tracking-wider" style="color:#9999bb;">Leads generados</div>
         </div>
         <div>
-          <div class="text-primary font-headline-md text-headline-md font-bold stat-counter" data-target="178" data-prefix="+" data-suffix="%">+0%</div>
-          <div class="font-label-md text-on-surface-variant">Ventas cerradas</div>
+          <div class="stat-counter text-2xl font-black" style="color:#d1bcff;" data-target="178" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="text-xs font-semibold mt-0.5 uppercase tracking-wider" style="color:#9999bb;">Ventas cerradas</div>
         </div>
       </div>
     </div>
 
-    <!-- Hero dashboard SVG — auto-generated, always available -->
-    <div class="reveal reveal-delay-2 relative group">
-      <div class="absolute -inset-4 bg-primary-container/10 rounded-3xl blur-2xl transition-all group-hover:bg-primary-container/15"></div>
-      <div class="relative bg-white rounded-3xl border border-outline-variant shadow-soft-purple p-6 overflow-hidden">
-        <svg viewBox="0 0 580 380" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto rounded-xl" aria-label="Dashboard de crecimiento NEXVORE">
+    <!-- Hero visual -->
+    <div class="reveal reveal-delay-2 relative">
+      <div class="absolute -inset-4 rounded-3xl blur-3xl opacity-30"
+           style="background:linear-gradient(135deg,rgba(224,3,99,0.4),rgba(123,47,255,0.4))"></div>
+      <div class="relative glass rounded-2xl p-5 overflow-hidden">
+        <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto rounded-xl" aria-label="Dashboard NEXVORE">
           <defs>
-            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#b9003c" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#b9003c" stop-opacity="0"/>
+            <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ff2d78"/>
+              <stop offset="100%" stop-color="#7b2fff"/>
             </linearGradient>
-            <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#400090"/>
-              <stop offset="100%" stop-color="#7332df"/>
+            <linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ff2d78" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#ff2d78" stop-opacity="0"/>
             </linearGradient>
-            <clipPath id="chartClip">
-              <rect x="16" y="148" width="352" height="200"/>
-            </clipPath>
+            <linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7b2fff" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#7b2fff" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="glow-f"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
 
-          <!-- Page background -->
-          <rect width="580" height="380" fill="#fcf8f8" rx="12"/>
+          <!-- Background -->
+          <rect width="520" height="360" fill="#0d0d17" rx="12"/>
+          <!-- Grid lines -->
+          <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+            <line x1="0" y1="40" x2="520" y2="40"/>
+            <line x1="0" y1="80" x2="520" y2="80"/>
+            <line x1="0" y1="120" x2="520" y2="120"/>
+            <line x1="0" y1="200" x2="520" y2="200"/>
+            <line x1="0" y1="280" x2="520" y2="280"/>
+            <line x1="130" y1="0" x2="130" y2="360"/>
+            <line x1="260" y1="0" x2="260" y2="360"/>
+            <line x1="390" y1="0" x2="390" y2="360"/>
+          </g>
 
           <!-- Top bar -->
-          <rect width="580" height="44" fill="#ffffff" rx="0"/>
-          <rect x="0" y="44" width="580" height="1" fill="#e5e2e1"/>
-          <text x="16" y="27" font-family="Sora,Arial,sans-serif" font-size="13" font-weight="700" fill="#400090">Analytics Overview</text>
-          <rect x="470" y="10" width="94" height="24" rx="6" fill="#b9003c"/>
-          <text x="517" y="26" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Este mes ↑</text>
+          <rect width="520" height="44" fill="rgba(255,255,255,0.03)" rx="0"/>
+          <rect y="44" width="520" height="1" fill="rgba(255,255,255,0.06)"/>
+          <text x="16" y="27" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="800" fill="#fff">NEXVORE Analytics</text>
+          <rect x="390" y="10" width="114" height="24" rx="12" fill="url(#hg1)"/>
+          <text x="447" y="26" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">● LIVE</text>
 
           <!-- KPI cards -->
-          <rect x="16" y="56" width="118" height="64" rx="8" fill="#eaddff"/>
-          <text x="26" y="76" font-family="Arial,sans-serif" font-size="10" fill="#4a4455">Tráfico orgánico</text>
-          <text x="26" y="106" font-family="Sora,Arial,sans-serif" font-size="20" font-weight="800" fill="#400090">+340%</text>
+          <rect x="12" y="56" width="110" height="62" rx="10" fill="rgba(123,47,255,0.12)" stroke="rgba(123,47,255,0.3)" stroke-width="1"/>
+          <text x="22" y="76" font-family="sans-serif" font-size="9" fill="#9999bb">Tráfico orgánico</text>
+          <text x="22" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#d1bcff">+340%</text>
 
-          <rect x="146" y="56" width="118" height="64" rx="8" fill="#ffdadb"/>
-          <text x="156" y="76" font-family="Arial,sans-serif" font-size="10" fill="#4a4455">Leads generados</text>
-          <text x="156" y="106" font-family="Sora,Arial,sans-serif" font-size="20" font-weight="800" fill="#b9003c">+215%</text>
+          <rect x="132" y="56" width="110" height="62" rx="10" fill="rgba(224,3,99,0.10)" stroke="rgba(224,3,99,0.25)" stroke-width="1"/>
+          <text x="142" y="76" font-family="sans-serif" font-size="9" fill="#9999bb">Leads</text>
+          <text x="142" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#ffb1c0">+215%</text>
 
-          <rect x="276" y="56" width="118" height="64" rx="8" fill="#eaddff"/>
-          <text x="286" y="76" font-family="Arial,sans-serif" font-size="10" fill="#4a4455">Ventas cerradas</text>
-          <text x="286" y="106" font-family="Sora,Arial,sans-serif" font-size="20" font-weight="800" fill="#400090">+178%</text>
+          <rect x="252" y="56" width="110" height="62" rx="10" fill="rgba(123,47,255,0.12)" stroke="rgba(123,47,255,0.3)" stroke-width="1"/>
+          <text x="262" y="76" font-family="sans-serif" font-size="9" fill="#9999bb">Ventas</text>
+          <text x="262" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#d1bcff">+178%</text>
 
-          <rect x="406" y="56" width="158" height="64" rx="8" fill="#400090"/>
-          <text x="416" y="76" font-family="Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Ingresos generados</text>
-          <text x="416" y="106" font-family="Sora,Arial,sans-serif" font-size="20" font-weight="800" fill="#ffffff">$12.7M</text>
+          <rect x="372" y="56" width="136" height="62" rx="10" fill="url(#hg1)" opacity="0.9"/>
+          <text x="382" y="76" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Ingresos generados</text>
+          <text x="382" y="103" font-family="'Plus Jakarta Sans',sans-serif" font-size="22" font-weight="900" fill="#fff">$12.7M</text>
 
-          <!-- Chart card -->
-          <rect x="16" y="136" width="352" height="228" rx="10" fill="#ffffff" stroke="#e5e2e1" stroke-width="1"/>
-          <text x="28" y="158" font-family="Sora,Arial,sans-serif" font-size="12" font-weight="700" fill="#1c1b1b">Crecimiento mensual</text>
-          <text x="340" y="158" font-family="Arial,sans-serif" font-size="10" fill="#4a4455" text-anchor="end">2025</text>
+          <!-- Main chart area -->
+          <rect x="12" y="130" width="330" height="200" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="24" y="152" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="800" fill="#fff">Crecimiento mensual</text>
 
-          <!-- Grid -->
-          <g stroke="#f0edec" stroke-width="1">
-            <line x1="28" y1="316" x2="352" y2="316"/>
-            <line x1="28" y1="286" x2="352" y2="286"/>
-            <line x1="28" y1="256" x2="352" y2="256"/>
-            <line x1="28" y1="226" x2="352" y2="226"/>
-            <line x1="28" y1="196" x2="352" y2="196"/>
+          <!-- Chart grid -->
+          <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+            <line x1="24" y1="300" x2="330" y2="300"/>
+            <line x1="24" y1="272" x2="330" y2="272"/>
+            <line x1="24" y1="244" x2="330" y2="244"/>
+            <line x1="24" y1="216" x2="330" y2="216"/>
+            <line x1="24" y1="188" x2="330" y2="188"/>
           </g>
 
-          <!-- Area + line (clipped) -->
-          <g clip-path="url(#chartClip)">
-            <path d="M36 308 L82 294 L128 278 L174 254 L220 234 L266 208 L312 192 L352 175 L352 316 L36 316 Z"
-                  fill="url(#areaGrad)"/>
-            <path d="M36 308 L82 294 L128 278 L174 254 L220 234 L266 208 L312 192 L352 175"
-                  fill="none" stroke="#b9003c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
+          <!-- Area fill (pink) -->
+          <path d="M30 290 L78 276 L126 258 L174 236 L222 214 L270 194 L318 178 L335 168 L335 300 L30 300 Z" fill="url(#hg2)" opacity="0.6"/>
+          <!-- Line (pink) -->
+          <path d="M30 290 L78 276 L126 258 L174 236 L222 214 L270 194 L318 178 L335 168" fill="none" stroke="url(#hg1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow-f)"/>
 
           <!-- Dots -->
-          <circle cx="36"  cy="308" r="4" fill="#ffffff" stroke="#b9003c" stroke-width="2"/>
-          <circle cx="82"  cy="294" r="4" fill="#ffffff" stroke="#b9003c" stroke-width="2"/>
-          <circle cx="128" cy="278" r="4" fill="#ffffff" stroke="#b9003c" stroke-width="2"/>
-          <circle cx="174" cy="254" r="4" fill="#ffffff" stroke="#b9003c" stroke-width="2"/>
-          <circle cx="220" cy="234" r="4" fill="#ffffff" stroke="#b9003c" stroke-width="2"/>
-          <circle cx="266" cy="208" r="4" fill="#ffffff" stroke="#b9003c" stroke-width="2"/>
-          <circle cx="312" cy="192" r="4" fill="#ffffff" stroke="#b9003c" stroke-width="2"/>
-          <circle cx="352" cy="175" r="5" fill="#b9003c"/>
+          <g fill="#ff2d78">
+            <circle cx="30"  cy="290" r="3.5"/>
+            <circle cx="78"  cy="276" r="3.5"/>
+            <circle cx="126" cy="258" r="3.5"/>
+            <circle cx="174" cy="236" r="3.5"/>
+            <circle cx="222" cy="214" r="3.5"/>
+            <circle cx="270" cy="194" r="3.5"/>
+            <circle cx="318" cy="178" r="3.5"/>
+          </g>
+          <circle cx="335" cy="168" r="5" fill="url(#hg1)"/>
 
-          <!-- Active tooltip -->
-          <rect x="322" y="152" width="76" height="32" rx="6" fill="#1c1b1b"/>
-          <text x="360" y="172" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">$12.7M ↑</text>
+          <!-- Tooltip -->
+          <rect x="298" y="148" width="72" height="28" rx="6" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <text x="334" y="166" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">$12.7M ↑</text>
 
           <!-- Month labels -->
-          <g font-family="Arial,sans-serif" font-size="10" fill="#7b7486" text-anchor="middle">
-            <text x="36"  y="332">Ene</text>
-            <text x="82"  y="332">Feb</text>
-            <text x="128" y="332">Mar</text>
-            <text x="174" y="332">Abr</text>
-            <text x="220" y="332">May</text>
-            <text x="266" y="332">Jun</text>
-            <text x="312" y="332">Jul</text>
-            <text x="352" y="332">Ago</text>
+          <g font-family="sans-serif" font-size="9" fill="#4a4456" text-anchor="middle">
+            <text x="30"  y="316">Ene</text>
+            <text x="78"  y="316">Feb</text>
+            <text x="126" y="316">Mar</text>
+            <text x="174" y="316">Abr</text>
+            <text x="222" y="316">May</text>
+            <text x="270" y="316">Jun</text>
+            <text x="318" y="316">Jul</text>
           </g>
 
-          <!-- Right: Bar chart card -->
-          <rect x="380" y="136" width="184" height="228" rx="10" fill="#ffffff" stroke="#e5e2e1" stroke-width="1"/>
-          <text x="392" y="158" font-family="Sora,Arial,sans-serif" font-size="12" font-weight="700" fill="#1c1b1b">Leads por canal</text>
-
-          <!-- Bars -->
+          <!-- Right mini charts -->
+          <rect x="354" y="130" width="154" height="92" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="364" y="150" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff">Leads por canal</text>
           <g>
-            <rect x="398" y="284" width="24" height="52" rx="4" fill="url(#barGrad)"/>
-            <rect x="434" y="262" width="24" height="74" rx="4" fill="url(#barGrad)" opacity="0.85"/>
-            <rect x="470" y="238" width="24" height="98" rx="4" fill="#b9003c"/>
-            <rect x="506" y="252" width="24" height="84" rx="4" fill="url(#barGrad)" opacity="0.7"/>
-            <g font-family="Arial,sans-serif" font-size="9" fill="#7b7486" text-anchor="middle">
-              <text x="410" y="348">Org</text>
-              <text x="446" y="348">Email</text>
-              <text x="482" y="348">Redes</text>
-              <text x="518" y="348">Ads</text>
+            <rect x="364" y="200" width="20" height="12" rx="3" fill="url(#hg1)" opacity="0.7"/>
+            <rect x="390" y="190" width="20" height="22" rx="3" fill="url(#hg1)"/>
+            <rect x="416" y="182" width="20" height="30" rx="3" fill="#ff2d78"/>
+            <rect x="442" y="188" width="20" height="24" rx="3" fill="url(#hg1)" opacity="0.8"/>
+            <g font-family="sans-serif" font-size="8" fill="#4a4456" text-anchor="middle">
+              <text x="374" y="220">Org</text>
+              <text x="400" y="220">Email</text>
+              <text x="426" y="220">RRSS</text>
+              <text x="452" y="220">Ads</text>
             </g>
           </g>
 
-          <!-- Conversion badge -->
-          <rect x="392" y="172" width="156" height="52" rx="8" fill="#f6f3f2"/>
-          <text x="402" y="192" font-family="Arial,sans-serif" font-size="10" fill="#4a4455">Conversión media</text>
-          <text x="402" y="216" font-family="Sora,Arial,sans-serif" font-size="22" font-weight="800" fill="#400090">6.4%</text>
-          <text x="530" y="216" font-family="Arial,sans-serif" font-size="10" fill="#b9003c" text-anchor="end">↑ óptimo</text>
+          <rect x="354" y="234" width="154" height="96" rx="10" fill="rgba(123,47,255,0.10)" stroke="rgba(123,47,255,0.25)" stroke-width="1"/>
+          <text x="364" y="255" font-family="sans-serif" font-size="10" font-weight="700" fill="#d1bcff">Conversión media</text>
+          <text x="364" y="296" font-family="'Plus Jakarta Sans',sans-serif" font-size="32" font-weight="900" fill="#d1bcff">6.4%</text>
+          <text x="495" y="296" font-family="sans-serif" font-size="10" fill="#ff2d78" text-anchor="end" font-weight="700">↑ óptimo</text>
+          <!-- Progress bar -->
+          <rect x="364" y="302" width="134" height="3" rx="2" fill="rgba(255,255,255,0.08)"/>
+          <rect x="364" y="302" width="86" height="3" rx="2" fill="url(#hg1)"/>
         </svg>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ══════════════════════════════════
-     MARQUEE
-════════════════════════════════════ -->
-<div class="bg-primary-fixed-dim/30 py-6 overflow-hidden border-y border-outline-variant/30">
-  <div class="flex marquee">
-    <div class="flex gap-16 items-center px-8">
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">ESTRATEGIA DIGITAL</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">DISEÑO QUE CONVIERTE</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">EMBUDOS AUTOMATIZADOS</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">CONTENIDO QUE VENDE</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">RESULTADOS REALES</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">NEXVORE DIGITAL STUDIO</span>
-      <span class="text-secondary text-2xl">·</span>
+<!-- ══════════════ MARQUEE ══════════════ -->
+<div class="overflow-hidden py-4 border-y" style="border-color:rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+  <div class="flex marquee-track">
+    <div class="flex gap-12 items-center px-6 shrink-0">
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">ESTRATEGIA DIGITAL</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">DISEÑO QUE CONVIERTE</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">EMBUDOS AUTOMATIZADOS</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">CONTENIDO QUE VENDE</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">RESULTADOS REALES</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">NEXVORE DIGITAL STUDIO</span>
+      <span class="grad-text font-black text-xl">·</span>
     </div>
-    <div class="flex gap-16 items-center px-8" aria-hidden="true">
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">ESTRATEGIA DIGITAL</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">DISEÑO QUE CONVIERTE</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">EMBUDOS AUTOMATIZADOS</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">CONTENIDO QUE VENDE</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">RESULTADOS REALES</span>
-      <span class="text-secondary text-2xl">·</span>
-      <span class="font-headline-md text-headline-md font-bold text-primary/80 uppercase">NEXVORE DIGITAL STUDIO</span>
-      <span class="text-secondary text-2xl">·</span>
+    <div class="flex gap-12 items-center px-6 shrink-0" aria-hidden="true">
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">ESTRATEGIA DIGITAL</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">DISEÑO QUE CONVIERTE</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">EMBUDOS AUTOMATIZADOS</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">CONTENIDO QUE VENDE</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">RESULTADOS REALES</span>
+      <span class="grad-text font-black text-xl">·</span>
+      <span class="text-sm font-black tracking-[0.12em] uppercase" style="color:rgba(209,188,255,0.7);">NEXVORE DIGITAL STUDIO</span>
+      <span class="grad-text font-black text-xl">·</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     PROBLEMA
-════════════════════════════════════ -->
-<section class="py-section-padding-lg bg-surface-container-lowest">
-  <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-    <div class="lg:col-span-7 space-y-12">
+<!-- ══════════════ PROBLEMA ══════════════ -->
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
+    <div class="lg:col-span-7 space-y-10">
       <div class="reveal">
-        <span class="text-secondary font-label-md uppercase tracking-widest mb-4 block">El diagnóstico</span>
-        <h2 class="font-headline-lg text-headline-lg leading-tight">MÁS POSTS NO ARREGLAN UN NEGOCIO SIN BASE.</h2>
+        <span class="text-xs font-black uppercase tracking-[0.2em] mb-3 block" style="color:#ff2d78;">— El diagnóstico</span>
+        <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tight" style="color:#fff;">
+          MÁS POSTS NO ARREGLAN<br/>UN NEGOCIO SIN BASE.
+        </h2>
       </div>
-      <div class="grid grid-cols-1 gap-6">
-        <div class="reveal reveal-delay-1 bg-white p-8 rounded-2xl border-l-4 border-secondary shadow-soft-purple hover-lift">
-          <span class="material-symbols-outlined text-secondary mb-4 block" style="font-variation-settings: 'opsz' 48;">trending_down</span>
-          <h3 class="font-headline-md text-headline-md mb-2">Redes activas, ventas ausentes</h3>
-          <p class="text-on-surface-variant">Generás contenido diario pero el link de tu biografía sigue sin recibir clics calificados.</p>
+      <div class="space-y-4">
+        <div class="reveal reveal-delay-1 glass rounded-2xl p-7 hover-lift border-l-4" style="border-color:#ff2d78;">
+          <div class="text-2xl mb-3">📉</div>
+          <h3 class="text-lg font-black mb-2" style="color:#fff;">Redes activas, ventas ausentes</h3>
+          <p class="text-sm leading-relaxed" style="color:#9999bb;">Generás contenido diario pero el link de tu biografía sigue sin recibir clics calificados.</p>
         </div>
-        <div class="reveal reveal-delay-2 bg-white p-8 rounded-2xl border-l-4 border-primary shadow-soft-purple hover-lift">
-          <span class="material-symbols-outlined text-primary mb-4 block" style="font-variation-settings: 'opsz' 48;">web_asset_off</span>
-          <h3 class="font-headline-md text-headline-md mb-2">Web que no trabaja para vos</h3>
-          <p class="text-on-surface-variant">Un sitio que es un folleto digital estático, no una máquina de captura de clientes 24/7.</p>
+        <div class="reveal reveal-delay-2 glass rounded-2xl p-7 hover-lift border-l-4" style="border-color:#7b2fff;">
+          <div class="text-2xl mb-3">🌐</div>
+          <h3 class="text-lg font-black mb-2" style="color:#fff;">Web que no trabaja para vos</h3>
+          <p class="text-sm leading-relaxed" style="color:#9999bb;">Un sitio que es un folleto digital estático, no una máquina de captura de clientes 24/7.</p>
         </div>
-        <div class="reveal reveal-delay-3 bg-white p-8 rounded-2xl border-l-4 border-outline shadow-soft-purple hover-lift">
-          <span class="material-symbols-outlined text-outline mb-4 block" style="font-variation-settings: 'opsz' 48;">chat_error</span>
-          <h3 class="font-headline-md text-headline-md mb-2">Precio negociado por DM</h3>
-          <p class="text-on-surface-variant">Si tu cliente solo te elige por precio o por insistencia, no tenés un ecosistema, tenés un empleo.</p>
+        <div class="reveal reveal-delay-3 glass rounded-2xl p-7 hover-lift border-l-4" style="border-color:rgba(255,255,255,0.15);">
+          <div class="text-2xl mb-3">💬</div>
+          <h3 class="text-lg font-black mb-2" style="color:#fff;">Precio negociado por DM</h3>
+          <p class="text-sm leading-relaxed" style="color:#9999bb;">Si tu cliente solo te elige por precio o por insistencia, no tenés un ecosistema, tenés un empleo.</p>
         </div>
       </div>
     </div>
 
-    <div class="lg:col-span-5 sticky top-32">
-      <div class="reveal relative p-12 bg-primary rounded-3xl text-on-primary overflow-hidden">
-        <span class="material-symbols-outlined absolute top-4 left-4 text-white/10" style="font-variation-settings: 'opsz' 160; font-size: 160px;">format_quote</span>
+    <!-- Quote card -->
+    <div class="lg:col-span-5 sticky top-24">
+      <div class="reveal relative rounded-3xl p-10 overflow-hidden glow-purple"
+           style="background:linear-gradient(135deg,rgba(123,47,255,0.25),rgba(224,3,99,0.15)); border:1px solid rgba(123,47,255,0.4);">
+        <div class="absolute top-4 left-4 text-8xl font-black leading-none select-none" style="color:rgba(255,255,255,0.06);">"</div>
         <div class="relative z-10 space-y-6">
-          <p class="font-display-lg-mobile text-display-lg-mobile font-bold leading-tight italic">
-            "EL CAMBIO NO FUE ESTÉTICO. FUE DE <span class="text-secondary-fixed">FACTURACIÓN.</span>"
+          <p class="text-2xl font-black leading-tight italic" style="color:#fff;">
+            "EL CAMBIO NO FUE ESTÉTICO. FUE DE
+            <span class="grad-text">FACTURACIÓN.</span>"
           </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white font-bold text-lg">SR</div>
+          <div class="flex items-center gap-3 pt-2">
+            <div class="w-11 h-11 rounded-full grad flex items-center justify-center text-white font-black text-sm">SR</div>
             <div>
-              <p class="font-label-md">Santiago Rossi</p>
-              <p class="text-sm opacity-80">CEO, TechPioneer Solutions</p>
+              <p class="text-sm font-bold" style="color:#fff;">Santiago Rossi</p>
+              <p class="text-xs" style="color:#9999bb;">CEO, TechPioneer Solutions</p>
             </div>
           </div>
         </div>
@@ -472,132 +513,229 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     SERVICIOS
-════════════════════════════════════ -->
-<section class="py-section-padding-lg bg-background" id="servicios">
-  <div class="max-w-container-max mx-auto px-margin-desktop">
-    <div class="reveal text-center mb-20 space-y-4">
-      <h2 class="font-headline-lg text-headline-lg">UN ECOSISTEMA COMPLETO</h2>
-      <p class="text-on-surface-variant max-w-2xl mx-auto">Diseñamos cada parte de tu presencia digital para que trabaje en armonía hacia un solo objetivo: tu crecimiento.</p>
+<!-- ══════════════ SERVICIOS ══════════════ -->
+<section class="py-24 px-6" id="servicios">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal text-center mb-14 space-y-3">
+      <span class="text-xs font-black uppercase tracking-[0.2em]" style="color:#7b2fff;">— Qué recibís</span>
+      <h2 class="text-3xl md:text-4xl font-black tracking-tight" style="color:#fff;">UN ECOSISTEMA COMPLETO</h2>
+      <p class="text-base max-w-2xl mx-auto" style="color:#9999bb;">Diseñamos cada parte de tu presencia digital para que trabaje en armonía hacia un solo objetivo: tu crecimiento.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-      <div class="reveal reveal-delay-1 p-10 bg-white rounded-3xl border border-outline-variant hover:border-primary/40 transition-all duration-300 hover:shadow-soft-purple group">
-        <span class="text-primary-container font-display-lg-mobile text-display-lg-mobile opacity-20 block mb-4 group-hover:opacity-40 transition-opacity">01</span>
-        <h3 class="font-headline-md text-headline-md mb-4 text-primary">Estrategia Digital</h3>
-        <p class="text-on-surface-variant">Mapa de ruta personalizado basado en datos, no en suposiciones. Entendemos a tu cliente mejor que él mismo.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="reveal reveal-delay-1 glass rounded-2xl p-8 hover-lift group">
+        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">01</span>
+        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Estrategia Digital</h3>
+        <p class="text-sm leading-relaxed" style="color:#9999bb;">Mapa de ruta personalizado basado en datos, no en suposiciones. Entendemos a tu cliente mejor que él mismo.</p>
       </div>
-      <div class="reveal reveal-delay-2 p-10 bg-white rounded-3xl border border-outline-variant hover:border-primary/40 transition-all duration-300 hover:shadow-soft-purple group">
-        <span class="text-primary-container font-display-lg-mobile text-display-lg-mobile opacity-20 block mb-4 group-hover:opacity-40 transition-opacity">02</span>
-        <h3 class="font-headline-md text-headline-md mb-4 text-primary">Diseño que convierte</h3>
-        <p class="text-on-surface-variant">Interfaces premium que guían el ojo del usuario directamente hacia el botón de compra o reserva.</p>
+      <div class="reveal reveal-delay-2 glass rounded-2xl p-8 hover-lift group">
+        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">02</span>
+        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Diseño que convierte</h3>
+        <p class="text-sm leading-relaxed" style="color:#9999bb;">Interfaces premium que guían el ojo del usuario directamente hacia el botón de compra o reserva.</p>
       </div>
-      <div class="reveal reveal-delay-3 p-10 bg-white rounded-3xl border border-outline-variant hover:border-primary/40 transition-all duration-300 hover:shadow-soft-purple group">
-        <span class="text-primary-container font-display-lg-mobile text-display-lg-mobile opacity-20 block mb-4 group-hover:opacity-40 transition-opacity">03</span>
-        <h3 class="font-headline-md text-headline-md mb-4 text-primary">Embudos automatizados</h3>
-        <p class="text-on-surface-variant">Sistemas de ventas que filtran curiosos y entregan clientes listos para pagar de forma recurrente.</p>
+      <div class="reveal reveal-delay-3 glass rounded-2xl p-8 hover-lift group">
+        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">03</span>
+        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Embudos automatizados</h3>
+        <p class="text-sm leading-relaxed" style="color:#9999bb;">Sistemas de ventas que filtran curiosos y entregan clientes listos para pagar de forma recurrente.</p>
       </div>
-      <div class="reveal reveal-delay-4 p-10 bg-white rounded-3xl border border-outline-variant hover:border-primary/40 transition-all duration-300 hover:shadow-soft-purple group">
-        <span class="text-primary-container font-display-lg-mobile text-display-lg-mobile opacity-20 block mb-4 group-hover:opacity-40 transition-opacity">04</span>
-        <h3 class="font-headline-md text-headline-md mb-4 text-primary">Contenido que vende</h3>
-        <p class="text-on-surface-variant">No solo "likes". Creamos autoridad y deseo a través de narrativa estratégica y diseño de alto impacto.</p>
+      <div class="reveal reveal-delay-4 glass rounded-2xl p-8 hover-lift group">
+        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">04</span>
+        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Contenido que vende</h3>
+        <p class="text-sm leading-relaxed" style="color:#9999bb;">No solo "likes". Creamos autoridad y deseo a través de narrativa estratégica y diseño de alto impacto.</p>
       </div>
-      <div class="reveal reveal-delay-5 p-10 bg-white rounded-3xl border border-outline-variant hover:border-primary/40 transition-all duration-300 hover:shadow-soft-purple group">
-        <span class="text-primary-container font-display-lg-mobile text-display-lg-mobile opacity-20 block mb-4 group-hover:opacity-40 transition-opacity">05</span>
-        <h3 class="font-headline-md text-headline-md mb-4 text-primary">Automatización de seguimiento</h3>
-        <p class="text-on-surface-variant">Eliminamos las tareas manuales. Tu equipo solo habla con leads que ya conocen tu valor.</p>
+      <div class="reveal reveal-delay-5 glass rounded-2xl p-8 hover-lift group">
+        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">05</span>
+        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Automatización de seguimiento</h3>
+        <p class="text-sm leading-relaxed" style="color:#9999bb;">Eliminamos las tareas manuales. Tu equipo solo habla con leads que ya conocen tu valor.</p>
       </div>
-      <div class="reveal reveal-delay-6 p-10 bg-white rounded-3xl border border-outline-variant hover:border-primary/40 transition-all duration-300 hover:shadow-soft-purple group">
-        <span class="text-primary-container font-display-lg-mobile text-display-lg-mobile opacity-20 block mb-4 group-hover:opacity-40 transition-opacity">06</span>
-        <h3 class="font-headline-md text-headline-md mb-4 text-primary">Optimización continua</h3>
-        <p class="text-on-surface-variant">Lo que no se mide no crece. Ajustamos el sistema en tiempo real para maximizar tu ROI.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════
-     PROCESO
-════════════════════════════════════ -->
-<section class="py-section-padding-lg bg-primary-fixed/20 relative overflow-hidden" id="proceso">
-  <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/5 blur-[120px] rounded-full"></div>
-  <div class="max-w-container-max mx-auto px-margin-desktop relative z-10">
-    <h2 class="reveal font-headline-lg text-headline-lg text-center mb-20 uppercase tracking-tighter">
-      UN PROCESO SIMPLE.<br/><span class="text-primary">RESULTADOS REALES.</span>
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter relative">
-      <div class="hidden md:block absolute top-10 left-[16.66%] right-[16.66%] h-0.5 bg-outline-variant/40"></div>
-      <div class="reveal reveal-delay-1 space-y-6 text-center">
-        <div class="w-20 h-20 bg-primary text-on-primary rounded-full flex items-center justify-center font-display-lg-mobile mx-auto shadow-lg shadow-primary/20">01</div>
-        <h3 class="font-headline-md text-headline-md uppercase">Analizamos</h3>
-        <p class="text-on-surface-variant px-4">Auditoría profunda de tu ecosistema actual y detección de fugas de dinero.</p>
-      </div>
-      <div class="reveal reveal-delay-2 space-y-6 text-center">
-        <div class="w-20 h-20 bg-secondary text-on-secondary rounded-full flex items-center justify-center font-display-lg-mobile mx-auto shadow-lg shadow-secondary/20">02</div>
-        <h3 class="font-headline-md text-headline-md uppercase">Diseñamos</h3>
-        <p class="text-on-surface-variant px-4">Construcción de la infraestructura técnica y visual de tu nueva máquina de ventas.</p>
-      </div>
-      <div class="reveal reveal-delay-3 space-y-6 text-center">
-        <div class="w-20 h-20 bg-primary text-on-primary rounded-full flex items-center justify-center font-display-lg-mobile mx-auto shadow-lg shadow-primary/20">03</div>
-        <h3 class="font-headline-md text-headline-md uppercase">Optimizamos</h3>
-        <p class="text-on-surface-variant px-4">Lanzamiento, medición de KPIs y escalabilidad agresiva basada en conversiones.</p>
+      <div class="reveal reveal-delay-6 glass rounded-2xl p-8 hover-lift group">
+        <span class="text-4xl font-black opacity-10 block mb-3 group-hover:opacity-20 transition-opacity grad-text">06</span>
+        <h3 class="text-lg font-black mb-3" style="color:#d1bcff;">Optimización continua</h3>
+        <p class="text-sm leading-relaxed" style="color:#9999bb;">Lo que no se mide no crece. Ajustamos el sistema en tiempo real para maximizar tu ROI.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     RESULTADOS
-════════════════════════════════════ -->
-<section class="py-section-padding-lg" id="resultados">
-  <div class="max-w-container-max mx-auto px-margin-desktop">
-    <h2 class="reveal font-headline-lg text-headline-lg text-center mb-16">EL CAMBIO QUE <span class="text-secondary pink-glow">FACTURA</span></h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-      <div class="reveal reveal-delay-1 bg-surface-container-low p-10 rounded-3xl border border-outline-variant relative hover-lift">
-        <span class="material-symbols-outlined text-primary-fixed-dim absolute top-6 right-8 opacity-40" style="font-size: 64px;">format_quote</span>
-        <p class="font-body-lg text-body-lg mb-8 italic">"Pasamos de estar rogando por recomendaciones a tener una agenda llena automáticamente cada mes. El diseño es increíble, pero el sistema detrás es lo que realmente cambió nuestro juego."</p>
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">MF</div>
-          <div>
-            <p class="font-bold">Marta Fernández</p>
-            <p class="text-sm text-on-surface-variant">Founder, Bloom Marketing</p>
+<!-- ══════════════ PAQUETE / PRICING ══════════════ -->
+<section class="py-24 px-6" id="paquete">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal text-center mb-14 space-y-3">
+      <span class="text-xs font-black uppercase tracking-[0.2em]" style="color:#ff2d78;">— Oferta única</span>
+      <h2 class="text-3xl md:text-4xl font-black tracking-tight" style="color:#fff;">EL PAQUETE NEXVORE</h2>
+      <p class="text-base max-w-xl mx-auto" style="color:#9999bb;">Todo lo que necesitás para dominar tu mercado digital, en un solo paquete con resultados garantizados.</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+      <!-- Left: what's included -->
+      <div class="glass-strong rounded-2xl p-8 space-y-5">
+        <h3 class="text-xl font-black" style="color:#fff;">TODO LO QUE INCLUYE</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Sitio web profesional de alta conversión</span>
+          </div>
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Estrategia digital personalizada 90 días</span>
+          </div>
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Embudo de ventas automatizado completo</span>
+          </div>
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Contenido estratégico para redes sociales</span>
+          </div>
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Automatización de seguimiento de leads</span>
+          </div>
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Dashboard de métricas en tiempo real</span>
+          </div>
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Soporte prioritario por 3 meses</span>
+          </div>
+          <div class="flex items-start gap-3 check-item">
+            <span class="text-sm font-semibold leading-relaxed mt-0.5" style="color:#e4e1f0;">Optimización continua basada en datos</span>
           </div>
         </div>
       </div>
-      <div class="reveal reveal-delay-2 bg-surface-container-low p-10 rounded-3xl border border-outline-variant relative hover-lift">
-        <span class="material-symbols-outlined text-primary-fixed-dim absolute top-6 right-8 opacity-40" style="font-size: 64px;">format_quote</span>
-        <p class="font-body-lg text-body-lg mb-8 italic">"NEXVORE no solo hizo una web bonita. Creó un flujo de adquisición que duplicó nuestro ticket promedio en solo 4 meses. Su enfoque en conversión es brutal."</p>
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-white font-bold text-lg">CM</div>
+
+      <!-- Right: price + CTA -->
+      <div class="rounded-2xl p-8 flex flex-col justify-between glow-purple"
+           style="background:linear-gradient(135deg,rgba(123,47,255,0.2),rgba(224,3,99,0.1)); border:1px solid rgba(123,47,255,0.4);">
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider"
+               style="background:rgba(255,45,120,0.15); border:1px solid rgba(255,45,120,0.3); color:#ffb1c0;">
+            <span class="pulse-dot"></span>
+            Oferta por tiempo limitado
+          </div>
           <div>
-            <p class="font-bold">Carlos Méndez</p>
-            <p class="text-sm text-on-surface-variant">Director, FinTech Latam</p>
+            <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9999bb;">Inversión única</p>
+            <div class="flex items-end gap-2">
+              <span class="font-black leading-none tracking-tight" style="font-size:clamp(44px,8vw,64px); color:#fff;">$19.990</span>
+              <span class="text-lg font-bold mb-2" style="color:#9999bb;">CLP</span>
+            </div>
+          </div>
+          <p class="text-sm" style="color:#9999bb;">Pago único, sin mensualidades ocultas. Resultados en 30 días o te devolvemos el dinero.</p>
+
+          <!-- Guarantee badge -->
+          <div class="glass rounded-xl p-4 flex items-center gap-3">
+            <div class="text-2xl">🛡️</div>
+            <div>
+              <p class="text-sm font-black" style="color:#fff;">Garantía 30 días</p>
+              <p class="text-xs" style="color:#9999bb;">Si no ves resultados, reembolso completo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3 mt-6">
+          <a href="https://mpago.la/16tyR7V" target="_blank" rel="noopener"
+             class="btn-ml w-full py-4 text-base flex items-center justify-center gap-3 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 50 50" fill="none">
+              <circle cx="25" cy="25" r="25" fill="#fff"/>
+              <text x="25" y="32" font-size="18" text-anchor="middle" font-family="Arial" font-weight="900" fill="#009ee3">MP</text>
+            </svg>
+            Pagar con MercadoPago
+          </a>
+          <button onclick="openCalendly(event)"
+                  class="btn-ghost w-full py-3.5 text-sm cursor-pointer flex items-center justify-center gap-2">
+            ¿Tenés dudas? Hablemos gratis
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROCESO ══════════════ -->
+<section class="py-24 px-6" id="proceso"
+         style="background:rgba(255,255,255,0.015); border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05);">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal text-center mb-14 space-y-3">
+      <span class="text-xs font-black uppercase tracking-[0.2em]" style="color:#7b2fff;">— Cómo trabajamos</span>
+      <h2 class="text-3xl md:text-4xl font-black tracking-tight" style="color:#fff;">
+        UN PROCESO SIMPLE.<br/><span class="grad-text">RESULTADOS REALES.</span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      <!-- connector line -->
+      <div class="hidden md:block absolute top-9 left-[18%] right-[18%] h-px"
+           style="background:linear-gradient(90deg,rgba(123,47,255,0.4),rgba(224,3,99,0.4))"></div>
+      <div class="reveal reveal-delay-1 text-center space-y-4">
+        <div class="w-18 h-18 grad rounded-full flex items-center justify-center text-white font-black text-xl mx-auto glow-purple"
+             style="width:72px;height:72px;font-size:22px;">01</div>
+        <h3 class="text-lg font-black uppercase tracking-tight" style="color:#fff;">Analizamos</h3>
+        <p class="text-sm leading-relaxed px-4" style="color:#9999bb;">Auditoría profunda de tu ecosistema actual y detección de fugas de dinero.</p>
+      </div>
+      <div class="reveal reveal-delay-2 text-center space-y-4">
+        <div class="w-18 h-18 flex items-center justify-center text-white font-black text-xl mx-auto glow-pink rounded-full"
+             style="width:72px;height:72px;font-size:22px;background:linear-gradient(135deg,#ff2d78,#e00363);">02</div>
+        <h3 class="text-lg font-black uppercase tracking-tight" style="color:#fff;">Diseñamos</h3>
+        <p class="text-sm leading-relaxed px-4" style="color:#9999bb;">Construcción de la infraestructura técnica y visual de tu nueva máquina de ventas.</p>
+      </div>
+      <div class="reveal reveal-delay-3 text-center space-y-4">
+        <div class="w-18 h-18 grad rounded-full flex items-center justify-center text-white font-black text-xl mx-auto glow-purple"
+             style="width:72px;height:72px;font-size:22px;">03</div>
+        <h3 class="text-lg font-black uppercase tracking-tight" style="color:#fff;">Optimizamos</h3>
+        <p class="text-sm leading-relaxed px-4" style="color:#9999bb;">Lanzamiento, medición de KPIs y escalabilidad agresiva basada en conversiones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RESULTADOS ══════════════ -->
+<section class="py-24 px-6" id="resultados">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="reveal text-3xl md:text-4xl font-black tracking-tight text-center mb-14" style="color:#fff;">
+      EL CAMBIO QUE <span class="grad-text text-glow-pink">FACTURA</span>
+    </h2>
+
+    <!-- Testimonials -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+      <div class="reveal reveal-delay-1 glass rounded-2xl p-8 hover-lift">
+        <div class="text-5xl font-black leading-none mb-4 select-none" style="color:rgba(123,47,255,0.3);">"</div>
+        <p class="text-sm leading-relaxed mb-6 italic" style="color:#ccc3d9;">"Pasamos de estar rogando por recomendaciones a tener una agenda llena automáticamente cada mes. El diseño es increíble, pero el sistema detrás es lo que realmente cambió nuestro juego."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 grad rounded-full flex items-center justify-center text-white font-black text-sm">MF</div>
+          <div>
+            <p class="text-sm font-bold" style="color:#fff;">Marta Fernández</p>
+            <p class="text-xs" style="color:#9999bb;">Founder, Bloom Marketing</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2 glass rounded-2xl p-8 hover-lift">
+        <div class="text-5xl font-black leading-none mb-4 select-none" style="color:rgba(224,3,99,0.3);">"</div>
+        <p class="text-sm leading-relaxed mb-6 italic" style="color:#ccc3d9;">"NEXVORE no solo hizo una web bonita. Creó un flujo de adquisición que duplicó nuestro ticket promedio en solo 4 meses. Su enfoque en conversión es brutal."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-sm"
+               style="background:linear-gradient(135deg,#ff2d78,#e00363);">CM</div>
+          <div>
+            <p class="text-sm font-bold" style="color:#fff;">Carlos Méndez</p>
+            <p class="text-xs" style="color:#9999bb;">Director, FinTech Latam</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Stats bar -->
-    <div class="reveal bg-primary p-12 rounded-[2rem] shadow-2xl shadow-primary/30">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="space-y-2 border-r border-white/10 last:border-none">
-          <p class="text-on-primary-container font-label-md uppercase opacity-80">Ingresos generados</p>
-          <p class="text-on-primary font-headline-lg text-headline-lg font-extrabold stat-counter"
+    <div class="reveal rounded-2xl p-10 glow-purple"
+         style="background:linear-gradient(135deg,rgba(123,47,255,0.2),rgba(224,3,99,0.1)); border:1px solid rgba(123,47,255,0.3);">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.08);">
+          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Ingresos generados</p>
+          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
              data-target="12.7" data-prefix="$" data-suffix="M" data-decimal="1">$0M</p>
         </div>
-        <div class="space-y-2 border-r border-white/10 last:border-none">
-          <p class="text-on-primary-container font-label-md uppercase opacity-80">Leads capturados</p>
-          <p class="text-on-primary font-headline-lg text-headline-lg font-extrabold stat-counter"
+        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.08);">
+          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Leads capturados</p>
+          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
              data-target="3214" data-thousands>0</p>
         </div>
-        <div class="space-y-2 border-r border-white/10 last:border-none">
-          <p class="text-on-primary-container font-label-md uppercase opacity-80">Ventas directas</p>
-          <p class="text-on-primary font-headline-lg text-headline-lg font-extrabold stat-counter"
+        <div class="space-y-1 border-r" style="border-color:rgba(255,255,255,0.08);">
+          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Ventas directas</p>
+          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
              data-target="842">0</p>
         </div>
-        <div class="space-y-2">
-          <p class="text-on-primary-container font-label-md uppercase opacity-80">Conversión media</p>
-          <p class="text-on-primary font-headline-lg text-headline-lg font-extrabold stat-counter"
+        <div class="space-y-1">
+          <p class="text-xs font-black uppercase tracking-widest" style="color:rgba(209,188,255,0.6);">Conversión media</p>
+          <p class="stat-counter text-3xl font-black text-glow-purple" style="color:#d1bcff;"
              data-target="6.4" data-suffix="%" data-decimal="1">0%</p>
         </div>
       </div>
@@ -605,67 +743,67 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     CTA
-════════════════════════════════════ -->
-<section class="py-section-padding-lg relative overflow-hidden" id="contacto">
-  <div class="absolute inset-0 bg-primary-container/5 -z-10"></div>
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full -z-10"></div>
-  <div class="max-w-4xl mx-auto px-margin-desktop text-center space-y-10">
-    <h2 class="reveal font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg leading-tight uppercase font-extrabold">
-      DEVORA LA <span class="text-secondary">INEFICIENCIA.</span><br/>DOMINA EL MERCADO.
+<!-- ══════════════ FINAL CTA ══════════════ -->
+<section class="py-28 px-6 relative overflow-hidden" id="contacto">
+  <div class="absolute inset-0 -z-10"
+       style="background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(123,47,255,0.2),transparent)"></div>
+  <div class="max-w-3xl mx-auto text-center space-y-8">
+    <h2 class="reveal font-black leading-[0.9] tracking-[-0.04em]"
+        style="font-size:clamp(40px,8vw,72px); color:#fff;">
+      DEVORA LA <span class="grad-text">INEFICIENCIA.</span><br/>DOMINA EL MERCADO.
     </h2>
-    <p class="reveal reveal-delay-1 font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-      No construimos sitios web. Construimos activos financieros. Agendá una consultoría gratuita y descubrí el potencial real de tu marca.
+    <p class="reveal reveal-delay-1 text-base max-w-xl mx-auto" style="color:#9999bb;">
+      No construimos sitios web. Construimos activos financieros. Elegí cómo querés empezar.
     </p>
-    <div class="reveal reveal-delay-2 flex justify-center">
+    <div class="reveal reveal-delay-2 flex flex-col sm:flex-row gap-4 justify-center items-center">
       <button onclick="openCalendly(event)"
-              class="bg-secondary text-on-secondary px-10 py-5 rounded-2xl font-button text-xl flex items-center gap-3 transition-all hover:scale-110 shadow-2xl shadow-secondary/40 cursor-pointer">
+              class="btn-grad px-8 py-4 text-base cursor-pointer inline-flex items-center gap-2">
         Agendar llamada gratuita
-        <span class="material-symbols-outlined">arrow_forward</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
+      <a href="https://mpago.la/16tyR7V" target="_blank" rel="noopener"
+         class="btn-ml px-8 py-4 text-base inline-flex items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50" fill="none">
+          <circle cx="25" cy="25" r="25" fill="rgba(255,255,255,0.2)"/>
+          <text x="25" y="32" font-size="16" text-anchor="middle" font-family="Arial" font-weight="900" fill="#fff">MP</text>
+        </svg>
+        Conseguir el paquete — $19.990
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     FOOTER
-════════════════════════════════════ -->
-<footer class="bg-surface-container-lowest py-section-padding-sm border-t border-outline-variant">
-  <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter items-center">
-    <div class="md:col-span-2 space-y-4">
-      <div class="flex flex-col">
-        <span class="font-headline-md text-headline-md font-bold text-primary leading-none">NEXVORE</span>
-        <span class="font-label-md text-[10px] tracking-widest text-on-surface-variant uppercase">Digital Studio</span>
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="px-6 py-14 border-t" style="border-color:rgba(255,255,255,0.06); background:rgba(0,0,0,0.3);">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+    <div class="md:col-span-2 space-y-3">
+      <div>
+        <span class="text-xl font-black tracking-tight" style="color:#fff;">NEXVORE</span><br/>
+        <span class="text-xs font-bold uppercase tracking-[0.2em]" style="color:#9999bb;">Digital Studio</span>
       </div>
-      <p class="text-on-surface-variant font-label-md max-w-xs">© 2025 Nexvore Digital Studio. All rights reserved. Elevando estándares digitales en cada píxel.</p>
+      <p class="text-xs leading-relaxed max-w-xs" style="color:#9999bb;">© 2025 Nexvore Digital Studio. All rights reserved. Elevando estándares digitales en cada píxel.</p>
     </div>
-    <div class="md:col-span-2 flex flex-wrap justify-end gap-x-12 gap-y-6">
-      <div class="space-y-4">
-        <p class="font-label-md text-primary uppercase">Seguinos</p>
-        <div class="flex flex-col gap-2">
-          <a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="https://www.instagram.com/nexvorecl/" target="_blank" rel="noopener">Instagram</a>
-          <a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#" target="_blank" rel="noopener">Twitter / X</a>
-        </div>
-      </div>
-      <div class="space-y-4">
-        <p class="font-label-md text-primary uppercase">Compañía</p>
-        <div class="flex flex-col gap-2">
-          <a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Privacy Policy</a>
-          <a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Terms of Service</a>
-          <a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="mailto:hello@nex-vore.com">hello@nex-vore.com</a>
-        </div>
-      </div>
+    <div class="space-y-3">
+      <p class="text-xs font-black uppercase tracking-[0.15em] mb-4" style="color:#d1bcff;">Seguinos</p>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;"
+         href="https://www.instagram.com/nexvorecl/" target="_blank" rel="noopener">Instagram</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">LinkedIn</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">Twitter / X</a>
+    </div>
+    <div class="space-y-3">
+      <p class="text-xs font-black uppercase tracking-[0.15em] mb-4" style="color:#d1bcff;">Compañía</p>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">Privacy Policy</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="#">Terms of Service</a>
+      <a class="block text-sm hover:text-white transition-colors" style="color:#9999bb;" href="mailto:hello@nex-vore.com">hello@nex-vore.com</a>
     </div>
   </div>
 </footer>
 
-<!-- Calendly widget script (async) -->
+<!-- Calendly -->
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <script>
-/* ── Calendly popup ── */
+/* ── Calendly ── */
 function openCalendly(e) {
   if (e) e.preventDefault();
   if (typeof Calendly !== 'undefined') {
@@ -677,22 +815,21 @@ function openCalendly(e) {
 
 /* ── Mobile menu ── */
 const toggle = document.getElementById('menu-toggle');
-const menu   = document.getElementById('mobile-menu');
+const mMenu  = document.getElementById('mobile-menu');
 const bars   = toggle.querySelectorAll('.hamburger-bar');
 
 function closeMenu() {
-  menu.classList.remove('open');
+  mMenu.classList.remove('open');
   toggle.setAttribute('aria-expanded', 'false');
   bars[0].style.transform = '';
   bars[1].style.opacity   = '1';
   bars[2].style.transform = '';
 }
-
 toggle.addEventListener('click', () => {
-  if (menu.classList.contains('open')) {
+  if (mMenu.classList.contains('open')) {
     closeMenu();
   } else {
-    menu.classList.add('open');
+    mMenu.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     bars[0].style.transform = 'translateY(7px) rotate(45deg)';
     bars[1].style.opacity   = '0';
@@ -702,71 +839,48 @@ toggle.addEventListener('click', () => {
 document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
 
 /* ── Scroll reveal ── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 /* ── Counter animation ── */
 function animateCounter(el) {
-  const target    = parseFloat(el.dataset.target);
-  const prefix    = el.dataset.prefix  || '';
-  const suffix    = el.dataset.suffix  || '';
-  const decimals  = parseInt(el.dataset.decimal || '0');
+  const target   = parseFloat(el.dataset.target);
+  const prefix   = el.dataset.prefix  || '';
+  const suffix   = el.dataset.suffix  || '';
+  const decimals = parseInt(el.dataset.decimal || '0');
   const thousands = el.hasAttribute('data-thousands');
-  const duration  = 1600;
-  const start     = performance.now();
-
+  const duration = 1800;
+  const start = performance.now();
   function fmt(val) {
     let s = val.toFixed(decimals);
-    if (thousands) s = parseFloat(s).toLocaleString('es-AR');
+    if (thousands) s = parseFloat(s).toLocaleString('es-CL');
     return prefix + s + suffix;
   }
-
-  function step(now) {
-    const elapsed  = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const ease     = 1 - Math.pow(1 - progress, 3); // cubic ease-out
-    el.textContent = fmt(target * ease);
-    if (progress < 1) requestAnimationFrame(step);
+  (function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(target * e);
+    if (p < 1) requestAnimationFrame(step);
     else el.textContent = fmt(target);
-  }
-  requestAnimationFrame(step);
+  })(start);
 }
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounter(entry.target);
-      counterObserver.unobserve(entry.target);
-    }
-  });
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); } });
 }, { threshold: 0.5 });
+document.querySelectorAll('.stat-counter').forEach(el => counterObs.observe(el));
 
-document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe(el));
-
-/* ── Active nav on scroll ── */
-const sections  = ['servicios', 'proceso', 'resultados', 'contacto'].map(id => document.getElementById(id));
-const navLinks  = document.querySelectorAll('.nav-link[data-section]');
-
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      navLinks.forEach(l => {
-        l.classList.toggle('active', l.dataset.section === id);
-      });
-    }
+/* ── Active nav ── */
+const sections = ['servicios','paquete','proceso','resultados','contacto'].map(id => document.getElementById(id)).filter(Boolean);
+const navLinks = document.querySelectorAll('.nav-link[data-section]');
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting)
+      navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === e.target.id));
   });
 }, { rootMargin: '-30% 0px -60% 0px' });
-
-sections.forEach(s => { if (s) navObserver.observe(s); });
+sections.forEach(s => navObs.observe(s));
 </script>
 </body>
 </html>
