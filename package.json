@@ -1,0 +1,12 @@
+{
+  "name": "nexvore-webhook",
+  "version": "1.0.0",
+  "description": "MercadoPago webhook + Resend email delivery for Nexvore Digital Studio",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "resend": "^3.5.0"
+  }
+}
