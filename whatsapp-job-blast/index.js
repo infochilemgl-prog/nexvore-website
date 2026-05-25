@@ -50,9 +50,9 @@ async function main() {
   console.log(`\n✅ Scraping completado. ${withPhone} negocios con teléfono listos para envío.\n`);
   console.log('─'.repeat(50));
 
-  // Paso 2: Envío
-  console.log('\nPASO 2: Enviando mensajes por WhatsApp...\n');
-  await runScript('sender.js');
+  // Paso 2: Exportar a Excel
+  console.log('\nPASO 2: Generando Excel con contactos...\n');
+  await runScript('export-excel.js');
 
   console.log('\n✅ Proceso completo finalizado.');
 }
