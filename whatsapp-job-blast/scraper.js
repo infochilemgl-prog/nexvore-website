@@ -187,18 +187,28 @@ async function main() {
   console.log('║       SCRAPER DE NEGOCIOS – GOOGLE MAPS          ║');
   console.log('╚══════════════════════════════════════════════════╝\n');
 
+  // Usar browser del sistema si existe (entornos cloud sin descarga de Chromium)
+  const executablePath =
+    process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ||
+    '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+
   const browser = await chromium.launch({
     headless: true,
+    executablePath,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--lang=es-CL',
+      '--ignore-certificate-errors',
+      '--ignore-certificate-errors-spki-list',
     ],
+    ignoreHTTPSErrors: true,
   });
 
   const context = await browser.newContext({
     locale: 'es-CL',
+    ignoreHTTPSErrors: true,
     userAgent:
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
   });
