@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-body antialiased;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .brush-divider {
+    clip-path: path(
+      "M0,40 C60,10 120,60 200,35 C280,10 340,55 420,30 C500,5 560,50 640,28 C720,6 800,48 880,32 C960,16 1040,45 1120,30 C1200,15 1280,42 1360,30 C1400,24 1420,20 1440,18 L1440,100 L0,100 Z"
+    );
+  }
+
+  .brush-tag {
+    clip-path: polygon(
+      3% 15%, 22% 2%, 45% 8%, 68% 0%, 88% 10%, 100% 4%,
+      97% 88%, 78% 100%, 55% 92%, 32% 100%, 12% 90%, 0% 96%
+    );
+  }
+}
