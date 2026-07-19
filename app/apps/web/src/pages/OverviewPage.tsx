@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import { PageHeader, StatTile, LoadingState, Card } from "@/components/ui/primitives";
-import { formatCurrency } from "@hospitality-ai/shared";
+import { formatCurrency } from "@nexvore/shared";
 
 interface Overview {
   arrivals: number;

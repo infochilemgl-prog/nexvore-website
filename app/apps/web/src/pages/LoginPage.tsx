@@ -30,8 +30,8 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="w-full max-w-sm rounded-2xl border border-border bg-surface p-8 shadow-sm">
         <div className="mb-6 text-center">
-          <div className="font-serif text-3xl text-forest">Nexvore AI</div>
-          <p className="mt-1 text-sm text-muted">Hospitality Operations OS</p>
+          <div className="font-serif text-3xl text-forest">Nexvore</div>
+          <p className="mt-1 text-sm text-muted">Plataforma de operaciones con IA</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

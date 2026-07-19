@@ -1,4 +1,4 @@
-import type { PMSAdapter } from "@hospitality-ai/integrations-sdk";
+import type { PMSAdapter } from "@nexvore/integrations-sdk";
 import { env } from "../../config/env";
 import { MockPMSAdapter } from "./mock-pms.adapter";
 

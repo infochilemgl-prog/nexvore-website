@@ -1,5 +1,5 @@
 {
-  "name": "@hospitality-ai/integrations-sdk",
+  "name": "@nexvore/integrations-sdk",
   "private": true,
   "version": "0.1.0",
   "main": "dist/index.js",

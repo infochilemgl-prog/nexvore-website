@@ -44,8 +44,8 @@ export function AppShell() {
     <div className="flex min-h-screen bg-background text-ink">
       <aside className="hidden md:flex w-64 shrink-0 flex-col border-r border-border bg-surface p-4">
         <div className="mb-6 px-2">
-          <div className="font-serif text-2xl text-forest">Nexvore AI</div>
-          <div className="text-xs text-muted">Hospitality Operations OS</div>
+          <div className="font-serif text-2xl text-forest">Nexvore</div>
+          <div className="text-xs text-muted">Plataforma de operaciones con IA</div>
         </div>
         <nav className="flex-1 space-y-1 overflow-y-auto">
           {NAV_ITEMS.map((item) => (

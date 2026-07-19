@@ -1,4 +1,4 @@
-import type { PaymentAdapter } from "@hospitality-ai/integrations-sdk";
+import type { PaymentAdapter } from "@nexvore/integrations-sdk";
 import { env } from "../../config/env";
 import { MockPaymentAdapter } from "./mock-payment.adapter";
 

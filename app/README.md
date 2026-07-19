@@ -1,12 +1,53 @@
-# Hospitality AI OS (`app/`)
+# Nexvore (`app/`)
 
-A multi-tenant hospitality-management platform: WhatsApp/voice conversations are handled by
-AI agents that call deterministic, DB-backed tools (availability, pricing, maintenance triage,
-etc.) under a four-tier risk/approval model, with a full audit trail and a React dashboard.
+A multi-tenant hospitality + restaurant reservations platform: WhatsApp/voice conversations are
+handled by AI agents that call deterministic, DB-backed tools (availability, pricing,
+maintenance triage, etc.) under a four-tier risk/approval model, with a full audit trail and a
+React dashboard. "Nexvore" is the platform brand (dashboard title/nav, this README); it is not
+guest-facing -- the AI persona a guest/comensal actually talks to (e.g. "Valentina") is a
+per-organization configurable name (`BrandProfile.assistantName`), so each client business can
+brand its own assistant differently. See "Restaurant / table reservations" below.
+
+A restaurant is modeled as a `Property` with `propertyType: "RESTAURANT"`, a table is a `Unit`
+with `category: "TABLE"`, and a table reservation is a `Reservation` whose `checkIn`/`checkOut`
+span a short same-day window (default 120 minutes, `Property.reservationDurationMinutes`)
+instead of multiple nights -- it reuses the exact same `Reservation`/`Unit`/availability/quote
+engine as hotel stays, not a parallel system. See "Restaurant / table reservations" below for
+what was specifically fixed/verified for this case.
 
 This lives entirely under `app/` inside the `nexvore-website` repo and is fully independent
 from the root site (`index.html`, `api/webhook.js`, `vercel.json`, etc.) — nothing outside
 `app/` was modified except one pointer line in the root `README.md`.
+
+## Restaurant / table reservations
+
+The hotel-oriented reservation engine (`apps/api/src/services/reservations/`) was originally
+written assuming whole-day granularity in two places, both fixed for the `RESTAURANT` case:
+
+- `validateDateRange` gained a `granularity: "DATE" | "DATETIME"` parameter. `"DATE"` (hotel,
+  unchanged default) only rejects a checkIn before the start of today, ignoring time-of-day.
+  `"DATETIME"` (restaurant) rejects a checkIn earlier than the exact current instant, so a
+  same-day slot that already elapsed (e.g. booking today 13:00 when it's already 15:00) is
+  correctly rejected -- the coarse date-only check would have let it through.
+- `computeQuote` gained a `pricingMode: "NIGHTLY" | "FLAT"` parameter. `"FLAT"` (restaurant)
+  charges the unit's `basePrice` once as a flat/deposit fee (0 for a free reservation) instead
+  of `nights * basePrice`, and omits zero-amount line items, so a 2-hour table booking never
+  produces a "0 noche(s) x 0" or "Tarifa de aseo: 0" line.
+- A new `validateRestaurantServiceWindow` rejects bookings outside `lunchOpen`/`lunchClose`/
+  `dinnerOpen`/`dinnerClose` or on a `closedWeekdays` day (all new `Property` fields).
+- The overlap check (`datesOverlap`) and per-unit capacity search (`findAvailableUnit`) needed
+  **no changes** -- they already compare exact `Date` timestamps per-`unitId`, so multiple
+  same-day table bookings across different tables were already handled correctly; only the
+  coarse "is this in the past" check and the nights-based pricing assumed whole-day granularity.
+- Unit-tested in `apps/api/src/tests/availability.test.ts` and `quote.test.ts`: same-day
+  multi-table bookings, per-table overlap rejection, cross-table concurrency, DATETIME
+  past-rejection, FLAT/free/paid quote breakdowns.
+
+Verified live (not just typechecked) against a real local Postgres/Redis: `prisma db seed`
+creates the `Demo Bistro` organization (3 tables, sample lunch/dinner reservations, sample
+WhatsApp transcripts) alongside the original `Andes Hospitality` hotel/cabin demo, and a
+webhook-driven conversation for Demo Bistro's WhatsApp number produces a real `Reservation` row
+for the correct table with no overlap (see "Run it" below for the exact commands).
 
 ## What is genuinely built and verified
 
@@ -124,9 +165,11 @@ npm run dev:web     # http://localhost:5173
 npm run --workspace=apps/api worker   # optional: BullMQ workers (daily-report, etc.)
 ```
 
-Demo login: `admin@andeshospitality.demo` / `Demo1234!` (see other seeded user in `prisma/seed.ts`).
+Demo login (Andes Hospitality, hotel/cabin vertical): `admin@andeshospitality.demo` / `Demo1234!`.
+Demo login (Demo Bistro, restaurant vertical): `admin@demobistro.demo` / `Demo1234!` (see other
+seeded users in `prisma/seed.ts`).
 
-Test the vertical slice directly:
+Test the hotel vertical slice directly:
 ```bash
 curl -X POST http://localhost:3001/api/webhooks/twilio/whatsapp \
   --data-urlencode "From=whatsapp:+56988887777" \
@@ -136,16 +179,43 @@ curl -X POST http://localhost:3001/api/webhooks/twilio/whatsapp \
 (Hotel Costa Norte's seeded WhatsApp number is `+56900000001`, Refugio Lago Azul's is
 `+56900000002`.)
 
+Test the restaurant vertical slice directly (same webhook, different WhatsApp number -> routed
+to Demo Bistro's `RESTAURANT` property, so the reservations agent uses the table-booking prompt
+and the `MockAIProvider`'s restaurant flow -- name / party size / day / time / allergies, one at
+a time, then recap+confirm):
+```bash
+curl -X POST http://localhost:3001/api/webhooks/twilio/whatsapp \
+  --data-urlencode "From=whatsapp:+56977778888" \
+  --data-urlencode "To=whatsapp:+56900000003" \
+  --data-urlencode "Body=Hola, quiero reservar una mesa. Me llamo Pedro Alvarez"
+```
+(Demo Bistro Centro's seeded WhatsApp number is `+56900000003`.)
+
 ### Verification commands actually run in this build
 ```bash
-npx prisma validate --schema=prisma/schema.prisma
+npx prisma migrate dev --schema=prisma/schema.prisma   # applied the restaurant-support migration
 npx prisma generate --schema=prisma/schema.prisma
 npm run typecheck:api     # tsc --noEmit, apps/api -- passes
 npm run typecheck:web     # tsc --noEmit, apps/web -- passes
-npm run build:web         # vite build -- passes
+npm run build:web         # vite build -- passes, dist/index.html title is "Nexvore"
 npm run build:api         # tsc build -- passes, boots from dist/
-cd apps/api && npx vitest run   # 21/21 tests pass (quote, availability, triage, roi, permissions)
+cd apps/api && npx vitest run   # 36/36 tests pass (quote, availability, triage, roi, permissions --
+                                 # 15 of the 36 are new: restaurant datetime-granularity overlap/
+                                 # capacity/service-window tests + FLAT-pricing quote tests)
 ```
+
+Also driven live against the real local Postgres/Redis (not just typechecked), after reseeding
+`Demo Bistro` (see "Restaurant / table reservations" above): several multi-turn WhatsApp
+conversations through `/api/webhooks/twilio/whatsapp` for Demo Bistro's number, inspecting the
+resulting rows directly in Postgres --
+- a full name→party-size→day→time→allergies→recap→confirm flow created a real `Reservation`
+  (`totalAmount: 0`, correct `FLAT` pricing, correct table, correct 2-hour `checkIn`/`checkOut`);
+- a second conversation for the **same day and time, same party size** was correctly assigned to
+  a **different** table (cross-table concurrency working);
+- a third conversation for that same exhausted slot was correctly **rejected** ("no hay
+  disponibilidad", re-validated inside the transaction, no reservation row created);
+- a booking attempt on a `closedWeekdays` day was correctly rejected before ever checking table
+  availability.
 
 Additionally verified when the Vercel adaptation (see **Desplegar en Vercel** below) was built: the
 compiled `dist/index.js` persistent-server boot, the WhatsApp webhook vertical slice, and all five
@@ -153,7 +223,11 @@ compiled `dist/index.js` persistent-server boot, the WhatsApp webhook vertical s
 exercised directly with `curl` — not through an actual Vercel deployment (this sandbox cannot reach
 `vercel.com`/`api.vercel.com`, so the real Vercel Cron scheduler, the real Vercel Postgres/Neon, and
 the real Vercel KV/Upstash REST endpoint were never reached from here — see that section for exactly
-what was verified live vs. by code/type inspection only).
+what was verified live vs. by code/type inspection only). None of `vercel.json`, `apps/api/api/`,
+`config/env.ts`, or the Prisma pooled/direct URL split were touched by the restaurant/rebrand work
+in this change -- the serverless entrypoint shares the exact same `createApp()` Express app as the
+persistent server, so the new schema/tools/prompts apply identically on both paths with zero
+Vercel-specific changes needed.
 
 ## Desplegar en Vercel
 

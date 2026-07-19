@@ -1,4 +1,4 @@
-import type { VoiceProvider } from "@hospitality-ai/integrations-sdk";
+import type { VoiceProvider } from "@nexvore/integrations-sdk";
 import { logger } from "../../config/logger";
 
 export class MockVoiceProvider implements VoiceProvider {

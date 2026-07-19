@@ -1,4 +1,4 @@
-import type { PaymentAdapter, PaymentLinkRequest, RefundResult } from "@hospitality-ai/integrations-sdk";
+import type { PaymentAdapter, PaymentLinkRequest, RefundResult } from "@nexvore/integrations-sdk";
 import { logger } from "../../config/logger";
 
 const paidStore = new Map<string, { status: "PENDING" | "PAID" | "FAILED" | "EXPIRED"; amount: number }>();

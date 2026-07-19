@@ -1,4 +1,4 @@
-import type { PMSAdapter, PMSAvailabilityQuery, PMSReservationPayload } from "@hospitality-ai/integrations-sdk";
+import type { PMSAdapter, PMSAvailabilityQuery, PMSReservationPayload } from "@nexvore/integrations-sdk";
 import { logger } from "../../config/logger";
 
 export class MockPMSAdapter implements PMSAdapter {
