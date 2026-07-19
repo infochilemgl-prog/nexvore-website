@@ -58,6 +58,7 @@ export async function runAgentToolLoop(input: RunAgentInput): Promise<RunAgentRe
     propertyId: ctx.propertyId,
     guestId: ctx.guestId,
     conversationId: ctx.conversationId,
+    propertyType: ctx.propertyType,
   });
 
   try {

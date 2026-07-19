@@ -18,7 +18,9 @@ import type { ToolContext } from "../../tools/types";
  */
 const INTENT_RULES: Array<{ agent: string; pattern: RegExp }> = [
   { agent: "maintenance", pattern: /\b(gas|incendio|fuego|humo|no funciona|se corto|se corta|fuga|inundaci|wifi|internet|aire acondicionado|calefaccion|cerradura|electricidad|luz|agua caliente|roto|rota|averiad)/i },
-  { agent: "reservations", pattern: /\b(reservar|reserva|disponibilidad|habitacion|cabin|cuarto|cotizacion|precio|check-?in|check-?out|cancelar|reprogramar|fecha)/i },
+  // "mesa" (table) covers restaurant-property bookings ("quiero una mesa para 4") that don't
+  // otherwise contain a hotel-flavored keyword like "habitacion"/"check-in".
+  { agent: "reservations", pattern: /\b(reservar|reserva|mesa|disponibilidad|habitacion|cabin|cuarto|cotizacion|precio|check-?in|check-?out|cancelar|reprogramar|fecha|almuerzo|cena)/i },
   { agent: "concierge", pattern: /\b(recomendaci|restaurant|tour|paseo|actividad|spa|transporte)/i },
 ];
 
@@ -58,6 +60,15 @@ export async function runOrchestrator(input: OrchestratorInput): Promise<Orchest
     return { agentUsed: "none", finalText: "Propiedad no encontrada.", toolsUsed: [], success: false };
   }
 
+  // Per-organization AI persona name (e.g. "Valentina"): prefer a property-specific
+  // BrandProfile, fall back to the organization-level one, then to the buildGuestFacingPreamble
+  // code-level default ("Valentina") if neither configured an assistantName. "Nexvore" (the
+  // platform brand) never appears here -- it is dashboard-only, see apps/web AppShell.
+  const brandProfiles = await prisma.brandProfile.findMany({
+    where: { organizationId: input.organizationId, OR: [{ propertyId: input.propertyId }, { propertyId: null }] },
+  });
+  const brandProfile = brandProfiles.find((b) => b.propertyId === input.propertyId) ?? brandProfiles.find((b) => b.propertyId === null);
+
   // Sticky routing: once a conversation is mid-flow with reservations or
   // maintenance (multi-turn, field-by-field flows), keep routing to the same
   // agent so "2 personas" or "el 10 de septiembre" (which don't themselves
@@ -88,6 +99,8 @@ export async function runOrchestrator(input: OrchestratorInput): Promise<Orchest
     guestLanguage: input.guestLanguage ?? "es",
     checkInTime: property.checkInTime,
     checkOutTime: property.checkOutTime,
+    propertyType: property.propertyType,
+    assistantName: brandProfile?.assistantName ?? undefined,
   });
 
   const ctx: ToolContext = {
@@ -98,6 +111,7 @@ export async function runOrchestrator(input: OrchestratorInput): Promise<Orchest
     agentName: agent.name,
     actorType: "AGENT",
     actorId: agent.name,
+    propertyType: property.propertyType,
   };
 
   const result = await runAgentToolLoop({ agent, systemPrompt, history, ctx });

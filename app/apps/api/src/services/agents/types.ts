@@ -16,5 +16,13 @@ export interface AgentPromptContext {
   guestLanguage: string;
   checkInTime?: string;
   checkOutTime?: string;
+  /** "HOTEL" | "CABIN" | "RESTAURANT" | ... -- drives restaurant-specific prompt branches. */
+  propertyType?: string;
+  /**
+   * Per-organization AI persona name shown to the guest (e.g. "Valentina"). This is the
+   * feature-level, per-tenant-configurable name -- never the platform brand ("Nexvore"), which
+   * only ever appears in the dashboard, not in guest-facing conversation.
+   */
+  assistantName?: string;
   extra?: string;
 }
