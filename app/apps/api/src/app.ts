@@ -24,6 +24,7 @@ import { approvalsRouter } from "./routes/approvals.routes";
 import { integrationsRouter } from "./routes/integrations.routes";
 import { reportsRouter } from "./routes/reports.routes";
 import { webhooksRouter } from "./routes/webhooks.routes";
+import { cronRouter } from "./routes/cron.routes";
 
 export function createApp() {
   const app = express();
@@ -57,6 +58,10 @@ export function createApp() {
   app.use("/api/integrations", integrationsRouter);
   app.use("/api/reports", reportsRouter);
   app.use("/api/webhooks", webhooksRouter);
+  // Cron-triggered job endpoints (see routes/cron.routes.ts) -- not
+  // JWT-authenticated like the routes above, guarded instead by
+  // requireCronSecret (CRON_SECRET) inside the router itself.
+  app.use("/api/cron", cronRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);

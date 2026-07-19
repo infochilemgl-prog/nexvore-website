@@ -76,7 +76,9 @@ Concretely verified in this environment (see commands below to reproduce):
 - **BullMQ job queues are real** (`apps/api/src/jobs/*.job.ts`, real logic, not stubs) and run
   against the local Redis; `npm run worker` starts them as a separate process. They are not
   auto-started by the API process itself (the report is also reachable synchronously via
-  `GET /api/reports/daily`, which is what the dashboard uses).
+  `GET /api/reports/daily`, which is what the dashboard uses). On Vercel, where a long-lived
+  worker process cannot run, the same job logic is instead invoked directly by
+  `/api/cron/*` HTTP routes on a schedule via Vercel Cron — see **Desplegar en Vercel** below.
 
 ## Architecture highlights
 
@@ -144,6 +146,129 @@ npm run build:web         # vite build -- passes
 npm run build:api         # tsc build -- passes, boots from dist/
 cd apps/api && npx vitest run   # 21/21 tests pass (quote, availability, triage, roi, permissions)
 ```
+
+Additionally verified when the Vercel adaptation (see **Desplegar en Vercel** below) was built: the
+compiled `dist/index.js` persistent-server boot, the WhatsApp webhook vertical slice, and all five
+`/api/cron/*` routes (auth rejection + real job execution against a real local Postgres/Redis) were
+exercised directly with `curl` — not through an actual Vercel deployment (this sandbox cannot reach
+`vercel.com`/`api.vercel.com`, so the real Vercel Cron scheduler, the real Vercel Postgres/Neon, and
+the real Vercel KV/Upstash REST endpoint were never reached from here — see that section for exactly
+what was verified live vs. by code/type inspection only).
+
+## Desplegar en Vercel
+
+Este proyecto puede desplegarse en Vercel, pero es un backend con estado (Postgres, colas,
+WebSockets) corriendo sobre funciones serverless sin estado — algunas piezas se adaptaron
+directamente, y otras tuvieron que rediseñarse o quedar documentadas como limitación conocida.
+Lee **"Limitaciones en Vercel"** al final de esta sección antes de asumir que todo funciona igual
+que en el servidor persistente.
+
+### Pasos en el dashboard de Vercel
+
+1. **Storage → Postgres**: crea (o conecta) una base de datos Postgres (respaldada por Neon) y
+   conéctala al proyecto. Vercel inyecta automáticamente `POSTGRES_PRISMA_URL` (pooled,
+   `pgbouncer=true` — úsala como `DATABASE_URL` en runtime), `POSTGRES_URL` y
+   `POSTGRES_URL_NON_POOLING` (conexión directa — úsala **solo** para
+   `prisma migrate deploy`, nunca como `DATABASE_URL` de la app en producción).
+   `apps/api/src/config/env.ts` ya resuelve `DATABASE_URL` a partir de
+   `POSTGRES_PRISMA_URL`/`POSTGRES_URL` si `DATABASE_URL` no está seteada explícitamente, así
+   que normalmente no necesitas setear nada a mano aquí.
+2. **Storage → KV**: crea (o conecta) un almacén KV (respaldado por Upstash Redis) y conéctalo
+   al proyecto. Vercel inyecta `KV_URL`, `KV_REST_API_URL`, `KV_REST_API_TOKEN` y
+   `KV_REST_API_READ_ONLY_TOKEN`. `KV_REST_API_URL`/`KV_REST_API_TOKEN` es lo que
+   `apps/api/src/utils/redis.ts` y `middleware/rate-limit.ts` usan de verdad en Vercel (vía
+   `@upstash/redis`, un cliente REST sobre HTTPS) — `KV_URL` es una URL `redis://` TCP que una
+   función serverless no puede usar de forma confiable.
+3. **Add New Project → import this repo → Root Directory = `app`**. Esto es obligatorio: el
+   repo tiene un sitio estático no relacionado en la raíz, y todo este proyecto (workspaces npm,
+   `vercel.json`, Prisma, etc.) vive bajo `app/`. Si dejas el Root Directory en blanco, Vercel
+   intentará construir el sitio estático de la raíz, no esta app.
+4. En **Project Settings → Environment Variables**, agrega (para Production y Preview según
+   corresponda):
+   - `JWT_SECRET` (string largo y aleatorio)
+   - `UNIT_SECRET_ENCRYPTION_KEY` (32 bytes hex — `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`)
+   - `CRON_SECRET` (mismo generador de arriba) — Vercel adjunta automáticamente
+     `Authorization: Bearer <CRON_SECRET>` a las peticiones GET que hace Vercel Cron cuando esta
+     variable está seteada en el proyecto; `apps/api/src/routes/cron.routes.ts` la valida.
+   - `AI_PROVIDER=anthropic` (o `openai`) + `ANTHROPIC_API_KEY` (u `OPENAI_API_KEY`) — sin esto
+     el sistema sigue arrancando pero usa `MockAIProvider`.
+   - `WEB_URL` / `PUBLIC_BASE_URL` apuntando al dominio real de Vercel una vez asignado.
+   - Opcionales según qué integraciones actives: `TWILIO_ACCOUNT_SID`/`TWILIO_AUTH_TOKEN`/
+     `TWILIO_WHATSAPP_NUMBER`, `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`, `SLACK_WEBHOOK_URL`,
+     etc. — ver la tabla de integraciones más abajo.
+   - No configures `DATABASE_URL`/`REDIS_URL` manualmente en Vercel salvo que quieras apuntar a
+     un Postgres/Redis fuera de los productos Storage de Vercel — los fallbacks descritos arriba
+     ya cubren el caso normal.
+5. **Migraciones**: `prisma migrate deploy` necesita la URL **directa** (no pooled). Ejecútala
+   localmente (o en un paso de CI) apuntando `DATABASE_URL` a `POSTGRES_URL_NON_POOLING`:
+   `DATABASE_URL="$POSTGRES_URL_NON_POOLING" npx prisma migrate deploy --schema=prisma/schema.prisma`.
+   El build de Vercel (`vercel-build`, ver `app/package.json`) solo corre `prisma generate`
+   (no requiere conexión a la base), nunca `migrate deploy` — las migraciones son un paso
+   manual/deliberado, no automático en cada deploy.
+6. **Cron Jobs**: se activan solos a partir del arreglo `crons` en `app/vercel.json` — no hay un
+   paso separado en el dashboard para "crear" cada cron job, Vercel los lee de ese archivo en
+   cada deploy y los muestra en la pestaña **Cron Jobs** del proyecto. Lo único que el dueño debe
+   confirmar/hacer manualmente es que `CRON_SECRET` esté seteado en las env vars del proyecto
+   (paso 4) para que las peticiones estén protegidas, y revisar el plan de Vercel: **el plan
+   Hobby limita los Cron Jobs a un máximo de 2 por proyecto y a una frecuencia mínima de una vez
+   al día** — este proyecto define 5 jobs, uno de ellos (`follow-up`) horario, así que
+   **funcionar tal cual como está configurado requiere plan Pro o superior**; en Hobby hay que
+   recortar el arreglo `crons` a 2 entradas diarias como máximo antes de desplegar.
+
+### Qué build produce Vercel
+
+`app/vercel.json` fija `buildCommand: npm run vercel-build` (build de `packages/*`,
+`prisma generate`, y `vite build` de `apps/web` → `apps/web/dist`) y `outputDirectory:
+apps/web/dist` para el sitio estático (el dashboard React). La función serverless de la API vive
+en `apps/api/api/index.ts` (exporta la misma app Express que usa el servidor persistente, ver ese
+archivo) y está declarada en el bloque `functions` de `vercel.json` con `maxDuration: 60` (ajusta
+este número según tu plan — Hobby sin Fluid Compute limita a 10s; revisa el límite real de tu
+cuenta antes de asumir 60s). Los `rewrites` mandan `/api/*` a esa función y todo lo demás a
+`index.html` (SPA de React Router).
+
+### Limitaciones en Vercel (léelas antes de asumir que "ya funciona igual")
+
+- **BullMQ / `npm run worker` no corre automáticamente.** Una función serverless de Vercel no
+  puede mantener un proceso vivo haciendo polling sobre Redis. Los cinco jobs
+  (`daily-report`, `knowledge-audit`, `competitor-audit`, `upsell`, `follow-up`) siguen siendo
+  BullMQ-compatibles (`jobs/*.job.ts`, `npm run worker` sigue existiendo y sigue siendo la forma
+  de correrlos como cola real en un host siempre-encendido fuera de Vercel), pero en el
+  despliegue de Vercel se invocan en cambio como rutas HTTP (`/api/cron/*`) disparadas por
+  Vercel Cron según el arreglo `crons` de `vercel.json` — la lógica real de cada job
+  (`run*` functions) es exactamente la misma, solo cambia el disparador. Si en el futuro se
+  necesita una cola *genuinamente* asíncrona (no solo un batch programado — p. ej. "encolar esto
+  y procesarlo en 10 minutos"), eso **sigue necesitando** un worker BullMQ corriendo en un host
+  persistente aparte (Railway, Fly.io, un VPS, etc.) apuntando al mismo Redis — el despliegue de
+  Vercel por sí solo no lo cubre.
+- **Socket.IO no corre en funciones serverless estándar de Vercel** — necesita mantener una
+  conexión WebSocket abierta del lado del servidor, algo que un modelo de "invocación por
+  request, sin estado" no soporta. Examinado con honestidad: en este build, el servidor de
+  Socket.IO (`apps/api/src/index.ts`, solo usado en el modo persistente) nunca emitió ningún
+  evento (`io.on("connection")` solo maneja `join-org`) y ningún componente del frontend abría
+  jamás una conexión `socket.io-client` real hacia él pese a estar en `package.json` — así que
+  no hay una funcionalidad "en vivo" real que se pierda al desplegar en Vercel. El mecanismo real
+  de actualización del dashboard ya era, y sigue siendo, el *polling* de TanStack Query
+  (`refetchInterval`); `apps/web/src/main.tsx` ahora fija un `refetchInterval` global de 20s por
+  defecto (Inbox, Approvals, Maintenance y Overview ya usaban intervalos más cortos por página,
+  que siguen teniendo prioridad). Si en algún momento se implementa push real por Socket.IO, esa
+  pieza seguirá necesitando el modo servidor persistente (`npm run dev:api`/`npm start`, no
+  Vercel) para funcionar.
+- **Cold starts**: la primera petición después de un período sin tráfico puede tardar más
+  (arranque en frío de la función + reconexión de Prisma) — normal en cualquier despliegue
+  serverless, no es un bug.
+- **Rate limiting**: en Vercel usa `@upstash/redis`/`@upstash/ratelimit` (compartido entre
+  invocaciones, vía KV REST). Si `KV_REST_API_URL`/`KV_REST_API_TOKEN` no están configuradas, el
+  rate limiting cae de vuelta al store en memoria de `express-rate-limit` — correcto para dev
+  local/servidor persistente, pero **no confiable en Vercel** (cada instancia serverless tiene su
+  propia memoria), así que no despliegues a Vercel sin conectar el producto KV.
+- **Verificación de la ruta Upstash**: el cliente REST de `@upstash/redis`/`@upstash/ratelimit`
+  fue verificado por inspección de código y contra los tipos (`.d.ts`) reales del SDK instalado
+  (firma exacta de `.set(key, value, {nx, px})` y `.eval(script, keys, args)`), y el flujo
+  completo (lock de reservas, jobs de cron, arranque del servidor) fue efectivamente probado en
+  este sandbox contra Postgres/Redis locales reales — pero **no** contra un endpoint Upstash real
+  ni contra el scheduler real de Vercel Cron, porque este sandbox no tiene salida de red hacia
+  `vercel.com`/`api.vercel.com` ni (probablemente) hacia Upstash. Antes de confiar en producción,
+  prueba al menos una vez el flujo completo contra el proyecto real de Vercel.
 
 ## Required `.env` values
 

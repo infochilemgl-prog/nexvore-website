@@ -30,3 +30,17 @@ export async function runFollowUpSweep(organizationId: string) {
 export function startFollowUpWorker() {
   return createWorker<FollowUpJobData>("follow-up", async (job) => runFollowUpSweep(job.data.organizationId));
 }
+
+/**
+ * Fans `runFollowUpSweep` out across every organization -- used by the
+ * `/api/cron/follow-up` route (Vercel Cron).
+ */
+export async function runFollowUpSweepForAllOrganizations() {
+  const organizations = await prisma.organization.findMany({ select: { id: true } });
+  let totalFlagged = 0;
+  for (const org of organizations) {
+    const { flagged } = await runFollowUpSweep(org.id);
+    totalFlagged += flagged;
+  }
+  return { organizations: organizations.length, flagged: totalFlagged };
+}

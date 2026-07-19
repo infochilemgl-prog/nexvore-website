@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { defineTool } from "./types";
 import { prisma } from "../utils/prisma";
-import { redis, withRedisLock } from "../utils/redis";
+import { withRedisLock } from "../utils/redis";
 import { checkAvailability, datesOverlap, findAvailableUnit, validateDateRange } from "../services/reservations/availability";
 import { computeQuote } from "../services/reservations/quote";
 import { createCalendarEvent } from "../integrations/google";

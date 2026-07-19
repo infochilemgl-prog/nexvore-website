@@ -28,3 +28,16 @@ export async function runUpsellSuggestions(propertyId: string) {
 export function startUpsellWorker() {
   return createWorker<UpsellJobData>("upsell", async (job) => runUpsellSuggestions(job.data.propertyId));
 }
+
+/**
+ * Fans `runUpsellSuggestions` out across every active property -- used by
+ * the `/api/cron/upsell` route (Vercel Cron).
+ */
+export async function runUpsellSuggestionsForAllProperties() {
+  const properties = await prisma.property.findMany({ where: { active: true }, select: { id: true } });
+  const results = [];
+  for (const property of properties) {
+    results.push(await runUpsellSuggestions(property.id));
+  }
+  return results;
+}

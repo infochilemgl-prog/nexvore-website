@@ -38,3 +38,17 @@ export async function runCompetitorAudit(propertyId: string) {
 export function startCompetitorAuditWorker() {
   return createWorker<CompetitorAuditJobData>("competitor-audit", async (job) => runCompetitorAudit(job.data.propertyId));
 }
+
+/**
+ * Fans `runCompetitorAudit` out across every active property -- used by the
+ * `/api/cron/competitor-audit` route (Vercel Cron).
+ */
+export async function runCompetitorAuditForAllProperties() {
+  const properties = await prisma.property.findMany({ where: { active: true }, select: { id: true } });
+  let totalUpdated = 0;
+  for (const property of properties) {
+    const { updated } = await runCompetitorAudit(property.id);
+    totalUpdated += updated;
+  }
+  return { properties: properties.length, updated: totalUpdated };
+}

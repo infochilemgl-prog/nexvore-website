@@ -10,6 +10,34 @@ import { z } from "zod";
 dotenv.config();
 dotenv.config({ path: path.resolve(__dirname, "../../../../.env") });
 
+// --- Vercel Postgres / KV fallback resolution ---------------------------
+// Vercel's "Postgres" storage integration (Neon-backed) injects
+// POSTGRES_PRISMA_URL (pooled, pgbouncer-flavored -- use this one at
+// runtime), POSTGRES_URL (also pooled, generic), and
+// POSTGRES_URL_NON_POOLING (direct connection -- use this one only for
+// running migrations, never for the request-serving app). None of these are
+// named DATABASE_URL, so if DATABASE_URL isn't already set (local/docker
+// dev sets it explicitly in .env) we derive it from whichever Postgres var
+// Vercel actually provided. Prisma itself also still reads DATABASE_URL
+// directly from prisma/schema.prisma's datasource block, so this must run
+// before that client is constructed (i.e. here, before the zod parse below).
+if (!process.env.DATABASE_URL) {
+  process.env.DATABASE_URL = process.env.POSTGRES_PRISMA_URL || process.env.POSTGRES_URL || "";
+}
+
+// Vercel's "KV" storage integration (Upstash-backed) injects KV_URL (a
+// redis:// TCP URL -- NOT guaranteed reachable from serverless functions,
+// Upstash's free/serverless tier is REST-only) plus KV_REST_API_URL /
+// KV_REST_API_TOKEN (the HTTPS REST endpoint, which is what actually works
+// from Vercel serverless functions). We only use KV_REST_API_URL/TOKEN
+// (via @upstash/redis) for anything that runs inside a serverless request.
+// REDIS_URL keeps its local/docker-compose meaning and is what BullMQ /
+// `npm run worker` (persistent-server-only) still needs, since BullMQ
+// requires a real TCP Redis connection that a REST API cannot provide.
+if (!process.env.REDIS_URL && process.env.KV_URL) {
+  process.env.REDIS_URL = process.env.KV_URL;
+}
+
 const boolFromString = z
   .string()
   .optional()
@@ -22,8 +50,23 @@ const envSchema = z.object({
   WEB_URL: z.string().default("http://localhost:5173"),
   PUBLIC_BASE_URL: z.string().default("http://localhost:3001"),
 
-  DATABASE_URL: z.string().min(1, "DATABASE_URL es obligatorio"),
+  DATABASE_URL: z.string().min(1, "DATABASE_URL es obligatorio (o POSTGRES_PRISMA_URL/POSTGRES_URL en Vercel)"),
   REDIS_URL: z.string().default("redis://localhost:6379"),
+
+  // Raw Vercel-injected vars, kept around (not just folded into DATABASE_URL/
+  // REDIS_URL above) so other code can tell exactly which flavor is active
+  // and so the direct/non-pooled URL is available for migrations.
+  POSTGRES_PRISMA_URL: z.string().optional().default(""),
+  POSTGRES_URL: z.string().optional().default(""),
+  POSTGRES_URL_NON_POOLING: z.string().optional().default(""),
+  KV_URL: z.string().optional().default(""),
+  KV_REST_API_URL: z.string().optional().default(""),
+  KV_REST_API_TOKEN: z.string().optional().default(""),
+  KV_REST_API_READ_ONLY_TOKEN: z.string().optional().default(""),
+
+  // Shared secret Vercel Cron sends as `Authorization: Bearer <CRON_SECRET>`
+  // when this env var is configured on the project. See routes/cron.routes.ts.
+  CRON_SECRET: z.string().optional().default(""),
 
   JWT_SECRET: z.string().min(8, "JWT_SECRET debe tener al menos 8 caracteres"),
   JWT_EXPIRES_IN: z.string().default("7d"),
@@ -88,5 +131,11 @@ export const aiProviderHasCredentials =
   (env.AI_PROVIDER === "anthropic" && env.ANTHROPIC_API_KEY.length > 0) ||
   (env.AI_PROVIDER === "openai" && env.OPENAI_API_KEY.length > 0) ||
   env.AI_PROVIDER === "mock";
+
+// When true, utils/redis.ts and middleware/rate-limit.ts use the
+// @upstash/redis REST client (works over HTTPS from a serverless function)
+// instead of `ioredis` (a raw TCP connection, which a Vercel serverless
+// function cannot hold open the way a persistent server can).
+export const useUpstashRedis = Boolean(env.KV_REST_API_URL && env.KV_REST_API_TOKEN);
 
 export type Env = typeof env;

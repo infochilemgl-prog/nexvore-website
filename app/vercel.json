@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm install",
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "apps/web/dist",
+  "functions": {
+    "apps/api/api/index.ts": {
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/apps/api/api/index" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    { "path": "/api/cron/follow-up", "schedule": "0 * * * *" },
+    { "path": "/api/cron/daily-report", "schedule": "0 11 * * *" },
+    { "path": "/api/cron/upsell", "schedule": "0 13 * * *" },
+    { "path": "/api/cron/knowledge-audit", "schedule": "0 7 * * *" },
+    { "path": "/api/cron/competitor-audit", "schedule": "0 9 * * 1" }
+  ]
+}

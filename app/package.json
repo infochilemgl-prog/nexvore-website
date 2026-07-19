@@ -21,7 +21,9 @@
     "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
     "prisma:validate": "prisma validate --schema=prisma/schema.prisma",
     "prisma:migrate": "prisma migrate dev --schema=prisma/schema.prisma",
-    "prisma:seed": "tsx prisma/seed.ts"
+    "prisma:seed": "tsx prisma/seed.ts",
+    "postinstall": "npm run prisma:generate",
+    "vercel-build": "npm run build:packages && npm run prisma:generate && npm run build:web"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
