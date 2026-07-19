@@ -1,0 +1,41 @@
+{
+  "name": "nexvore",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/api",
+    "apps/web",
+    "packages/shared",
+    "packages/prompts",
+    "packages/integrations-sdk"
+  ],
+  "scripts": {
+    "build:packages": "npm run build --workspace=packages/shared && npm run build --workspace=packages/prompts && npm run build --workspace=packages/integrations-sdk",
+    "dev": "npm run build:packages && concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build:api": "npm run build:packages && npm run build --workspace=apps/api",
+    "build:web": "npm run build:packages && npm run build --workspace=apps/web",
+    "typecheck:api": "npm run build:packages && npm run typecheck --workspace=apps/api",
+    "typecheck:web": "npm run build:packages && npm run typecheck --workspace=apps/web",
+    "test:api": "npm run test --workspace=apps/api",
+    "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
+    "prisma:validate": "prisma validate --schema=prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=prisma/schema.prisma",
+    "prisma:seed": "tsx prisma/seed.ts",
+    "postinstall": "npm run prisma:generate",
+    "vercel-build": "npm run build:packages && npm run prisma:generate && npm run build:web"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "prisma": "^5.20.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3",
+    "@types/node": "^20.16.5",
+    "bcryptjs": "^2.4.3",
+    "date-fns": "^3.6.0"
+  }
+}
