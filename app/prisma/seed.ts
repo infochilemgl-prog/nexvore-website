@@ -295,10 +295,152 @@ async function main() {
     }
   }
 
-  console.log("Seed completado.");
+  // Per-organization AI persona name (BrandProfile.assistantName), demonstrating that the
+  // assistant's guest-facing name is a configurable per-tenant feature, distinct from the
+  // "Nexvore" platform brand shown in the dashboard. Andes Hospitality explicitly overrides it
+  // to "Sofia"; Demo Bistro (below) intentionally leaves it unset so it falls back to the
+  // code-level default ("Valentina", see prompts/base.ts) -- both paths are exercised on purpose.
+  const existingAndesBrand = await prisma.brandProfile.findFirst({ where: { organizationId: org.id, propertyId: null } });
+  if (!existingAndesBrand) {
+    await prisma.brandProfile.create({ data: { organizationId: org.id, assistantName: "Sofia", tone: "calido y profesional" } });
+  }
+
+  console.log("Seed completado (Andes Hospitality).");
   console.log(`Organizacion: ${org.name} (${org.slug})`);
   console.log("Usuarios demo: admin@andeshospitality.demo / operaciones@andeshospitality.demo, password: Demo1234!");
   console.log(`WhatsApp de prueba -> Hotel Costa Norte: ${costaNorte.whatsappNumber}, Refugio Lago Azul: ${refugioLago.whatsappNumber}`);
+
+  // ============================================================
+  // DEMO BISTRO -- second demo organization, RESTAURANT vertical
+  // ============================================================
+  // Intentionally a generic placeholder name (NOT the real prospect's name -- the owner was
+  // explicit about that). Demonstrates table reservations (Unit.category = "TABLE",
+  // Property.propertyType = "RESTAURANT") running side by side with the hospitality-stay
+  // vertical above, under the same multi-tenant platform.
+  console.log("Sembrando datos demo (Demo Bistro)...");
+
+  const bistroOrg = await prisma.organization.upsert({
+    where: { slug: "demo-bistro" },
+    update: {},
+    create: { name: "Demo Bistro", slug: "demo-bistro", timezone: "America/Santiago", locale: "es-CL", currency: "CLP" },
+  });
+
+  await prisma.user.upsert({
+    where: { email: "admin@demobistro.demo" },
+    update: {},
+    create: { email: "admin@demobistro.demo", passwordHash, name: "Admin Demo Bistro", role: "OWNER", organizationId: bistroOrg.id },
+  });
+
+  const bistro = await prisma.property.upsert({
+    where: { organizationId_internalCode: { organizationId: bistroOrg.id, internalCode: "BISTRO-CENTRO" } },
+    update: {},
+    create: {
+      organizationId: bistroOrg.id,
+      name: "Demo Bistro Centro",
+      internalCode: "BISTRO-CENTRO",
+      propertyType: "RESTAURANT",
+      description: "Restaurante de cocina de autor en pleno centro.",
+      address: "Calle Principal 123",
+      city: "Santiago",
+      country: "Chile",
+      timezone: "America/Santiago",
+      locale: "es-CL",
+      currency: "CLP",
+      lunchOpen: "12:30",
+      lunchClose: "16:00",
+      dinnerOpen: "19:30",
+      dinnerClose: "23:30",
+      closedWeekdays: [1], // closed Mondays (JS Date#getDay(): 0=Sunday..6=Saturday)
+      reservationDurationMinutes: 120,
+      maximumGuests: 6,
+      status: "ACTIVE",
+      whatsappNumber: "+56900000003",
+    },
+  });
+
+  const mesa1 = await upsertUnit(bistro.id, "MESA-1", { name: "Mesa 1 (ventana)", category: "TABLE", maximumGuests: 2, basePrice: 0, cleaningFee: 0, description: "Mesa para 2 junto a la ventana." });
+  const mesa2 = await upsertUnit(bistro.id, "MESA-2", { name: "Mesa 2", category: "TABLE", maximumGuests: 4, basePrice: 0, cleaningFee: 0, description: "Mesa para 4 en el salon principal." });
+  const mesa3 = await upsertUnit(bistro.id, "MESA-3-TERRAZA", { name: "Mesa 3 (terraza)", category: "TABLE", maximumGuests: 6, basePrice: 5000, cleaningFee: 0, description: "Mesa de terraza para grupos grandes, reserva con tarifa fija de garantia (no reembolsable)." });
+
+  async function upsertBistroGuest(phone: string, data: Omit<Parameters<typeof prisma.guest.create>[0]["data"], "organizationId" | "phone">) {
+    const existing = await prisma.guest.findFirst({ where: { organizationId: bistroOrg.id, phone } });
+    if (existing) return prisma.guest.update({ where: { id: existing.id }, data });
+    return prisma.guest.create({ data: { organizationId: bistroOrg.id, phone, ...data } });
+  }
+
+  const bistroGuest1 = await upsertBistroGuest("+56955555555", { firstName: "Camila", lastName: "Fuentes", email: "camila.fuentes@example.com", preferredLanguage: "es" });
+  const bistroGuest2 = await upsertBistroGuest("+56966666666", { firstName: "Diego", lastName: "Torres", email: "diego.torres@example.com", preferredLanguage: "es" });
+
+  /** Next date at least `daysFromToday` out that isn't a closed weekday (Monday=1 above). */
+  function nextOpenDate(daysFromToday: number, hour: number, minute: number): Date {
+    let d = addDays(today, daysFromToday);
+    while (d.getDay() === 1) d = addDays(d, 1);
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate(), hour, minute, 0);
+  }
+
+  const lunchSlot = nextOpenDate(1, 13, 30); // lunch service (12:30-16:00)
+  const dinnerSlot = nextOpenDate(2, 20, 30); // dinner service (19:30-23:30)
+  const dinnerSlot2 = nextOpenDate(2, 21, 0); // same evening, different table -- must NOT conflict
+
+  async function upsertBistroReservation(guestId: string, unitId: string, start: Date, partySize: number, flatFee: number, notes: string) {
+    const end = new Date(start.getTime() + 120 * 60000); // reservationDurationMinutes
+    const existing = await prisma.reservation.findFirst({ where: { guestId, unitId, checkIn: start } });
+    const data = {
+      organizationId: bistroOrg.id,
+      propertyId: bistro.id,
+      unitId,
+      guestId,
+      checkIn: start,
+      checkOut: end,
+      adults: partySize,
+      children: 0,
+      totalGuests: partySize,
+      subtotal: flatFee,
+      taxes: 0,
+      fees: 0,
+      totalAmount: flatFee,
+      amountPaid: 0,
+      currency: "CLP",
+      status: "CONFIRMED" as const,
+      source: "WHATSAPP" as const,
+      specialRequests: notes,
+    };
+    if (existing) return prisma.reservation.update({ where: { id: existing.id }, data });
+    return prisma.reservation.create({ data });
+  }
+
+  await upsertBistroReservation(bistroGuest1.id, mesa1.id, lunchSlot, 2, 0, "Ninguna");
+  await upsertBistroReservation(bistroGuest2.id, mesa2.id, dinnerSlot, 4, 0, "Alergia al mani");
+  await upsertBistroReservation(bistroGuest1.id, mesa3.id, dinnerSlot2, 5, 5000, "Cumpleanos, mesa en la terraza si es posible");
+
+  async function upsertBistroConversation(guestId: string, status: any) {
+    const existing = await prisma.conversation.findFirst({ where: { propertyId: bistro.id, guestId, channel: "WHATSAPP" } });
+    if (existing) return existing;
+    return prisma.conversation.create({ data: { organizationId: bistroOrg.id, propertyId: bistro.id, guestId, channel: "WHATSAPP", status, lastMessageAt: new Date() } });
+  }
+
+  const bistroConvo1 = await upsertBistroConversation(bistroGuest1.id, "CLOSED");
+  const bistroConvo2 = await upsertBistroConversation(bistroGuest2.id, "OPEN");
+
+  await ensureMessages(bistroConvo1.id, [
+    { sender: "GUEST", content: "Hola! Quiero reservar una mesa para 2 manana al mediodia." },
+    { sender: "AGENT", content: "Hola! Soy Valentina 😊 ¿Cual es tu nombre completo?" },
+    { sender: "GUEST", content: "Camila Fuentes" },
+    { sender: "AGENT", content: "Genial Camila, tengo mesa disponible manana 13:30 para 2 personas. ¿Alguna alergia, restriccion o pedido especial?" },
+    { sender: "GUEST", content: "Ninguna" },
+    { sender: "AGENT", content: "Entonces te confirmo: Camila, 2 personas, manana a las 13:30, sin alergias. ¿Lo dejo agendado?" },
+    { sender: "GUEST", content: "Si, confirmo" },
+    { sender: "AGENT", content: "Tu mesa quedo reservada. ¡Te esperamos! 🍽️✅" },
+  ]);
+  await ensureMessages(bistroConvo2.id, [
+    { sender: "GUEST", content: "Hola, tienen mesa para 4 personas el sabado en la noche?" },
+    { sender: "AGENT", content: "Hola! Soy Valentina, con gusto te ayudo 😊 ¿Cual es tu nombre completo?" },
+  ]);
+
+  console.log("Seed completado (Demo Bistro).");
+  console.log(`Organizacion: ${bistroOrg.name} (${bistroOrg.slug})`);
+  console.log("Usuario demo: admin@demobistro.demo, password: Demo1234!");
+  console.log(`WhatsApp de prueba -> Demo Bistro Centro: ${bistro.whatsappNumber}`);
 }
 
 main()
