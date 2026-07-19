@@ -9,6 +9,10 @@ export interface ToolContext {
   agentName: string;
   actorType: "AGENT" | "HUMAN" | "SYSTEM";
   actorId?: string;
+  /** "HOTEL" | "CABIN" | "RESTAURANT" | ... -- lets the mock AI provider branch its scripted
+   * flow without re-fetching the Property row itself (real providers don't need this, tools
+   * re-fetch propertyType from the DB directly for their own logic). */
+  propertyType?: string;
 }
 
 export interface ToolDefinition<TSchema extends ZodTypeAny = ZodTypeAny> {

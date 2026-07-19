@@ -2,7 +2,7 @@ import { z } from "zod";
 import { defineTool } from "./types";
 import { prisma } from "../utils/prisma";
 import { withRedisLock } from "../utils/redis";
-import { checkAvailability, datesOverlap, findAvailableUnit, validateDateRange } from "../services/reservations/availability";
+import { checkAvailability, datesOverlap, findAvailableUnit, validateDateRange, validateRestaurantServiceWindow } from "../services/reservations/availability";
 import { computeQuote } from "../services/reservations/quote";
 import { createCalendarEvent } from "../integrations/google";
 import { getPMSAdapter } from "../integrations/pms";
@@ -10,8 +10,14 @@ import { getPaymentAdapter } from "../integrations/payments";
 import { encryptSecret, decryptSecret } from "../utils/crypto";
 import { env } from "../config/env";
 
-const UNIT_CATEGORIES = ["GRAND_SUITE", "DELUXE", "STANDARD", "APARTMENT", "HOUSE", "CUSTOM"] as const;
+const UNIT_CATEGORIES = ["GRAND_SUITE", "DELUXE", "STANDARD", "APARTMENT", "HOUSE", "TABLE", "CUSTOM"] as const;
 const ACTIVE_STATUSES = ["PENDING", "AWAITING_PAYMENT", "CONFIRMED", "CHECKED_IN"];
+
+/** true when this is a RESTAURANT property -- switches date-range/quote logic from
+ * whole-night hotel semantics to same-day timed-slot semantics (see availability.ts/quote.ts). */
+function isRestaurantProperty(propertyType: string | null | undefined): boolean {
+  return propertyType === "RESTAURANT";
+}
 
 export const reservationsTools = [
   defineTool({
@@ -26,8 +32,10 @@ export const reservationsTools = [
         include: { units: { where: { active: true } } },
       });
       if (!property) return { error: "Propiedad no encontrada." };
+      const isRestaurant = isRestaurantProperty(property.propertyType);
       return {
         name: property.name,
+        propertyType: property.propertyType,
         address: property.address,
         city: property.city,
         country: property.country,
@@ -36,6 +44,16 @@ export const reservationsTools = [
         timezone: property.timezone,
         currency: property.currency,
         units: property.units.map((u) => ({ id: u.id, name: u.name, category: u.category, maximumGuests: u.maximumGuests, basePrice: Number(u.basePrice) })),
+        ...(isRestaurant
+          ? {
+              lunchOpen: property.lunchOpen,
+              lunchClose: property.lunchClose,
+              dinnerOpen: property.dinnerOpen,
+              dinnerClose: property.dinnerClose,
+              closedWeekdays: property.closedWeekdays,
+              reservationDurationMinutes: property.reservationDurationMinutes,
+            }
+          : {}),
       };
     },
   }),
@@ -89,10 +107,19 @@ export const reservationsTools = [
     }),
     handler: async (input, ctx) => {
       if (!ctx.propertyId) return { available: false, reason: "No hay propiedad resuelta en este contexto." };
+      const property = await prisma.property.findFirst({ where: { id: ctx.propertyId, organizationId: ctx.organizationId } });
+      if (!property) return { available: false, reason: "Propiedad no encontrada." };
+      const isRestaurant = isRestaurantProperty(property.propertyType);
+
       const checkIn = new Date(input.checkIn);
       const checkOut = new Date(input.checkOut);
-      const dateError = validateDateRange(checkIn, checkOut);
+      const dateError = validateDateRange(checkIn, checkOut, new Date(), isRestaurant ? "DATETIME" : "DATE");
       if (dateError) return { available: false, reason: dateError };
+
+      if (isRestaurant) {
+        const windowError = validateRestaurantServiceWindow(property, checkIn);
+        if (windowError) return { available: false, reason: windowError };
+      }
 
       if (input.unitId) {
         const result = await checkAvailability({ unitId: input.unitId, checkIn, checkOut });
@@ -125,12 +152,18 @@ export const reservationsTools = [
       taxRate: z.number().min(0).max(1).default(0),
     }),
     handler: async (input, ctx) => {
-      const unit = await prisma.unit.findFirst({ where: { id: input.unitId, property: { organizationId: ctx.organizationId } } });
+      const unit = await prisma.unit.findFirst({ where: { id: input.unitId, property: { organizationId: ctx.organizationId } }, include: { property: true } });
       if (!unit) return { error: "Unidad no encontrada." };
 
       const services = input.serviceIds.length
         ? await prisma.service.findMany({ where: { id: { in: input.serviceIds }, propertyId: unit.propertyId } })
         : [];
+
+      // A table reservation has no per-night rate: degrade to a flat fee (or free, if the
+      // unit's basePrice is 0) instead of computing a nonsensical "nights x rate" total for a
+      // same-day/short booking. Triggered by either the unit's own category or the property
+      // type, so a TABLE unit is always priced correctly even if propertyType is missing/odd.
+      const isRestaurant = isRestaurantProperty(unit.property.propertyType) || unit.category === "TABLE";
 
       const quote = computeQuote({
         basePrice: Number(unit.basePrice),
@@ -140,6 +173,7 @@ export const reservationsTools = [
         services: services.map((s) => ({ label: s.name, amount: Number(s.price) })),
         taxRate: input.taxRate,
         currency: "CLP",
+        pricingMode: isRestaurant ? "FLAT" : "NIGHTLY",
       });
       return quote;
     },
@@ -164,10 +198,19 @@ export const reservationsTools = [
       if (!ctx.propertyId) return { ok: false, error: "No hay propiedad resuelta en este contexto." };
       if (!ctx.guestId) return { ok: false, error: "No hay huesped resuelto en este contexto." };
 
+      const property = await prisma.property.findFirst({ where: { id: ctx.propertyId, organizationId: ctx.organizationId } });
+      if (!property) return { ok: false, error: "Propiedad no encontrada." };
+      const isRestaurant = isRestaurantProperty(property.propertyType) || input.unitCategory === "TABLE";
+
       const checkIn = new Date(input.checkIn);
       const checkOut = new Date(input.checkOut);
-      const dateError = validateDateRange(checkIn, checkOut);
+      const dateError = validateDateRange(checkIn, checkOut, new Date(), isRestaurant ? "DATETIME" : "DATE");
       if (dateError) return { ok: false, error: dateError };
+
+      if (isRestaurant) {
+        const windowError = validateRestaurantServiceWindow(property, checkIn);
+        if (windowError) return { ok: false, error: windowError };
+      }
 
       const propertyId = ctx.propertyId;
       const lockKey = `reservation:${propertyId}:${input.unitCategory}:${input.checkIn}:${input.checkOut}`;
@@ -214,6 +257,7 @@ export const reservationsTools = [
               checkIn,
               checkOut,
               taxRate: 0,
+              pricingMode: isRestaurant ? "FLAT" : "NIGHTLY",
             });
 
             const reservation = await tx.reservation.create({
@@ -307,15 +351,27 @@ export const reservationsTools = [
     schema: z.object({ reservationId: z.string(), newCheckIn: z.string(), newCheckOut: z.string(), reason: z.string().optional() }),
     summarize: (input) => `Reprogramar reserva ${input.reservationId} a ${input.newCheckIn} - ${input.newCheckOut}.`,
     handler: async (input, ctx) => {
-      const reservation = await prisma.reservation.findFirst({ where: { id: input.reservationId, organizationId: ctx.organizationId }, include: { unit: true } });
+      const reservation = await prisma.reservation.findFirst({ where: { id: input.reservationId, organizationId: ctx.organizationId }, include: { unit: { include: { property: true } } } });
       if (!reservation) return { ok: false, error: "Reserva no encontrada." };
+      const isRestaurant = isRestaurantProperty(reservation.unit.property.propertyType) || reservation.unit.category === "TABLE";
       const newCheckIn = new Date(input.newCheckIn);
       const newCheckOut = new Date(input.newCheckOut);
-      const dateError = validateDateRange(newCheckIn, newCheckOut);
+      const dateError = validateDateRange(newCheckIn, newCheckOut, new Date(), isRestaurant ? "DATETIME" : "DATE");
       if (dateError) return { ok: false, error: dateError };
+      if (isRestaurant) {
+        const windowError = validateRestaurantServiceWindow(reservation.unit.property, newCheckIn);
+        if (windowError) return { ok: false, error: windowError };
+      }
       const availability = await checkAvailability({ unitId: reservation.unitId, checkIn: newCheckIn, checkOut: newCheckOut, excludeReservationId: reservation.id });
       if (!availability.available) return { ok: false, error: "Ya no hay disponibilidad real para las nuevas fechas." };
-      const newQuote = computeQuote({ basePrice: Number(reservation.unit.basePrice), cleaningFee: Number(reservation.unit.cleaningFee), checkIn: newCheckIn, checkOut: newCheckOut, taxRate: 0 });
+      const newQuote = computeQuote({
+        basePrice: Number(reservation.unit.basePrice),
+        cleaningFee: Number(reservation.unit.cleaningFee),
+        checkIn: newCheckIn,
+        checkOut: newCheckOut,
+        taxRate: 0,
+        pricingMode: isRestaurant ? "FLAT" : "NIGHTLY",
+      });
       const updated = await prisma.reservation.update({
         where: { id: reservation.id },
         data: { checkIn: newCheckIn, checkOut: newCheckOut, subtotal: newQuote.subtotalBeforeTax, taxes: newQuote.taxes, totalAmount: newQuote.total },

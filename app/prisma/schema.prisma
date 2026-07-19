@@ -32,6 +32,7 @@ enum UnitCategory {
   STANDARD
   APARTMENT
   HOUSE
+  TABLE
   CUSTOM
 }
 
@@ -301,6 +302,14 @@ model Property {
   bathrooms      Int            @default(1)
   status         PropertyStatus @default(ACTIVE)
   active         Boolean        @default(true)
+  // Restaurant-specific service windows (only meaningful when propertyType = "RESTAURANT").
+  // Left null for hotel/vacation-rental properties, which use checkInTime/checkOutTime instead.
+  lunchOpen                  String?  // "HH:MM", e.g. "12:30"
+  lunchClose                 String?  // "HH:MM", e.g. "16:00"
+  dinnerOpen                 String?  // "HH:MM", e.g. "19:30"
+  dinnerClose                String?  // "HH:MM", e.g. "23:30"
+  closedWeekdays              Json    @default("[]") // JS getDay(): 0=Sunday..6=Saturday
+  reservationDurationMinutes Int      @default(120) // default table-booking length
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
 
@@ -834,6 +843,10 @@ model BrandProfile {
   id                 String   @id @default(cuid())
   organizationId     String
   propertyId         String?
+  // Per-organization AI persona name shown to guests in conversation (e.g. "Valentina").
+  // This is the configurable feature-level persona name -- distinct from "Nexvore", which is
+  // the platform brand shown in the dashboard and is never guest-facing.
+  assistantName      String?
   targetAudience     String?
   tone               String?
   valueProposition   String?
