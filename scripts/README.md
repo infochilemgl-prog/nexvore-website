@@ -6,7 +6,46 @@ cd scripts
 pip install -r requirements.txt
 ```
 
-## Arrancar
+## Dos herramientas
+
+| Script | Para qué | Fuente |
+|--------|----------|--------|
+| `extraer_leads.py` | **Sacar prospectos con teléfono** listos para llamar + análisis de mercado | Google Maps (automático) |
+| `agregar_lead.py` | Gestionar leads a mano + generar DMs de Instagram | Manual |
+
+---
+
+## 1) Extractor de leads — `extraer_leads.py`
+
+Saca negocios locales **reales** de Google Maps con **teléfono listo para llamar**,
+los puntúa con tu scoring SMSA (sin web = máxima oportunidad), te genera un
+**guion de llamada por nicho** y un **análisis de mercado** (dólares alcanzables).
+
+```bash
+# Todos los nichos, Santiago
+python extraer_leads.py
+
+# Zona y nichos específicos
+python extraer_leads.py --zona "Providencia, Santiago" --nichos peluqueros,restaurantes --max 40
+
+# Ver el navegador mientras trabaja (debug)
+python extraer_leads.py --no-headless
+```
+
+**Salidas:**
+- `leads/leads_google.csv` — CSV listo para llamar (nombre, teléfono E.164, sin web sí/no, dirección, rating, score, guion apertura/dolor/CTA, valor estimado CLP/USD).
+- `leads/analisis_mercado.md` — resumen ejecutivo + dinero alcanzable + desglose por nicho.
+
+**Opciones útiles:** `--max N` (fichas por búsqueda), `--usd 950` (tipo de cambio), `--timeout 45000`, `--pausa 1.0` (segundos entre fichas).
+
+> ⚠️ **Dónde correrlo:** ejecútalo en **tu computador** (o un entorno con salida
+> a internet abierta). El entorno remoto de Claude bloquea Google por política de
+> red, así que ahí no extrae — pero el código y la lógica ya están probados.
+> El script **no inventa** teléfonos: salen de la ficha pública real de cada negocio.
+
+---
+
+## 2) Gestión manual — `agregar_lead.py`
 ```bash
 python agregar_lead.py
 ```
@@ -30,4 +69,6 @@ python agregar_lead.py
 - 1-2 cierres por semana = meta $1.000.000 CLP
 
 ## Archivos generados
-- `leads/leads.csv` — base de datos completa con DMs pre-escritos por nicho
+- `leads/leads_google.csv` — prospectos con teléfono extraídos de Google Maps (listos para llamar)
+- `leads/analisis_mercado.md` — análisis de mercado por nicho
+- `leads/leads.csv` — base manual con DMs pre-escritos por nicho

@@ -1,2 +1,5 @@
 pandas>=2.0
 rich>=13.0
+# Extractor de leads (Google Maps) — scripts/extraer_leads.py
+scrapling>=0.4
+playwright>=1.40
