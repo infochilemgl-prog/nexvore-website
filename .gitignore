@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Leads generados localmente (datos, no código)
+scripts/leads/
+
+# Entorno
+.env
+node_modules/
