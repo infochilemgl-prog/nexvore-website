@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Leads generados (datos reales de prospección — no versionar)
+scripts/leads/
+
+# Entorno
+.env
+.venv/
+venv/
+node_modules/
